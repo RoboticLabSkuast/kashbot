@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="laserBeamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#F59E0B" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#EF4444" stop-opacity="1"/>
+    </linearGradient>
+    <radialGradient id="targetRing" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="groundBed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Technical Background Coordinate Grid -->
+  <g opacity="0.12">
+    <circle cx="300" cy="200" r="160" stroke="#0C3B2E" stroke-dasharray="4 4" />
+    <circle cx="300" cy="200" r="100" stroke="#0C3B2E" stroke-dasharray="4 4" />
+    <line x1="140" y1="200" x2="460" y2="200" stroke="#0C3B2E" />
+    <line x1="300" y1="40" x2="300" y2="360" stroke="#0C3B2E" />
+  </g>
+
+  <!-- Ground Bed -->
+  <rect x="50" y="320" width="500" height="40" fill="url(#groundBed)" rx="6" />
+  
+  <!-- Useful Lawn Grass / Crop Stems (Unscathed) -->
+  <g stroke="#10B981" stroke-width="2.5" stroke-linecap="round">
+    <path d="M120 320 C115 285 105 270 95 260" />
+    <path d="M130 320 C135 285 145 270 155 260" />
+    <path d="M450 320 C445 285 435 270 425 260" />
+    <path d="M465 320 C470 280 480 265 490 255" />
+  </g>
+
+  <!-- Invasive Target Weed (Central) -->
+  <path d="M295 320 C290 290 270 285 255 280 C275 275 285 260 290 245 C295 260 305 275 325 280 C310 285 300 290 298 320 Z" fill="#65A30D" />
+  
+  <!-- Optical AI Vision Scanner Unit Above -->
+  <rect x="220" y="50" width="160" height="70" rx="12" fill="#0C3B2E" stroke="#07251D" stroke-width="2" />
+  <!-- Dual High-Speed Stereo Vision Cameras -->
+  <circle cx="255" cy="85" r="14" fill="#1E293B" stroke="#0284C7" stroke-width="2" />
+  <circle cx="255" cy="85" r="7" fill="#0284C7" />
+  
+  <circle cx="345" cy="85" r="14" fill="#1E293B" stroke="#0284C7" stroke-width="2" />
+  <circle cx="345" cy="85" r="7" fill="#0284C7" />
+
+  <!-- Central Galvo-Mirror Laser Aperture -->
+  <rect x="285" y="105" width="30" height="20" rx="3" fill="#334155" />
+  <ellipse cx="300" cy="115" rx="9" ry="4" fill="#EF4444" />
+
+  <!-- Precision High-Energy Laser Beam (Targeted at Weed Meristem) -->
+  <polygon points="298,118 302,118 296,275 294,275" fill="url(#laserBeamGrad)" />
+  <line x1="300" y1="118" x2="295" y2="275" stroke="#FFFFFF" stroke-width="1" />
+
+  <!-- Laser Strike Thermal Glow -->
+  <circle cx="295" cy="275" r="24" fill="url(#targetRing)" />
+  <circle cx="295" cy="275" r="6" fill="#EF4444" />
+  <circle cx="295" cy="275" r="2.5" fill="#FFFFFF" />
+
+  <!-- Vision Detection Bounding Box -->
+  <rect x="245" y="235" width="100" height="85" rx="4" fill="none" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4 3" />
+  <text x="250" y="230" font-family="monospace" font-size="9" font-weight="bold" fill="#10B981">WEED DETECTED [99.4%]</text>
+
+  <!-- Precision Crosshair -->
+  <circle cx="295" cy="275" r="16" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="3 3" fill="none" />
+  <line x1="270" y1="275" x2="320" y2="275" stroke="#EF4444" stroke-width="1" />
+  <line x1="295" y1="250" x2="295" y2="300" stroke="#EF4444" stroke-width="1" />
+
+  <!-- Telemetry Box -->
+  <rect x="390" y="65" width="175" height="48" rx="6" fill="#FFFFFF" stroke="#EF4444" stroke-width="1.5" />
+  <text x="402" y="83" font-family="monospace" font-size="10" font-weight="bold" fill="#0C3B2E">DIRECTED LASER WEEDING</text>
+  <text x="402" y="96" font-family="monospace" font-size="8.5" fill="#EF4444">TARGET: THERMAL ABLATION</text>
+  <text x="402" y="107" font-family="monospace" font-size="8" fill="#64748B">SOIL DISTURBANCE: 0.0%</text>
+</svg>
