@@ -1,0 +1,53 @@
+KASHBOT AGRI SYSTEMS PRIVATE LIMITED
+Website Content — Company Overview
+===================================
+
+ABOUT US
+
+Kashbot Agri Systems Private Limited is an agricultural technology company focused on developing agricultural robotics, precision agricultural machinery, and intelligent automation solutions for modern farming. We aim to help make agricultural operations more precise, efficient, and practical through the integration of engineering, robotics, sensing technologies, and intelligent control systems.
+
+WHAT WE DO
+
+We work on the design and development of technology-driven solutions for agricultural challenges. Our work focuses on applying robotics and precision engineering to operations that can benefit from improved targeting, reduced input wastage, and more consistent performance.
+
+OUR KEY AREAS
+
+1. Agricultural Robotics
+Design and development of robotic platforms and automated systems for agricultural applications, with an emphasis on practical field use.
+
+2. Precision Agricultural Machinery
+Development of machinery and control systems intended to make agricultural operations more targeted, measurable, and efficient.
+
+3. Intelligent Spraying Systems
+Work on smart spraying technologies for orchards and other agricultural settings, including approaches that use sensing and adaptive control to improve spray application.
+
+4. Laser-Based Weed Management
+Development of a laser lawn-weeding prototype exploring targeted weed treatment as an alternative to blanket application methods. The project is being developed with a focus on controlled operation and prototype validation.
+
+5. Research, Prototyping and Automation
+Engineering-led development that brings together mechanical systems, electronics, sensors, embedded computing, and software to build and evaluate agricultural technology prototypes.
+
+OUR APPROACH
+
+We follow a practical, engineering-driven approach:
+- Identify a specific agricultural problem.
+- Develop a suitable mechanical and automation concept.
+- Integrate relevant sensors, control systems, and computing hardware.
+- Build and test prototypes under defined conditions.
+- Evaluate performance and refine the design before considering further deployment.
+
+OUR PURPOSE
+
+Our purpose is to contribute to more efficient and technology-enabled agriculture by developing solutions that address real operational needs. We aim to bridge agricultural engineering and emerging automation technologies through practical design, testing, and continuous improvement.
+
+OUR VISION
+
+To contribute to the advancement of agricultural robotics and precision machinery, helping farmers and the agricultural sector access practical, intelligent, and resource-conscious technologies.
+
+COMPANY DETAILS
+
+Company Name: Kashbot Agri Systems Private Limited
+Location: Buchpora, Srinagar, Jammu & Kashmir – 190020, India
+Email: info@kashbot.in
+Phone: 7006613634
+Website: https://kashbot.in
