@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="sprayGrad" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#F97316" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FDBA74" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="canopyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#15803D"/>
+      <stop offset="100%" stop-color="#14532D"/>
+    </linearGradient>
+    <radialGradient id="sensorWave" cx="0%" cy="50%" r="100%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Technical Background Grid -->
+  <g opacity="0.12">
+    <line x1="40" y1="60" x2="560" y2="60" stroke="#0F172A" stroke-dasharray="4 4" />
+    <line x1="40" y1="200" x2="560" y2="200" stroke="#0F172A" stroke-dasharray="4 4" />
+    <line x1="40" y1="340" x2="560" y2="340" stroke="#0F172A" stroke-dasharray="4 4" />
+  </g>
+
+  <!-- High-Density Apple Orchard Tree / Canopy -->
+  <!-- Tree Trunk -->
+  <rect x="440" y="160" width="24" height="180" rx="4" fill="#78350F" />
+  <!-- Canopy Foliage -->
+  <path d="M452 70 C400 70 370 120 380 180 C360 210 390 260 430 260 C460 270 510 250 520 200 C540 140 500 70 452 70 Z" fill="url(#canopyGrad)" opacity="0.9" />
+  <!-- Apples in Canopy -->
+  <circle cx="420" cy="130" r="7" fill="#DC2626" />
+  <circle cx="470" cy="115" r="7" fill="#DC2626" />
+  <circle cx="440" cy="180" r="8" fill="#DC2626" />
+  <circle cx="485" cy="165" r="7" fill="#DC2626" />
+  <circle cx="410" cy="205" r="7" fill="#DC2626" />
+
+  <!-- Spray Boom & Rig Chassis (Industrial Orange) -->
+  <rect x="80" y="240" width="130" height="70" rx="10" fill="#EA580C" />
+  <circle cx="110" cy="320" r="24" fill="#0F172A" stroke="#1E293B" stroke-width="4" />
+  <circle cx="180" cy="320" r="24" fill="#0F172A" stroke="#1E293B" stroke-width="4" />
+  <!-- Spray Liquid Tank -->
+  <rect x="95" y="195" width="85" height="45" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2" />
+  <text x="110" y="222" font-family="monospace" font-size="9" fill="#EA580C" font-weight="bold">ECO-TANK</text>
+
+  <!-- Vertical Sensor & Spray Boom Mast -->
+  <rect x="195" y="60" width="14" height="230" rx="3" fill="#1E293B" />
+  
+  <!-- Optical & Ultrasonic Canopy Profiling Sensors -->
+  <!-- Top Sensor -->
+  <rect x="209" y="85" width="16" height="14" rx="2" fill="#F97316" />
+  <path d="M225 92 L380 75 L380 135 Z" fill="url(#sensorWave)" />
+  <path d="M225 92 L380 75" stroke="#F97316" stroke-width="1.5" stroke-dasharray="3 3" />
+  <path d="M225 92 L380 135" stroke="#F97316" stroke-width="1.5" stroke-dasharray="3 3" />
+
+  <!-- Mid Sensor -->
+  <rect x="209" y="155" width="16" height="14" rx="2" fill="#F97316" />
+  <path d="M225 162 L390 145 L390 205 Z" fill="url(#sensorWave)" />
+  <path d="M225 162 L390 145" stroke="#F97316" stroke-width="1.5" stroke-dasharray="3 3" />
+  <path d="M225 162 L390 205" stroke="#F97316" stroke-width="1.5" stroke-dasharray="3 3" />
+
+  <!-- Lower Sensor -->
+  <rect x="209" y="225" width="16" height="14" rx="2" fill="#F97316" />
+  <path d="M225 232 L390 215 L390 270 Z" fill="url(#sensorWave)" />
+
+  <!-- Adaptive Spray Nozzles with Targeted Fine Droplets -->
+  <circle cx="218" cy="115" r="4" fill="#F59E0B" />
+  <path d="M222 115 L400 95 L390 160 Z" fill="url(#sprayGrad)" />
+
+  <circle cx="218" cy="185" r="4" fill="#F59E0B" />
+  <path d="M222 185 L420 160 L410 230 Z" fill="url(#sprayGrad)" />
+
+  <!-- Telemetry Overlay Note -->
+  <rect x="60" y="30" width="220" height="42" rx="6" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.5" />
+  <text x="75" y="48" font-family="monospace" font-size="10" font-weight="bold" fill="#0F172A">SMART SPRAY CONTROLLER</text>
+  <text x="75" y="62" font-family="monospace" font-size="9" fill="#EA580C">PULSE RATE: ADAPTIVE 85% SAVING</text>
+  <circle cx="260" cy="51" r="5" fill="#F97316" />
+</svg>

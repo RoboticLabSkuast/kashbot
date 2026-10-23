@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="brandGrad" x1="10%" y1="10%" x2="90%" y2="90%">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#C2410C"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDBA74"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Shield Node -->
+  <rect x="6" y="6" width="88" height="88" rx="24" fill="url(#brandGrad)" />
+  
+  <!-- Outer Gear Teeth (Robotics) -->
+  <circle cx="50" cy="50" r="32" stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.4" />
+  
+  <!-- Central Botanical Leaf & Precision Sensor Geometry -->
+  <path d="M50 20 C68 28 78 46 72 68 C58 78 38 78 28 68 C22 46 32 28 50 20 Z" fill="#FFFFFF" fill-opacity="0.95" />
+  <path d="M50 22 C62 38 58 60 50 74 C42 60 38 38 50 22 Z" fill="url(#accentGrad)" />
+  
+  <!-- Central Telemetry Core / Microcontroller Node -->
+  <circle cx="50" cy="48" r="6" fill="#0F172A" />
+  <circle cx="50" cy="48" r="3" fill="#F97316" />
+  
+  <!-- Circuit Traces -->
+  <line x1="50" y1="42" x2="50" y2="28" stroke="#0F172A" stroke-width="2" stroke-linecap="round" />
+  <line x1="44" y1="50" x2="36" y2="54" stroke="#0F172A" stroke-width="2" stroke-linecap="round" />
+  <line x1="56" y1="50" x2="64" y2="54" stroke="#0F172A" stroke-width="2" stroke-linecap="round" />
+  <circle cx="50" cy="28" r="2" fill="#0F172A" />
+  <circle cx="36" cy="54" r="2" fill="#0F172A" />
+  <circle cx="64" cy="54" r="2" fill="#0F172A" />
+</svg>
