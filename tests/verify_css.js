@@ -10,38 +10,39 @@ if (!fs.existsSync(cssPath)) {
 
 const css = fs.readFileSync(cssPath, 'utf8');
 const requiredTokens = [
-  '--color-forest',
-  '--color-mint',
-  '--color-cyan',
-  '--color-bg',
-  '--color-surface',
-  '--color-text-primary',
-  '--font-heading',
-  '--font-body',
-  '--font-mono'
+  '--ground:',
+  '--paper:',
+  '--ink:',
+  '--ink-soft:',
+  '--herb:',
+  '--tomato:',
+  '--font-display:',
+  '--font-sans:',
+  '--line:'
 ];
 
 const requiredClasses = [
-  '.glass-card',
-  '.btn-primary',
-  '.btn-secondary',
-  '.badge-telemetry',
-  '.tech-tab-btn',
-  '.step-node',
-  '.impact-slider'
+  '.site-header',
+  '.brand',
+  '.tab',
+  '.chip',
+  '.item',
+  '.item__leader',
+  '.item__desc',
+  '.diet__tag'
 ];
 
 let failed = false;
 requiredTokens.forEach(token => {
   if (!css.includes(token)) {
-    console.error(`FAIL: Missing design token: ${token}`);
+    console.error(`FAIL: Missing Sorrel design token: ${token}`);
     failed = true;
   }
 });
 
 requiredClasses.forEach(cls => {
   if (!css.includes(cls)) {
-    console.error(`FAIL: Missing CSS class: ${cls}`);
+    console.error(`FAIL: Missing Sorrel CSS class: ${cls}`);
     failed = true;
   }
 });
@@ -49,5 +50,5 @@ requiredClasses.forEach(cls => {
 if (failed) {
   process.exit(1);
 } else {
-  console.log("PASS: css/style.css has all required design tokens and utility classes.");
+  console.log("PASS: css/style.css has all required Sorrel design tokens and components.");
 }
