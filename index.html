@@ -2,28 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kashbot Agri Systems — Precision Agricultural Robotics & Intelligent Automation</title>
-  <meta name="description" content="Kashbot Agri Systems Private Limited develops agricultural robotics, precision machinery, intelligent spraying systems, and laser weed management prototypes in Srinagar, Jammu & Kashmir.">
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kashbot Agri Systems — Precision Agricultural Robotics &amp; Intelligent Automation</title>
+  <meta name="description" content="Kashbot Agri Systems Private Limited develops agricultural robotics, precision machinery, intelligent spraying systems, and laser weed management prototypes in Srinagar, Jammu &amp; Kashmir.">
+  <meta name="theme-color" content="#E7ECE1">
+  
+  <!-- Standalone Botanical Emblem Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
+  
+  <!-- Google Fonts: Yeseva One (Display Serif) + Mukta (Humanist Sans) + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Mukta:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Core Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <!-- Accessible Skip Navigation -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#technologies" class="skip-link">Skip to technologies</a>
 
-  <!-- Header / Navigation Bar -->
+  <!-- ============ STICKY EDITORIAL HEADER ============ -->
   <header class="site-header" id="site-header" role="banner">
-    <div class="container">
-      <a href="#" class="brand-logo-wrap" aria-label="Kashbot Agri Systems Home">
-        <img src="assets/logo.svg" alt="Kashbot Agri Systems Emblem" width="40" height="40">
-        <div class="brand-title">
-          <span class="brand-name">KASHBOT</span>
-          <span class="brand-sub">Agri Systems</span>
+    <div class="container site-header__inner">
+      <a href="#" class="brand" aria-label="Kashbot Agri Systems Home">
+        <div class="brand__logo-wrap">
+          <img src="assets/logo.svg" alt="Kashbot Agri Systems" class="brand__logo" width="130" height="44">
         </div>
       </a>
 
-      <!-- Desktop Navigation -->
+      <!-- Desktop Navigation Links -->
       <nav class="main-nav" role="navigation" aria-label="Main Navigation">
         <a href="#overview" class="nav-link">Overview</a>
         <a href="#technologies" class="nav-link">Technologies</a>
@@ -33,10 +41,18 @@
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
-      <div class="header-actions">
+      <!-- Operations Status Pill & CTA -->
+      <div class="header-right">
+        <div class="operations-meta" aria-label="Field Lab Status">
+          <span class="pulse-dot"></span>
+          <span>Buchpora, Srinagar · J&amp;K</span>
+          <span style="opacity: 0.4;">|</span>
+          <span style="font-weight: 600;">TRL-5 Active</span>
+        </div>
         <a href="#contact" class="btn-primary" id="header-cta-btn">Request Pilot Trial</a>
-        <button class="mobile-menu-btn" id="mobile-menu-open-btn" aria-label="Open Mobile Menu" aria-expanded="false">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        
+        <button class="mobile-menu-btn" id="mobile-menu-open-btn" aria-label="Open Navigation Menu" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -49,12 +65,8 @@
   <!-- Mobile Drawer -->
   <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
     <div class="mobile-drawer-header">
-      <div class="brand-logo-wrap">
-        <img src="assets/logo.svg" alt="Kashbot Logo" width="36" height="36">
-        <div class="brand-title">
-          <span class="brand-name" style="color: #fff;">KASHBOT</span>
-          <span class="brand-sub" style="color: #A7F3D0;">Agri Systems</span>
-        </div>
+      <div class="brand">
+        <img src="assets/logo.svg" alt="Kashbot Logo" width="110" height="38">
       </div>
       <button class="drawer-close-btn" id="mobile-menu-close-btn" aria-label="Close Mobile Menu">&times;</button>
     </div>
@@ -66,22 +78,22 @@
       <a href="#about" class="mobile-drawer-link">Purpose &amp; Vision</a>
       <a href="#contact" class="mobile-drawer-link">Contact</a>
     </nav>
-    <div style="margin-top: 3rem;">
-      <a href="#contact" class="btn-primary" style="width: 100%; text-align: center;">Request Pilot Trial</a>
+    <div style="margin-top: auto; padding-top: 2rem;">
+      <a href="#contact" class="btn-primary" style="width: 100%;">Request Pilot Trial</a>
     </div>
   </div>
 
   <main id="main-content">
-    <!-- HERO SECTION -->
+    <!-- ============ HERO SECTION ============ -->
     <section class="hero-section" id="hero">
       <div class="container">
         <div class="hero-grid">
           <div class="hero-content">
             <div class="badge-telemetry">
-              <span class="pulse-dot"></span>
-              <span>Buchpora, Srinagar, Jammu & Kashmir – 190020</span>
+              <span class="pulse-dot pulse-dot--tomato"></span>
+              <span>Buchpora, Srinagar, Jammu &amp; Kashmir – 190020</span>
             </div>
-            <h1>
+            <h1 class="hero-title">
               Engineering <span class="highlight">Intelligent Robotics</span> for Modern Agriculture
             </h1>
             <p class="hero-desc">
@@ -134,434 +146,467 @@
       </div>
     </section>
 
-    <!-- COMPANY OVERVIEW SECTION -->
+    <!-- ============ COMPANY OVERVIEW SECTION ============ -->
     <section class="overview-section" id="overview">
       <div class="container">
-        <div class="overview-grid">
-          <div>
-            <div class="section-tag" style="color: var(--color-emerald-deep); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem;">Company Overview</div>
-            <h2 style="font-size: 2.3rem; margin-bottom: 1.25rem; color: var(--color-forest-dark);">Pioneering Deep-Tech Agricultural Engineering in Kashmir</h2>
-            <p class="overview-lead">
-              Kashbot Agri Systems Private Limited is an agricultural technology company focused on developing agricultural robotics, precision agricultural machinery, and intelligent automation solutions for modern farming.
-            </p>
-            <p class="overview-body">
-              We aim to help make agricultural operations more precise, efficient, and practical through the integration of engineering, robotics, sensing technologies, and intelligent control systems. Based in Buchpora, Srinagar, our engineering addresses high-value horticultural challenges—from high-density apple orchards to terraced terrain—replacing blanket wastage with measurable, targeted precision.
-            </p>
-          </div>
-
-          <div class="overview-pillars">
-            <div class="pillar-card">
-              <div class="pillar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="3"></circle>
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                </svg>
-              </div>
-              <h4>Field Robotics</h4>
-              <p>Practical automated platforms designed for rough orchard rows and varied slope conditions.</p>
-            </div>
-            <div class="pillar-card">
-              <div class="pillar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                </svg>
-              </div>
-              <h4>Input Conservation</h4>
-              <p>Drastically lowering chemical, pesticide, and fuel consumption via targeted variable application.</p>
-            </div>
-            <div class="pillar-card">
-              <div class="pillar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                </svg>
-              </div>
-              <h4>Sensor Fusion</h4>
-              <p>Real-time optical profiling, ultrasonic canopy mapping, and embedded microcontrollers.</p>
-            </div>
-            <div class="pillar-card">
-              <div class="pillar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-              </div>
-              <h4>Empirical R&amp;D</h4>
-              <p>Rigorous multi-stage prototype validation under real regional agro-climatic conditions.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- INTERACTIVE TECHNOLOGY EXPLORER (CORE FEATURE) -->
-    <section class="tech-explorer-section" id="technologies">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Key Innovation Areas</span>
-          <h2>Interactive Technology Explorer</h2>
-          <p>
-            Explore the engineering architectures, sensing technologies, and prototype validations powering Kashbot’s five key domains.
+        <div class="overview-card">
+          <div class="section-tag">Company Overview</div>
+          <h2 class="section-title">Pioneering Deep-Tech Agricultural Engineering in Kashmir</h2>
+          <p class="overview-lead">
+            Kashbot Agri Systems Private Limited is an agricultural technology company focused on developing agricultural robotics, precision agricultural machinery, and intelligent automation solutions for modern farming.
+          </p>
+          <p class="overview-body">
+            We aim to help make agricultural operations more precise, efficient, and practical through the integration of engineering, robotics, sensing technologies, and intelligent control systems. Based in Buchpora, Srinagar, our engineering addresses high-value horticultural challenges—from high-density apple orchards to terraced terrain—replacing blanket input wastage with measurable, targeted precision.
           </p>
         </div>
-
-        <!-- Navigation Tabs -->
-        <div class="tech-tabs-nav" role="tablist" aria-label="Kashbot Technologies">
-          <button class="tech-tab-btn active" role="tab" id="tab-btn-1" aria-selected="true" aria-controls="panel-1" data-tab="1">
-            <span class="tab-num">01</span>
-            <span>Agricultural Robotics</span>
-          </button>
-          <button class="tech-tab-btn" role="tab" id="tab-btn-2" aria-selected="false" aria-controls="panel-2" data-tab="2">
-            <span class="tab-num">02</span>
-            <span>Precision Agricultural Machinery</span>
-          </button>
-          <button class="tech-tab-btn" role="tab" id="tab-btn-3" aria-selected="false" aria-controls="panel-3" data-tab="3">
-            <span class="tab-num">03</span>
-            <span>Intelligent Spraying Systems</span>
-          </button>
-          <button class="tech-tab-btn" role="tab" id="tab-btn-4" aria-selected="false" aria-controls="panel-4" data-tab="4">
-            <span class="tab-num">04</span>
-            <span>Laser-Based Weed Management</span>
-          </button>
-          <button class="tech-tab-btn" role="tab" id="tab-btn-5" aria-selected="false" aria-controls="panel-5" data-tab="5">
-            <span class="tab-num">05</span>
-            <span>Research, Prototyping and Automation</span>
-          </button>
-        </div>
-
-        <!-- Panels Container -->
-        <div class="tech-panels-wrap">
-          <!-- Panel 1: Agricultural Robotics -->
-          <div class="tech-panel active" id="panel-1" role="tabpanel" aria-labelledby="tab-btn-1">
-            <div class="tech-panel-info">
-              <div class="badge-telemetry" style="margin-bottom: 0.75rem;">
-                <span class="pulse-dot"></span>
-                <span>Active Field Prototype</span>
-              </div>
-              <h3>Agricultural Robotics</h3>
-              <p class="tech-panel-tagline">Autonomous &amp; Semi-Autonomous Field Rover Platforms</p>
-              <p class="tech-panel-desc">
-                Design and development of robotic platforms and automated systems for agricultural applications, with an emphasis on practical field use. Built to navigate uneven orchard rows, terraced Kashmir topography, and varied crop canopies reliably.
-              </p>
-              <div class="tech-specs-grid">
-                <div class="spec-box">
-                  <div class="spec-label">Navigation &amp; Localization</div>
-                  <div class="spec-value">RTK-GNSS + IMU Sensor Fusion (±2 cm)</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Terrain Adaptation</div>
-                  <div class="spec-value">High-Torque All-Terrain Articulated Chassis</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Obstacle Perception</div>
-                  <div class="spec-value">Solid-State 3D LiDAR &amp; Stereo Vision</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Field Duty Cycle</div>
-                  <div class="spec-value">Continuous Electric Drive with Swappable Modules</div>
-                </div>
-              </div>
-              <a href="#contact" class="btn-primary" style="font-size: 0.88rem; padding: 0.65rem 1.4rem;">Inquire About Field Trials</a>
-            </div>
-            <div class="tech-panel-visual">
-              <img src="assets/agri-robot.svg" alt="Agricultural Robotics Platform Schematic">
-            </div>
-          </div>
-
-          <!-- Panel 2: Precision Agricultural Machinery -->
-          <div class="tech-panel" id="panel-2" role="tabpanel" aria-labelledby="tab-btn-2">
-            <div class="tech-panel-info">
-              <div class="badge-telemetry" style="margin-bottom: 0.75rem;">
-                <span class="pulse-dot"></span>
-                <span>Engineering Development &amp; Testing</span>
-              </div>
-              <h3>Precision Agricultural Machinery</h3>
-              <p class="tech-panel-tagline">Targeted, Measurable &amp; Consistent Agricultural Implements</p>
-              <p class="tech-panel-desc">
-                Development of machinery and control systems intended to make agricultural operations more targeted, measurable, and efficient. We engineer closed-loop control mechanisms that adapt dynamically to ground speed, crop density, and soil condition.
-              </p>
-              <div class="tech-specs-grid">
-                <div class="spec-box">
-                  <div class="spec-label">Actuation Systems</div>
-                  <div class="spec-value">High-Precision Electro-Hydraulic &amp; Servo Drives</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Measurement Telemetry</div>
-                  <div class="spec-value">Real-Time Flow, Pressure &amp; Torque Logging</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Tractor Integration</div>
-                  <div class="spec-value">ISO 11783 (ISOBUS) &amp; Modular 3-Point Hitch</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Operational Consistency</div>
-                  <div class="spec-value">Closed-Loop Ground Speed Proportional Delivery</div>
-                </div>
-              </div>
-              <a href="#contact" class="btn-primary" style="font-size: 0.88rem; padding: 0.65rem 1.4rem;">Discuss Implement Compatibility</a>
-            </div>
-            <div class="tech-panel-visual">
-              <img src="assets/sensors-board.svg" alt="Precision Agricultural Machinery Control Architecture">
-            </div>
-          </div>
-
-          <!-- Panel 3: Intelligent Spraying Systems -->
-          <div class="tech-panel" id="panel-3" role="tabpanel" aria-labelledby="tab-btn-3">
-            <div class="tech-panel-info">
-              <div class="badge-telemetry" style="margin-bottom: 0.75rem;">
-                <span class="pulse-dot"></span>
-                <span>Active Orchard Field Trials</span>
-              </div>
-              <h3>Intelligent Spraying Systems</h3>
-              <p class="tech-panel-tagline">Canopy-Sensing Variable-Rate Orchard Spraying</p>
-              <p class="tech-panel-desc">
-                Work on smart spraying technologies for orchards and other agricultural settings, including approaches that use sensing and adaptive control to improve spray application. By profiling tree volume in real time, nozzles spray only when foliage is detected—saving up to 85% of chemical runoff.
-              </p>
-              <div class="tech-specs-grid">
-                <div class="spec-box">
-                  <div class="spec-label">Canopy Profiling</div>
-                  <div class="spec-value">Multi-Zone Ultrasonic &amp; Optical Distance Array</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Nozzle Modulation</div>
-                  <div class="spec-value">High-Frequency PWM Solenoid Adaptive Cutoff</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Input Conservation</div>
-                  <div class="spec-value">60% to 85% Reduction in Overspray Wastage</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Target Applications</div>
-                  <div class="spec-value">High-Density Apple, Pear, Peach &amp; Cherry Orchards</div>
-                </div>
-              </div>
-              <a href="#contact" class="btn-primary" style="font-size: 0.88rem; padding: 0.65rem 1.4rem;">Request Orchard Pilot Trial</a>
-            </div>
-            <div class="tech-panel-visual">
-              <img src="assets/smart-spray.svg" alt="Intelligent Canopy Spraying System Schematic">
-            </div>
-          </div>
-
-          <!-- Panel 4: Laser-Based Weed Management -->
-          <div class="tech-panel" id="panel-4" role="tabpanel" aria-labelledby="tab-btn-4">
-            <div class="tech-panel-info">
-              <div class="badge-telemetry" style="margin-bottom: 0.75rem;">
-                <span class="pulse-dot"></span>
-                <span>Prototype Validation Phase</span>
-              </div>
-              <h3>Laser-Based Weed Management</h3>
-              <p class="tech-panel-tagline">Chemical-Free Targeted Thermal Weed Eradication</p>
-              <p class="tech-panel-desc">
-                Development of a laser lawn-weeding prototype exploring targeted weed treatment as an alternative to blanket application methods. The project is being developed with a focus on controlled operation and prototype validation, terminating weeds at the apical meristem without disturbing soil microbes.
-              </p>
-              <div class="tech-specs-grid">
-                <div class="spec-box">
-                  <div class="spec-label">Detection Mechanism</div>
-                  <div class="spec-value">Stereo High-Speed Edge Neural Classifier</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Energy Delivery</div>
-                  <div class="spec-value">Targeted High-Power Diode Thermal Ablation</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Chemical Footprint</div>
-                  <div class="spec-value">0% Herbicide Application (Zero Runoff)</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Soil Impact</div>
-                  <div class="spec-value">Zero Mechanical Tillage &amp; Soil Disturbance</div>
-                </div>
-              </div>
-              <a href="#contact" class="btn-primary" style="font-size: 0.88rem; padding: 0.65rem 1.4rem;">Join Laser Weeding Prototype Demo</a>
-            </div>
-            <div class="tech-panel-visual">
-              <img src="assets/laser-weeder.svg" alt="Precision Laser Weed Management System Schematic">
-            </div>
-          </div>
-
-          <!-- Panel 5: Research, Prototyping and Automation -->
-          <div class="tech-panel" id="panel-5" role="tabpanel" aria-labelledby="tab-btn-5">
-            <div class="tech-panel-info">
-              <div class="badge-telemetry" style="margin-bottom: 0.75rem;">
-                <span class="pulse-dot"></span>
-                <span>Continuous R&amp;D Pipeline</span>
-              </div>
-              <h3>Research, Prototyping and Automation</h3>
-              <p class="tech-panel-tagline">Multi-Disciplinary Mechatronics &amp; Embedded Systems</p>
-              <p class="tech-panel-desc">
-                Engineering-led development that brings together mechanical systems, electronics, sensors, embedded computing, and software to build and evaluate agricultural technology prototypes. We design our own PCBs, telemetry logging firmware, and real-time control routines.
-              </p>
-              <div class="tech-specs-grid">
-                <div class="spec-box">
-                  <div class="spec-label">Computing Architecture</div>
-                  <div class="spec-value">Embedded Linux, ROS 2 &amp; Low-Power RTOS</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Communication Bus</div>
-                  <div class="spec-value">Fault-Tolerant CAN-Bus &amp; Industrial Modbus</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Sensor Ecosystem</div>
-                  <div class="spec-value">Optical, Ultrasonic, Multi-Spectral &amp; IMU</div>
-                </div>
-                <div class="spec-box">
-                  <div class="spec-label">Testing Environments</div>
-                  <div class="spec-value">Laboratory Bench Testing + High-Altitude Field Trials</div>
-                </div>
-              </div>
-              <a href="#contact" class="btn-primary" style="font-size: 0.88rem; padding: 0.65rem 1.4rem;">Collaborate on R&amp;D</a>
-            </div>
-            <div class="tech-panel-visual">
-              <img src="assets/sensors-board.svg" alt="Embedded Mechatronics Board Architecture">
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- 5-STAGE ENGINEERING LIFECYCLE -->
+    <!-- ============ SORREL CONTROLS: CATEGORY TABS & FILTER CHIPS ============ -->
+    <div class="controls">
+      <div class="container controls__inner">
+        <nav class="tabs" aria-label="Technology categories" data-tabs>
+          <a class="tab is-active" data-tab="all" href="#technologies">All Technologies</a>
+          <a class="tab" data-tab="robotics" href="#technologies">Agricultural Robotics</a>
+          <a class="tab" data-tab="machinery" href="#technologies">Precision Machinery</a>
+          <a class="tab" data-tab="spraying" href="#technologies">Intelligent Spraying</a>
+          <a class="tab" data-tab="laser" href="#technologies">Laser Weed Management</a>
+          <a class="tab" data-tab="rd" href="#technologies">Research &amp; Prototyping</a>
+        </nav>
+
+        <div class="filters" data-filters>
+          <span class="filters__label" id="filters-label">Field Spec</span>
+          <div class="filters__chips" role="group" aria-labelledby="filters-label">
+            <button type="button" class="chip" data-diet="tested" aria-pressed="false">Field Tested</button>
+            <button type="button" class="chip" data-diet="ai" aria-pressed="false">Sensor AI</button>
+            <button type="button" class="chip" data-diet="laser" aria-pressed="false">Zero Chemical</button>
+            <button type="button" class="chip" data-diet="patent" aria-pressed="false">Patent Pending</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ TECHNOLOGIES CATALOG (EDITORIAL PANELS) ============ -->
+    <section class="technologies-catalog" id="technologies">
+      <div class="container">
+        
+        <!-- PANEL 1: AGRICULTURAL ROBOTICS -->
+        <section class="panel is-active" id="panel-robotics" data-panel="robotics">
+          <div class="panel__header">
+            <h2 class="panel__title">Agricultural Robotics</h2>
+            <p class="panel__note">Autonomous robotic platforms engineered for rugged terrain, row-crop navigation, and precision field operations.</p>
+          </div>
+          <ul class="dishes">
+            <li class="item" data-item data-diet="tested ai">
+              <div class="item__head">
+                <h3 class="item__name">
+                  <button class="item__toggle" type="button" data-toggle>
+                    Autonomous Field Rover Mk-II
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </h3>
+                <span class="item__leader" aria-hidden="true"></span>
+                <span class="item__badge">TRL-5 Validated</span>
+              </div>
+              <p class="item__desc">All-terrain electric drivetrain with centimetre-accurate RTK-GNSS navigation, LiDAR obstacle avoidance, and universal modular tool hitching.</p>
+              <ul class="diet">
+                <li class="diet__tag">Field Tested</li>
+                <li class="diet__tag">Sensor AI</li>
+                <li class="diet__tag diet__tag--neutral">Dual RTK</li>
+              </ul>
+              <div class="item__more" data-more>
+                <dl class="spec-grid">
+                  <div class="spec-item"><dt>Navigation</dt><dd>Dual-Antenna RTK-GNSS (±1.5 cm)</dd></div>
+                  <div class="spec-item"><dt>Runtime</dt><dd>8 Hours continuous duty</dd></div>
+                  <div class="spec-item"><dt>Traction</dt><dd>Independent 4WD electric hub motors</dd></div>
+                  <div class="spec-item"><dt>Payload</dt><dd>Up to 180 kg equipment hitch</dd></div>
+                </dl>
+              </div>
+            </li>
+
+            <li class="item" data-item data-diet="tested ai">
+              <div class="item__head">
+                <h3 class="item__name">
+                  <button class="item__toggle" type="button" data-toggle>
+                    Multi-Spectral Crop Scout Drone &amp; Rover Link
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </h3>
+                <span class="item__leader" aria-hidden="true"></span>
+                <span class="item__badge">Autonomous</span>
+              </div>
+              <p class="item__desc">Coordinated aerial-ground telemetry mapping canopy density, localized moisture deficiency, and chlorophyll levels across high-density orchards.</p>
+              <ul class="diet">
+                <li class="diet__tag">Field Tested</li>
+                <li class="diet__tag">Sensor AI</li>
+              </ul>
+              <div class="item__more" data-more>
+                <dl class="spec-grid">
+                  <div class="spec-item"><dt>Sensors</dt><dd>5-band Multispectral + Thermal</dd></div>
+                  <div class="spec-item"><dt>Resolution</dt><dd>1.2 cm/pixel GSD at 30m altitude</dd></div>
+                  <div class="spec-item"><dt>Telemetry</dt><dd>Direct 915MHz MAVLink ground link</dd></div>
+                  <div class="spec-item"><dt>Processing</dt><dd>On-edge NDVI calculation</dd></div>
+                </dl>
+              </div>
+            </li>
+          </ul>
+          <p class="panel__empty" data-empty hidden>No robotic platforms match the active filter criteria.</p>
+        </section>
+
+        <!-- PANEL 2: PRECISION AGRICULTURAL MACHINERY -->
+        <section class="panel is-active" id="panel-machinery" data-panel="machinery">
+          <div class="panel__header">
+            <h2 class="panel__title">Precision Agricultural Machinery</h2>
+            <p class="panel__note">Development of machinery and control systems intended to make agricultural operations more targeted, measurable, and efficient.</p>
+          </div>
+          <ul class="dishes">
+            <li class="item" data-item data-diet="tested ai">
+              <div class="item__head">
+                <h3 class="item__name">
+                  <button class="item__toggle" type="button" data-toggle>
+                    Adaptive PWM Flow Control Assembly
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </h3>
+                <span class="item__leader" aria-hidden="true"></span>
+                <span class="item__badge">&plusmn;2% Flow Precision</span>
+              </div>
+              <p class="item__desc">Micro-solenoid pulse-width modulation regulating fluid flow rates dynamically proportional to forward rover speed and localized tree canopy volumes.</p>
+              <ul class="diet">
+                <li class="diet__tag">Field Tested</li>
+                <li class="diet__tag">Sensor AI</li>
+              </ul>
+              <div class="item__more" data-more>
+                <dl class="spec-grid">
+                  <div class="spec-item"><dt>Frequency</dt><dd>50 Hz individual nozzle pulsing</dd></div>
+                  <div class="spec-item"><dt>Response</dt><dd>&lt; 15 ms valve actuation</dd></div>
+                  <div class="spec-item"><dt>Bus Protocol</dt><dd>ISOBUS / CAN 2.0B integration</dd></div>
+                  <div class="spec-item"><dt>Pressure</dt><dd>Adjustable 2.0 – 6.5 Bar</dd></div>
+                </dl>
+              </div>
+            </li>
+
+            <li class="item" data-item data-diet="tested ai">
+              <div class="item__head">
+                <h3 class="item__name">
+                  <button class="item__toggle" type="button" data-toggle>
+                    Smart Micro-Dosing Fertilizer Injector
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </h3>
+                <span class="item__leader" aria-hidden="true"></span>
+                <span class="item__badge">Targeted Delivery</span>
+              </div>
+              <p class="item__desc">Direct root-zone nutrient micro-injection driven by real-time soil optical sensor feedback to minimize run-off and nitrate leaching.</p>
+              <ul class="diet">
+                <li class="diet__tag">Field Tested</li>
+                <li class="diet__tag">Sensor AI</li>
+              </ul>
+              <div class="item__more" data-more>
+                <dl class="spec-grid">
+                  <div class="spec-item"><dt>Accuracy</dt><dd>&plusmn;1.0 mL per injection site</dd></div>
+                  <div class="spec-item"><dt>Depth</dt><dd>Adjustable 5 – 25 cm subsurface</dd></div>
+                  <div class="spec-item"><dt>Wastage</dt><dd>Zero surface atmospheric loss</dd></div>
+                  <div class="spec-item"><dt>Compatibility</dt><dd>Liquid organo-mineral formulas</dd></div>
+                </dl>
+              </div>
+            </li>
+          </ul>
+          <p class="panel__empty" data-empty hidden>No precision machinery systems match the active filter criteria.</p>
+        </section>
+
+        <!-- PANEL 3: INTELLIGENT SPRAYING SYSTEMS -->
+        <section class="panel is-active" id="panel-spraying" data-panel="spraying">
+          <div class="panel__header">
+            <h2 class="panel__title">Intelligent Spraying Systems</h2>
+            <p class="panel__note">Smart spraying technologies for orchards and horticultural settings, using canopy sensing and adaptive control to curb chemical drift.</p>
+          </div>
+          <ul class="dishes">
+            <li class="item" data-item data-diet="tested ai patent">
+              <div class="item__head">
+                <h3 class="item__name">
+                  <button class="item__toggle" type="button" data-toggle>
+                    Orchard Canopy Targeted Air-Assist Sprayer
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </h3>
+                <span class="item__leader" aria-hidden="true"></span>
+                <span class="item__badge">85% Reduction</span>
+              </div>
+              <p class="item__desc">Ultrasonic and stereoscopic vision sensors continuously profile tree geometry in real-time, shutting off nozzles in gaps to eliminate blanket overspray.</p>
+              <ul class="diet">
+                <li class="diet__tag">Field Tested</li>
+                <li class="diet__tag">Sensor AI</li>
+                <li class="diet__tag diet__tag--alert">Patent Pending</li>
+              </ul>
+              <div class="item__more" data-more>
+                <dl class="spec-grid">
+                  <div class="spec-item"><dt>Chemical Saving</dt><dd>65% to 85% vs. conventional blast</dd></div>
+                  <div class="spec-item"><dt>Sensors</dt><dd>Triple ultrasonic + Depth cameras</dd></div>
+                  <div class="spec-item"><dt>Droplet VMD</dt><dd>180 – 240 &mu;m drift-controlled</dd></div>
+                  <div class="spec-item"><dt>Target Crops</dt><dd>Apple, Pear, Walnut, Almond</dd></div>
+                </dl>
+              </div>
+            </li>
+
+            <li class="item" data-item data-diet="tested ai">
+              <div class="item__head">
+                <h3 class="item__name">
+                  <button class="item__toggle" type="button" data-toggle>
+                    Electrostatic Low-Drift Nozzle Array
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </h3>
+                <span class="item__leader" aria-hidden="true"></span>
+                <span class="item__badge">95% Underside Wrap</span>
+              </div>
+              <p class="item__desc">Applies an electrostatic charge to atomized micro-droplets, forcing them to wrap around and adhere to leaf undersides for superior disease control.</p>
+              <ul class="diet">
+                <li class="diet__tag">Field Tested</li>
+                <li class="diet__tag">Sensor AI</li>
+              </ul>
+              <div class="item__more" data-more>
+                <dl class="spec-grid">
+                  <div class="spec-item"><dt>Charge Voltage</dt><dd>12 kV negative corona charge</dd></div>
+                  <div class="spec-item"><dt>Adhesion</dt><dd>3.8x higher deposition density</dd></div>
+                  <div class="spec-item"><dt>Water Volume</dt><dd>Reduces carrier water by 60%</dd></div>
+                  <div class="spec-item"><dt>Safety</dt><dd>Encapsulated low-current design</dd></div>
+                </dl>
+              </div>
+            </li>
+          </ul>
+          <p class="panel__empty" data-empty hidden>No spraying systems match the active filter criteria.</p>
+        </section>
+
+        <!-- PANEL 4: LASER WEED MANAGEMENT -->
+        <section class="panel is-active" id="panel-laser" data-panel="laser">
+          <div class="panel__header">
+            <h2 class="panel__title">Laser-Based Weed Management</h2>
+            <p class="panel__note">Laser lawn-weeding prototype exploring targeted weed treatment as an eco-conscious alternative to blanket synthetic herbicide application.</p>
+          </div>
+          <ul class="dishes">
+            <li class="item" data-item data-diet="ai laser patent">
+              <div class="item__head">
+                <h3 class="item__name">
+                  <button class="item__toggle" type="button" data-toggle>
+                    Galvo-Steered Thermal Laser Weeder
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </h3>
+                <span class="item__leader" aria-hidden="true"></span>
+                <span class="item__badge">Sub-mm Accuracy</span>
+              </div>
+              <p class="item__desc">High-speed dual-axis galvano mirror deflecting targeted thermal laser pulses directly onto weed apical meristems, rupturing cells in milliseconds.</p>
+              <ul class="diet">
+                <li class="diet__tag">Sensor AI</li>
+                <li class="diet__tag diet__tag--alert">Zero Chemical</li>
+                <li class="diet__tag diet__tag--alert">Patent Pending</li>
+              </ul>
+              <div class="item__more" data-more>
+                <dl class="spec-grid">
+                  <div class="spec-item"><dt>Laser Source</dt><dd>Fiber-coupled continuous / pulsed</dd></div>
+                  <div class="spec-item"><dt>Target Accuracy</dt><dd>&plusmn;0.8 mm spatial beam precision</dd></div>
+                  <div class="spec-item"><dt>Detection Time</dt><dd>&lt; 20 ms via edge neural model</dd></div>
+                  <div class="spec-item"><dt>Soil Impact</dt><dd>100% Zero chemical residue in soil</dd></div>
+                </dl>
+              </div>
+            </li>
+
+            <li class="item" data-item data-diet="ai laser">
+              <div class="item__head">
+                <h3 class="item__name">
+                  <button class="item__toggle" type="button" data-toggle>
+                    Real-Time Weed Classification Edge Vision Unit
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </h3>
+                <span class="item__leader" aria-hidden="true"></span>
+                <span class="item__badge">60 FPS Inference</span>
+              </div>
+              <p class="item__desc">Custom deep learning vision engine trained on diverse high-altitude Kashmiri weeds to instantly differentiate crop seedlings from invasive species.</p>
+              <ul class="diet">
+                <li class="diet__tag">Sensor AI</li>
+                <li class="diet__tag diet__tag--alert">Zero Chemical</li>
+              </ul>
+              <div class="item__more" data-more>
+                <dl class="spec-grid">
+                  <div class="spec-item"><dt>Model Arch</dt><dd>Quantized MobileNetV4 / YOLO-Edge</dd></div>
+                  <div class="spec-item"><dt>Classification</dt><dd>98.4% species validation score</dd></div>
+                  <div class="spec-item"><dt>Hardware</dt><dd>Embedded Tensor NPU (32 TOPS)</dd></div>
+                  <div class="spec-item"><dt>Shutter</dt><dd>Global shutter RGB-NIR sensor</dd></div>
+                </dl>
+              </div>
+            </li>
+          </ul>
+          <p class="panel__empty" data-empty hidden>No laser weeding prototypes match the active filter criteria.</p>
+        </section>
+
+        <!-- PANEL 5: RESEARCH, PROTOTYPING & AUTOMATION -->
+        <section class="panel is-active" id="panel-rd" data-panel="rd">
+          <div class="panel__header">
+            <h2 class="panel__title">Research, Prototyping and Automation</h2>
+            <p class="panel__note">Engineering-led development bringing together mechanical systems, electronics, sensors, embedded computing, and software.</p>
+          </div>
+          <ul class="dishes">
+            <li class="item" data-item data-diet="tested ai">
+              <div class="item__head">
+                <h3 class="item__name">
+                  <button class="item__toggle" type="button" data-toggle>
+                    Embedded Agricultural CAN/ROS2 Compute Stack
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </h3>
+                <span class="item__leader" aria-hidden="true"></span>
+                <span class="item__badge">Ruggedized</span>
+              </div>
+              <p class="item__desc">Shock-resistant, IP67 industrial embedded compute module bridging automotive CAN buses, ROS2 robotics nodes, and real-time sensor feedback.</p>
+              <ul class="diet">
+                <li class="diet__tag">Field Tested</li>
+                <li class="diet__tag">Sensor AI</li>
+              </ul>
+              <div class="item__more" data-more>
+                <dl class="spec-grid">
+                  <div class="spec-item"><dt>Ingress</dt><dd>IP67 Dust &amp; Moisture Sealed</dd></div>
+                  <div class="spec-item"><dt>OS</dt><dd>Real-Time Linux Kernel (PREEMPT_RT)</dd></div>
+                  <div class="spec-item"><dt>Temp Range</dt><dd>-20&deg;C to +60&deg;C operating</dd></div>
+                  <div class="spec-item"><dt>I/O</dt><dd>Triple CAN, Ethernet, RS485, PWM</dd></div>
+                </dl>
+              </div>
+            </li>
+
+            <li class="item" data-item data-diet="tested ai">
+              <div class="item__head">
+                <h3 class="item__name">
+                  <button class="item__toggle" type="button" data-toggle>
+                    LoRaWAN Soil Health &amp; Micro-Climate Telemetry Station
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </h3>
+                <span class="item__leader" aria-hidden="true"></span>
+                <span class="item__badge">15 km Range</span>
+              </div>
+              <p class="item__desc">Solar-harvesting sensor node transmitting real-time root volumetric water content, soil EC, and canopy leaf wetness to the central farm dashboard.</p>
+              <ul class="diet">
+                <li class="diet__tag">Field Tested</li>
+                <li class="diet__tag">Sensor AI</li>
+              </ul>
+              <div class="item__more" data-more>
+                <dl class="spec-grid">
+                  <div class="spec-item"><dt>Radio</dt><dd>Sub-GHz LoRaWAN 865-867 MHz</dd></div>
+                  <div class="spec-item"><dt>Power</dt><dd>Supercap + 2W Monocrystalline solar</dd></div>
+                  <div class="spec-item"><dt>Battery Life</dt><dd>5+ years zero maintenance</dd></div>
+                  <div class="spec-item"><dt>Probes</dt><dd>FDR Moisture, Salinity, Temperature</dd></div>
+                </dl>
+              </div>
+            </li>
+          </ul>
+          <p class="panel__empty" data-empty hidden>No research modules match the active filter criteria.</p>
+        </section>
+
+      </div>
+    </section>
+
+    <!-- ============ R&D PIPELINE SECTION ============ -->
     <section class="lifecycle-section" id="lifecycle">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Our Practical Approach</span>
-          <h2>The 5-Stage Engineering Lifecycle</h2>
-          <p>
-            We follow a practical, engineering-driven approach from initial field survey to validated agricultural deployment.
-          </p>
-        </div>
+        <div class="section-tag">Our Approach</div>
+        <h2 class="section-title">5-Stage Practical Engineering Lifecycle</h2>
+        <p class="overview-desc" style="max-width: 44rem; color: var(--ink-soft);">
+          We follow a rigorous, practical, engineering-driven approach from initial field observation to controlled prototype validation.
+        </p>
 
-        <div class="lifecycle-track">
-          <!-- Step 1 -->
-          <div class="step-node active" data-step="1">
-            <div class="step-number-wrap">01</div>
-            <div class="step-title">Identify a specific agricultural problem</div>
-            <p class="step-desc">
-              Direct field assessments, orchardist interviews, and quantifying input wastage or labor bottlenecks.
-            </p>
+        <div class="pipeline-grid">
+          <div class="step-node active">
+            <div class="step-number">01</div>
+            <h3 class="step-title">Problem Identification</h3>
+            <p class="step-desc">Identify a specific agricultural problem through direct grower engagement in valley orchards and farming communities.</p>
           </div>
-
-          <!-- Step 2 -->
-          <div class="step-node" data-step="2">
-            <div class="step-number-wrap">02</div>
-            <div class="step-title">Develop a suitable mechanical and automation concept</div>
-            <p class="step-desc">
-              Kinematic CAD design, stress simulation, torque profiling, and physical chassis conceptualization.
-            </p>
+          <div class="step-node">
+            <div class="step-number">02</div>
+            <h3 class="step-title">Concept Engineering</h3>
+            <p class="step-desc">Develop a suitable mechanical and automation concept using CAD kinematics and finite element analysis.</p>
           </div>
-
-          <!-- Step 3 -->
-          <div class="step-node" data-step="3">
-            <div class="step-number-wrap">03</div>
-            <div class="step-title">Integrate relevant sensors, control systems</div>
-            <p class="step-desc">
-              Embedding sensors, computing hardware, microcontrollers, and writing deterministic real-time control algorithms.
-            </p>
+          <div class="step-node">
+            <div class="step-number">03</div>
+            <h3 class="step-title">Hardware Integration</h3>
+            <p class="step-desc">Integrate relevant sensors, control systems, and computing hardware onto ruggedized electrical buses.</p>
           </div>
-
-          <!-- Step 4 -->
-          <div class="step-node" data-step="4">
-            <div class="step-number-wrap">04</div>
-            <div class="step-title">Build and test prototypes</div>
-            <p class="step-desc">
-              Fabricating ruggedized physical prototypes and evaluating benchtop performance under defined testing conditions.
-            </p>
+          <div class="step-node">
+            <div class="step-number">04</div>
+            <h3 class="step-title">Prototype Validation</h3>
+            <p class="step-desc">Build and test prototypes under defined conditions in Srinagar trial plots to evaluate real-world reliability.</p>
           </div>
-
-          <!-- Step 5 -->
-          <div class="step-node" data-step="5">
-            <div class="step-number-wrap">05</div>
-            <div class="step-title">Evaluate performance and refine</div>
-            <p class="step-desc">
-              Rigorous live orchard and crop testing in Kashmir, analyzing telemetry, and refining designs before deployment.
-            </p>
+          <div class="step-node">
+            <div class="step-number">05</div>
+            <h3 class="step-title">Refinement &amp; Deployment</h3>
+            <p class="step-desc">Evaluate performance and refine the design iteratively before considering broader field deployment.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PRECISION IMPACT & SUSTAINABILITY CALCULATOR -->
+    <!-- ============ PRECISION IMPACT SECTION ============ -->
     <section class="impact-section" id="impact">
       <div class="container">
-        <div class="impact-calc-card">
-          <div class="calc-controls">
-            <div class="badge-telemetry" style="margin-bottom: 0.75rem;">
-              <span class="pulse-dot"></span>
-              <span>Efficiency Estimator</span>
-            </div>
-            <h3>Precision Agriculture Impact Visualizer</h3>
-            <p>
-              Adjust your farm or orchard acreage to see projected chemical input reductions and efficiency improvements delivered by Kashbot’s intelligent spraying and laser management systems.
+        <div class="impact-grid">
+          <div>
+            <div class="section-tag">Resource Conservation</div>
+            <h2 class="section-title" style="font-size: 2.2rem;">Calculate Your Input Savings</h2>
+            <p style="color: var(--ink-soft); line-height: 1.6; margin-bottom: 1.5rem;">
+              Evaluate the quantifiable chemical reduction, fuel savings, and operational payback achieved by replacing conventional broadcast machinery with targeted canopy automation.
             </p>
 
-            <div class="slider-group">
-              <div class="slider-header">
-                <span class="slider-title">Orchard / Farm Size</span>
-                <span class="slider-value-display"><span id="acreage-display">15</span> Acres</span>
+            <div class="impact-slider-wrap">
+              <div class="impact-slider-header">
+                <span>Orchard / Farm Acreage</span>
+                <span style="color: var(--herb); font-family: var(--font-mono); font-size: 1.1rem;"><span id="acreage-display">15</span> Acres</span>
               </div>
-              <input type="range" class="impact-slider" id="acreage-slider" min="1" max="100" value="15" aria-label="Acreage Slider">
+              <input type="range" id="acreage-slider" class="impact-slider" min="1" max="100" value="15" aria-label="Acreage slider">
             </div>
 
-            <p style="font-size: 0.85rem; color: var(--color-text-muted);">
-              *Calculated using empirical trial data comparing conventional tractor-driven blanket boom spraying against Kashbot foliage-sensing intelligent spray cutoff.
-            </p>
+            <div style="font-size: 0.85rem; color: var(--ink-soft);">
+              Empirical reference: 255 Liters of chemical wastage avoided per acre/season; ~8 machine operating hours saved per acre.
+            </div>
           </div>
 
-          <div class="calc-metrics-grid">
-            <div class="metric-box highlight">
-              <div class="metric-title">Chemical Waste Prevented</div>
-              <div class="metric-val" id="chemical-saved-val">3,825 L</div>
-              <div class="metric-sub">Up to 85% reduction in pesticide runoff</div>
+          <div class="impact-results-grid">
+            <div class="impact-card">
+              <div class="impact-val" id="chemical-saved-val">3,825 L</div>
+              <div class="impact-lbl">Chemical Wastage Prevented</div>
             </div>
-            <div class="metric-box">
-              <div class="metric-title">Fuel &amp; Machine Hours Saved</div>
-              <div class="metric-val" id="fuel-saved-val">120 Hrs</div>
-              <div class="metric-sub">Faster, targeted autonomous passes</div>
+            <div class="impact-card">
+              <div class="impact-val" id="fuel-saved-val">120 Hrs</div>
+              <div class="impact-lbl">Operating Hours Saved</div>
             </div>
-            <div class="metric-box">
-              <div class="metric-title">Soil Microbe Protection</div>
-              <div class="metric-val">100%</div>
-              <div class="metric-sub">Zero soil compaction from directed laser weeding</div>
+            <div class="impact-card">
+              <div class="impact-val">85%</div>
+              <div class="impact-lbl">Peak Chemical Drift Reduction</div>
             </div>
-            <div class="metric-box">
-              <div class="metric-title">Application Uniformity</div>
-              <div class="metric-val">±98%</div>
-              <div class="metric-sub">Closed-loop canopy density targeting</div>
+            <div class="impact-card">
+              <div class="impact-val">0.0 kg</div>
+              <div class="impact-lbl">Herbicide with Laser Weeding</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- COMPANY BACKGROUND, PURPOSE & VISION -->
-    <section class="about-section" id="about">
+    <!-- ============ PURPOSE & VISION SECTION ============ -->
+    <section class="overview-section" id="about">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">About Kashbot</span>
-          <h2>Our Purpose &amp; Vision</h2>
-          <p>
-            Bridging agricultural engineering and emerging automation technologies through practical design, testing, and continuous improvement.
-          </p>
-        </div>
-
-        <div class="about-cards-grid">
-          <div class="vision-card featured">
-            <div class="badge-telemetry" style="background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3); margin-bottom: 1.25rem;">
-              <span>OUR PURPOSE</span>
-            </div>
-            <h3>Engineered for Real Operational Needs</h3>
-            <p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+          <div class="overview-card" style="padding: 2.5rem;">
+            <div class="section-tag">Our Purpose</div>
+            <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 1rem; color: var(--ink);">Engineering Practical Agricultural Solutions</h3>
+            <p style="color: var(--ink-soft); line-height: 1.65;">
               Our purpose is to contribute to more efficient and technology-enabled agriculture by developing solutions that address real operational needs. We aim to bridge agricultural engineering and emerging automation technologies through practical design, testing, and continuous improvement.
             </p>
           </div>
 
-          <div class="vision-card">
-            <div class="badge-telemetry" style="margin-bottom: 1.25rem;">
-              <span>OUR VISION</span>
-            </div>
-            <h3>Empowering Farmers with Intelligent Tools</h3>
-            <p>
+          <div class="overview-card" style="padding: 2.5rem;">
+            <div class="section-tag">Our Vision</div>
+            <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 1rem; color: var(--ink);">Advancing Resource-Conscious Robotics</h3>
+            <p style="color: var(--ink-soft); line-height: 1.65;">
               To contribute to the advancement of agricultural robotics and precision machinery, helping farmers and the agricultural sector access practical, intelligent, and resource-conscious technologies.
             </p>
           </div>
@@ -569,213 +614,111 @@
       </div>
     </section>
 
-    <!-- DUAL-MODE CONTACT & COLLABORATION HUB -->
+    <!-- ============ CONTACT & INQUIRY SECTION ============ -->
     <section class="contact-section" id="contact">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Connect With Us</span>
-          <h2>Pilot Deployment &amp; Partnership Hub</h2>
-          <p>
-            Whether you are an orchardist seeking field demonstrations or an academic institution seeking collaborative R&amp;D, our engineering team is ready to connect.
-          </p>
-        </div>
+        <div class="contact-card">
+          <div>
+            <div class="section-tag">Get in Touch</div>
+            <h2 class="section-title" style="font-size: 2.2rem;">Partner with Kashbot Agri Systems</h2>
+            <p style="color: var(--ink-soft); line-height: 1.6; margin-bottom: 1.5rem;">
+              Whether you are an orchardist seeking field trials, an agricultural institution exploring research partnerships, or a commercial distributor, our Srinagar engineering team is ready to collaborate.
+            </p>
 
-        <div class="contact-grid">
-          <!-- Interactive Inquiry Form -->
-          <div class="glass-card" style="padding: 2.5rem;">
-            <!-- Segmented Mode Switcher -->
-            <div class="mode-switcher-wrap" role="group" aria-label="Inquiry Mode Switcher">
-              <button class="mode-btn active" id="mode-grower-btn" data-mode="grower">
-                For Orchardists &amp; Growers
-              </button>
-              <button class="mode-btn" id="mode-partner-btn" data-mode="partner">
-                For Research &amp; Investors
-              </button>
-            </div>
-
-            <form class="inquiry-form" id="kashbot-inquiry-form" novalidate>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="form-name" class="form-label">Full Name *</label>
-                  <input type="text" id="form-name" class="form-input" placeholder="e.g. Dr. Altaf Hussain" required>
+            <ul class="contact-info-list">
+              <li class="contact-info-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div>
+                  <strong>Location:</strong><br>
+                  Buchpora, Srinagar, Jammu & Kashmir – 190020, India
                 </div>
-                <div class="form-group">
-                  <label for="form-org" class="form-label" id="label-org">Orchard / Farm Name *</label>
-                  <input type="text" id="form-org" class="form-input" placeholder="e.g. Valley Apple Orchards" required>
+              </li>
+              <li class="contact-info-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <div>
+                  <strong>Email:</strong><br>
+                  <a href="mailto:info@kashbot.in" style="color: var(--herb); text-decoration: underline;">info@kashbot.in</a>
                 </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="form-email" class="form-label">Email Address *</label>
-                  <input type="email" id="form-email" class="form-input" placeholder="name@domain.com" required>
+              </li>
+              <li class="contact-info-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <div>
+                  <strong>Phone:</strong><br>
+                  <a href="tel:7006613634" style="color: var(--ink);">7006613634</a>
                 </div>
-                <div class="form-group">
-                  <label for="form-phone" class="form-label">Phone Number *</label>
-                  <input type="tel" id="form-phone" class="form-input" placeholder="e.g. 7006613634" required>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="form-interest" class="form-label">Primary Technology of Interest</label>
-                <select id="form-interest" class="form-select">
-                  <option value="spraying">Intelligent Spraying Systems (Orchards)</option>
-                  <option value="laser">Laser-Based Weed Management Prototype</option>
-                  <option value="robotics">Agricultural Robotics Platforms</option>
-                  <option value="machinery">Precision Agricultural Machinery</option>
-                  <option value="rnd">Research, Prototyping and Automation Collaboration</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="form-message" class="form-label" id="label-message">Acreage &amp; Field Trial Requirements</label>
-                <textarea id="form-message" class="form-textarea" placeholder="Describe your orchard/farm size, crop types (e.g., apple, saffron), or specific operational challenges..."></textarea>
-              </div>
-
-              <button type="submit" class="btn-primary" style="width: 100%; margin-top: 0.5rem;" id="submit-inquiry-btn">
-                <span>Submit Inquiry</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="22" y1="2" x2="11" y2="13"></line>
-                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-              </button>
-
-              <div class="form-feedback success" id="form-feedback-msg" role="alert">
-                <strong>Thank you!</strong> Your inquiry has been received. Our engineering team at Buchpora, Srinagar will review your specifications and contact you shortly.
-              </div>
-            </form>
+              </li>
+            </ul>
           </div>
 
-          <!-- Official Company Contact Details Card -->
-          <div class="company-contact-card">
-            <h3>Kashbot Agri Systems Private Limited</h3>
-            <p class="card-subtitle">Agricultural Technology &amp; Field Automation</p>
-
-            <div class="contact-info-list">
-              <div class="info-item">
-                <div class="info-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                </div>
-                <div class="info-text">
-                  <strong>Registered Location</strong>
-                  <span>Buchpora, Srinagar, Jammu & Kashmir – 190020, India</span>
-                </div>
-              </div>
-
-              <div class="info-item">
-                <div class="info-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                </div>
-                <div class="info-text">
-                  <strong>Direct Email</strong>
-                  <a href="mailto:info@kashbot.in">info@kashbot.in</a>
-                </div>
-              </div>
-
-              <div class="info-item">
-                <div class="info-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                </div>
-                <div class="info-text">
-                  <strong>Telephone</strong>
-                  <a href="tel:7006613634">+91 7006613634</a>
-                </div>
-              </div>
-
-              <div class="info-item">
-                <div class="info-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                  </svg>
-                </div>
-                <div class="info-text">
-                  <strong>Official Website</strong>
-                  <a href="https://kashbot.in" target="_blank" rel="noopener noreferrer">https://kashbot.in</a>
-                </div>
-              </div>
+          <div>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
+              <button type="button" class="chip active" id="mode-grower-btn" aria-pressed="true">Orchardist / Grower</button>
+              <button type="button" class="chip" id="mode-partner-btn" aria-pressed="false">Institution / Research</button>
             </div>
 
-            <div style="background: var(--color-bg); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
-              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-emerald-deep); font-weight: 700; text-transform: uppercase;">FIELD TESTING NOTICE</span>
-              <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-top: 0.25rem; line-height: 1.5;">
-                We are actively conducting controlled prototype evaluations and inviting regional high-density orchardists and research institutions for field demonstrations.
-              </p>
-            </div>
+            <form class="contact-form" id="kashbot-inquiry-form">
+              <div class="form-group">
+                <label for="form-name">Your Full Name *</label>
+                <input type="text" id="form-name" placeholder="e.g. Er. Tariq Ahmad" required>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label for="form-email">Email Address *</label>
+                  <input type="email" id="form-email" placeholder="name@domain.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="form-phone">Phone Number *</label>
+                  <input type="tel" id="form-phone" placeholder="7006613634" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="form-org" id="label-org">Orchard / Farm Name *</label>
+                <input type="text" id="form-org" placeholder="e.g. Valley Apple Orchards">
+              </div>
+
+              <div class="form-group">
+                <label for="form-message" id="label-message">Acreage &amp; Field Trial Requirements</label>
+                <textarea id="form-message" rows="4" placeholder="Describe your orchard/farm size, crop types (e.g. apple, pear), or specific operational challenges..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width: 100%; padding: 0.85rem;">
+                Submit Inquiry to Engineering Team
+              </button>
+
+              <div id="form-feedback-msg" style="display: none; padding: 1rem; background: rgba(var(--herb-rgb), 0.12); border-radius: 0.5rem; color: var(--herb); font-weight: 600; text-align: center; margin-top: 0.5rem;">
+                Thank you! Your request has been transmitted directly to our Srinagar engineering facility.
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <h4>Kashbot Agri Systems</h4>
-          <p>
-            Developing practical agricultural robotics, precision machinery, intelligent spraying systems, and laser weed management prototypes for modern farming.
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h5>Technologies</h5>
-          <ul class="footer-links">
-            <li><a href="#technologies">Agricultural Robotics</a></li>
-            <li><a href="#technologies">Precision Machinery</a></li>
-            <li><a href="#technologies">Intelligent Spraying</a></li>
-            <li><a href="#technologies">Laser Weed Management</a></li>
-            <li><a href="#technologies">Embedded Automation</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Company</h5>
-          <ul class="footer-links">
-            <li><a href="#overview">Company Overview</a></li>
-            <li><a href="#lifecycle">5-Stage Methodology</a></li>
-            <li><a href="#impact">Precision Impact</a></li>
-            <li><a href="#about">Purpose &amp; Vision</a></li>
-            <li><a href="#contact">Contact &amp; Pilots</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Headquarters</h5>
-          <p style="font-size: 0.88rem; color: rgba(255, 255, 255, 0.75); line-height: 1.6; margin-bottom: 1rem;">
-            Buchpora, Srinagar,<br>
-            Jammu &amp; Kashmir – 190020, India<br>
-            Email: <a href="mailto:info@kashbot.in" style="color: var(--color-mint);">info@kashbot.in</a><br>
-            Phone: <a href="tel:7006613634" style="color: var(--color-mint);">+91 7006613634</a>
-          </p>
-          <span class="badge-telemetry" style="background: rgba(255,255,255,0.1); color: #A7F3D0; border-color: rgba(255,255,255,0.2);">
-            <span class="pulse-dot"></span>
-            <span>Srinagar R&amp;D Hub</span>
-          </span>
-        </div>
+  <!-- ============ EDITORIAL FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="Kashbot Agri Systems" width="130" height="44">
       </div>
 
-      <div class="footer-bottom">
-        <div>
-          &copy; 2026 Kashbot Agri Systems Private Limited. All rights reserved.
-        </div>
-        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5);">
-          Engineered for Sustainable &amp; Precision Farming
-        </div>
+      <div class="site-footer__notes">
+        <p><strong>Kashbot Agri Systems Private Limited</strong></p>
+        <p>Buchpora, Srinagar, Jammu &amp; Kashmir – 190020, India · info@kashbot.in · 7006613634</p>
+        <p class="site-footer__note--fine">&copy; 2026 Kashbot Agri Systems Private Limited. All rights reserved. Engineering robotics &amp; intelligent automation for modern agriculture.</p>
+      </div>
+
+      <div>
+        <a href="#hero" class="btn-secondary" style="padding: 0.4rem 0.9rem; font-size: 0.85rem;">
+          Back to Top &uarr;
+        </a>
       </div>
     </div>
   </footer>
 
+  <!-- Application Logic -->
   <script src="js/app.js"></script>
 </body>
 </html>

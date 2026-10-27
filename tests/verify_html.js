@@ -16,6 +16,12 @@ const requiredStrings = [
   '190020',
   'info@kashbot.in',
   '7006613634',
+  'Yeseva+One',
+  'Mukta:wght@300;400;500;600;700',
+  'assets/logo.svg',
+  'assets/logo-mark.svg',
+  'data-tabs',
+  'data-filters',
   'Agricultural Robotics',
   'Precision Agricultural Machinery',
   'Intelligent Spraying Systems',
@@ -44,5 +50,5 @@ requiredStrings.forEach(str => {
 if (failed) {
   process.exit(1);
 } else {
-  console.log("PASS: index.html contains all required company data and semantic landmarks.");
+  console.log("PASS: index.html contains all required company data, Sorrel typography, and official logos.");
 }
