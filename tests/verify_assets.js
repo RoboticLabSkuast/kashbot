@@ -11,6 +11,13 @@ const requiredAssets = [
   'sensors-board.svg'
 ];
 
+const requiredPhotoAssets = [
+  'rover.png',
+  'active-spraying-trial.jpg',
+  'rover-in-orchard.jpg',
+  'field-trial-setup.jpg'
+];
+
 let failed = false;
 
 // Check public/logo.svg exists
@@ -19,6 +26,14 @@ if (!fs.existsSync(publicLogo)) {
   console.error("FAIL: Missing public/logo.svg");
   failed = true;
 }
+
+requiredPhotoAssets.forEach(file => {
+  const p = path.join(__dirname, '..', 'assets', file);
+  if (!fs.existsSync(p)) {
+    console.error(`FAIL: Missing photo asset assets/${file}`);
+    failed = true;
+  }
+});
 
 requiredAssets.forEach(file => {
   const p = path.join(__dirname, '..', 'assets', file);

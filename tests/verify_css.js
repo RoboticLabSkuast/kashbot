@@ -29,7 +29,9 @@ const requiredClasses = [
   '.item',
   '.item__leader',
   '.item__desc',
-  '.diet__tag'
+  '.diet__tag',
+  '.trial-card',
+  '.rover-hero-img'
 ];
 
 let failed = false;

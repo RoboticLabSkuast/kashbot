@@ -34,9 +34,14 @@ const requiredStrings = [
   'Evaluate performance and refine',
   'meta name="viewport"',
   'id="technologies"',
+  'id="trials"',
   'id="lifecycle"',
   'id="impact"',
-  'id="contact"'
+  'id="contact"',
+  'assets/rover.png',
+  'assets/active-spraying-trial.jpg',
+  'assets/rover-in-orchard.jpg',
+  'assets/field-trial-setup.jpg'
 ];
 
 let failed = false;

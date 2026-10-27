@@ -37,6 +37,7 @@
       <nav class="main-nav" role="navigation" aria-label="Main Navigation">
         <a href="#overview" class="nav-link">Overview</a>
         <a href="#technologies" class="nav-link">Technologies</a>
+        <a href="#trials" class="nav-link">Field Trials</a>
         <a href="#lifecycle" class="nav-link">R&amp;D Pipeline</a>
         <a href="#impact" class="nav-link">Precision Impact</a>
         <a href="#about" class="nav-link">Purpose &amp; Vision</a>
@@ -75,6 +76,7 @@
     <nav class="mobile-drawer-nav">
       <a href="#overview" class="mobile-drawer-link">Overview</a>
       <a href="#technologies" class="mobile-drawer-link">Technologies</a>
+      <a href="#trials" class="mobile-drawer-link">Field Trials</a>
       <a href="#lifecycle" class="mobile-drawer-link">R&amp;D Pipeline</a>
       <a href="#impact" class="mobile-drawer-link">Impact Calculator</a>
       <a href="#about" class="mobile-drawer-link">Purpose &amp; Vision</a>
@@ -114,14 +116,14 @@
             </div>
           </div>
 
-          <!-- Hero Schematic Visual -->
+          <!-- Hero Physical Rover Visual -->
           <div class="hero-visual-card">
             <div class="hero-visual-content">
-              <img src="assets/agri-robot.svg" alt="Kashbot Autonomous Agricultural Robotics Rover Schematic">
+              <img src="assets/rover.png" alt="Kashbot AIROS Autonomous Agricultural Robotics Rover with Precision Spray Masts" class="rover-hero-img" width="424" height="673">
             </div>
             <div class="telemetry-chip">
               <span class="pulse-dot"></span>
-              <span>KASHBOT ROVER // RTK DUAL-ANTENNA ACTIVE</span>
+              <span>KASHBOT AIROS // 4WD ORCHARD SPRAY ROVER</span>
             </div>
           </div>
         </div>
@@ -168,34 +170,34 @@
       </div>
     </section>
 
-    <!-- ============ SORREL CONTROLS: CATEGORY TABS & FILTER CHIPS ============ -->
-    <div class="controls-sticky-wrap">
-      <div class="controls" id="controls">
-        <div class="container controls__inner">
-          <nav class="tabs" aria-label="Technology categories" data-tabs>
-            <a class="tab is-active" data-tab="all" href="#technologies">All Technologies</a>
-            <a class="tab" data-tab="robotics" href="#technologies">Agricultural Robotics</a>
-            <a class="tab" data-tab="machinery" href="#technologies">Precision Machinery</a>
-            <a class="tab" data-tab="spraying" href="#technologies">Intelligent Spraying</a>
-            <a class="tab" data-tab="laser" href="#technologies">Laser Weed Management</a>
-            <a class="tab" data-tab="rd" href="#technologies">Research &amp; Prototyping</a>
-          </nav>
+    <!-- ============ TECHNOLOGIES CATALOG (EDITORIAL PANELS) ============ -->
+    <section class="technologies-catalog" id="technologies">
+      <!-- SORREL CONTROLS: CATEGORY TABS & FILTER CHIPS -->
+      <div class="controls-sticky-wrap">
+        <div class="controls" id="controls">
+          <div class="container controls__inner">
+            <nav class="tabs" aria-label="Technology categories" data-tabs>
+              <a class="tab is-active" data-tab="all" href="#technologies">All Technologies</a>
+              <a class="tab" data-tab="robotics" href="#technologies">Agricultural Robotics</a>
+              <a class="tab" data-tab="machinery" href="#technologies">Precision Machinery</a>
+              <a class="tab" data-tab="spraying" href="#technologies">Intelligent Spraying</a>
+              <a class="tab" data-tab="laser" href="#technologies">Laser Weed Management</a>
+              <a class="tab" data-tab="rd" href="#technologies">Research &amp; Prototyping</a>
+            </nav>
 
-          <div class="filters" data-filters>
-            <span class="filters__label" id="filters-label">Field Spec</span>
-            <div class="filters__chips" role="group" aria-labelledby="filters-label">
-              <button type="button" class="chip" data-diet="tested" aria-pressed="false">Field Tested</button>
-              <button type="button" class="chip" data-diet="ai" aria-pressed="false">Sensor AI</button>
-              <button type="button" class="chip" data-diet="laser" aria-pressed="false">Zero Chemical</button>
-              <button type="button" class="chip" data-diet="patent" aria-pressed="false">Patent Pending</button>
+            <div class="filters" data-filters>
+              <span class="filters__label" id="filters-label">Field Spec</span>
+              <div class="filters__chips" role="group" aria-labelledby="filters-label">
+                <button type="button" class="chip" data-diet="tested" aria-pressed="false">Field Tested</button>
+                <button type="button" class="chip" data-diet="ai" aria-pressed="false">Sensor AI</button>
+                <button type="button" class="chip" data-diet="laser" aria-pressed="false">Zero Chemical</button>
+                <button type="button" class="chip" data-diet="patent" aria-pressed="false">Patent Pending</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- ============ TECHNOLOGIES CATALOG (EDITORIAL PANELS) ============ -->
-    <section class="technologies-catalog" id="technologies">
       <div class="container catalog-container">
         
         <!-- PANEL 1: AGRICULTURAL ROBOTICS -->
@@ -343,6 +345,12 @@
                 <li class="diet__tag diet__tag--alert">Patent Pending</li>
               </ul>
               <div class="item__more" data-more>
+                <div class="item__visual-preview">
+                  <img src="assets/active-spraying-trial.jpg" alt="Active spraying field trial in SKUAST-K Shalimar apple orchard" class="item__preview-img" loading="lazy">
+                  <div class="item__preview-caption">
+                    <strong>SKUAST-K Shalimar Field Validation:</strong> Real-time air-assist canopy mist deposition during orchard trial run.
+                  </div>
+                </div>
                 <dl class="spec-grid">
                   <div class="spec-item"><dt>Chemical Saving</dt><dd>65% to 85% vs. conventional blast</dd></div>
                   <div class="spec-item"><dt>Sensors</dt><dd>Triple ultrasonic + Depth cameras</dd></div>
@@ -501,6 +509,81 @@
           <p class="panel__empty" data-empty hidden>No research modules match the active filter criteria.</p>
         </section>
 
+      </div>
+    </section>
+
+    <!-- ============ FIELD TRIALS & VALIDATION SHOWCASE ============ -->
+    <section class="trials-section" id="trials">
+      <div class="container">
+        <div class="trials-header">
+          <div class="section-tag">Field Validation &amp; Trials</div>
+          <h2 class="section-title">Empirical Field Testing in High-Density Kashmir Orchards</h2>
+          <p class="trials-lead">
+            Our robotic platforms and intelligent canopy spraying technologies undergo rigorous field evaluations in collaboration with the Division of Agricultural Engineering, COAE&amp;T SKUAST-K Shalimar, sponsored by the Department of Science &amp; Technology (DST).
+          </p>
+        </div>
+
+        <div class="trials-grid">
+          <!-- Trial Card 1: Active Spraying -->
+          <article class="trial-card">
+            <div class="trial-card__media">
+              <img src="assets/active-spraying-trial.jpg" alt="Active spraying field trial at SKUAST-K Shalimar high-density apple orchard" class="trial-card__img" loading="lazy">
+              <span class="trial-card__badge">Live Action Trial</span>
+            </div>
+            <div class="trial-card__body">
+              <div class="trial-card__meta">COAE&amp;T SKUAST-K Shalimar // DST Sponsored</div>
+              <h3 class="trial-card__title">Active Canopy Mist Deposition</h3>
+              <p class="trial-card__desc">
+                High-pressure vertical spray masts deploying dynamic air-assisted micro-mist directly into apple canopy under protective hail netting, achieving up to 85% reduction in pesticide runoff and zero operator exposure.
+              </p>
+              <div class="trial-card__tags">
+                <span class="diet__tag">85% Chemical Saved</span>
+                <span class="diet__tag">Dual Spray Masts</span>
+                <span class="diet__tag diet__tag--neutral">Anti-Hail Compatible</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Trial Card 2: Row Navigation -->
+          <article class="trial-card">
+            <div class="trial-card__media">
+              <img src="assets/rover-in-orchard.jpg" alt="AIROS autonomous rover navigating high-density apple orchard row" class="trial-card__img" loading="lazy">
+              <span class="trial-card__badge">Row Navigation</span>
+            </div>
+            <div class="trial-card__body">
+              <div class="trial-card__meta">Orchard Field Trials // Srinagar</div>
+              <h3 class="trial-card__title">Centimetre-Accurate Row Following</h3>
+              <p class="trial-card__desc">
+                Autonomous travel through narrow trellised orchard corridors utilizing dual-antenna RTK-GNSS and obstacle avoidance, handling damp valley soil and tree-support infrastructure with steady traction.
+              </p>
+              <div class="trial-card__tags">
+                <span class="diet__tag">±1.5 cm RTK Precision</span>
+                <span class="diet__tag">4WD Electric Hub</span>
+                <span class="diet__tag diet__tag--neutral">Zero Soil Compaction</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Trial Card 3: Calibration & Setup -->
+          <article class="trial-card">
+            <div class="trial-card__media">
+              <img src="assets/field-trial-setup.jpg" alt="AIROS rover setup and calibration on orchard track" class="trial-card__img" loading="lazy">
+              <span class="trial-card__badge">Platform Calibration</span>
+            </div>
+            <div class="trial-card__body">
+              <div class="trial-card__meta">DST Device Development Program</div>
+              <h3 class="trial-card__title">AIROS Platform Architecture</h3>
+              <p class="trial-card__desc">
+                Engineered for harsh valley orchards with automotive CAN bus networking, ruggedized fluid manifolds, intelligent PWM solenoid valves, and interchangeable agricultural implement bays.
+              </p>
+              <div class="trial-card__tags">
+                <span class="diet__tag">TRL-5 Validated</span>
+                <span class="diet__tag">DST Sponsored</span>
+                <span class="diet__tag diet__tag--neutral">Modular Tool Bay</span>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
