@@ -12,9 +12,10 @@ if (!fs.existsSync(jsPath)) {
 const code = fs.readFileSync(jsPath, 'utf8');
 const requiredMethods = [
   'calculateImpact',
-  'initTechTabs',
+  'initSorrelTabs',
+  'initSorrelFilters',
+  'initItemToggles',
   'initLifecycle',
-  'initFormSwitcher',
   'initMobileNav'
 ];
 

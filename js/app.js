@@ -1,6 +1,7 @@
 /**
- * KASHBOT AGRI SYSTEMS — INTERACTIVE APPLICATION LOGIC
+ * KASHBOT AGRI SYSTEMS — SORREL EDITORIAL APPLICATION LOGIC
  * High-performance, accessible, vanilla ES6 logic
+ * Supports Sorrel Category Tabs, Filter Chips, Accordion Drawers & Impact Calculator
  */
 
 /**
@@ -31,47 +32,106 @@ function formatNumber(num) {
 }
 
 /**
- * Initialize Technology Explorer Tabs
+ * Initialize Sorrel Category Tabs
+ * Supports switching between panels (All, Robotics, Machinery, Spraying, Laser, R&D)
  */
-function initTechTabs() {
-  const tabButtons = document.querySelectorAll('.tech-tab-btn');
-  const panels = document.querySelectorAll('.tech-panel');
+function initSorrelTabs() {
+  const tabsNav = document.querySelector('[data-tabs]');
+  if (!tabsNav) return;
 
-  if (!tabButtons.length || !panels.length) return;
+  const tabs = tabsNav.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel[data-panel]');
 
-  tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetTabId = btn.getAttribute('data-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetCategory = tab.getAttribute('data-tab');
 
-      // Update Tab Buttons
-      tabButtons.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
+      // Update active tab
+      tabs.forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
 
-      // Update Panels
+      // Show/hide panels
       panels.forEach(panel => {
-        if (panel.id === `panel-${targetTabId}`) {
-          panel.classList.add('active');
+        const panelCat = panel.getAttribute('data-panel');
+        if (targetCategory === 'all' || panelCat === targetCategory) {
+          panel.classList.add('is-active');
         } else {
-          panel.classList.remove('active');
+          panel.classList.remove('is-active');
         }
       });
+
+      // Re-apply filters for the newly active panel(s)
+      applyActiveFilters();
+    });
+  });
+}
+
+/**
+ * Filter items in active panels based on selected filter chips
+ */
+function applyActiveFilters() {
+  const activeChips = Array.from(document.querySelectorAll('.chip[aria-pressed="true"]'))
+    .map(chip => chip.getAttribute('data-diet').toLowerCase());
+
+  const activePanels = document.querySelectorAll('.panel.is-active');
+
+  activePanels.forEach(panel => {
+    const items = panel.querySelectorAll('[data-item]');
+    let visibleCount = 0;
+
+    items.forEach(item => {
+      const itemTags = (item.getAttribute('data-diet') || '').toLowerCase().split(/\s+/);
+      const matchesAll = activeChips.every(chip => itemTags.includes(chip));
+
+      if (matchesAll) {
+        item.classList.remove('is-hidden');
+        visibleCount++;
+      } else {
+        item.classList.add('is-hidden');
+      }
     });
 
-    // Keyboard Navigation for Tabs (Left / Right arrows)
-    btn.addEventListener('keydown', (e) => {
-      let index = Array.from(tabButtons).indexOf(btn);
-      if (e.key === 'ArrowRight') {
-        const next = tabButtons[(index + 1) % tabButtons.length];
-        next.focus();
-        next.click();
-      } else if (e.key === 'ArrowLeft') {
-        const prev = tabButtons[(index - 1 + tabButtons.length) % tabButtons.length];
-        prev.focus();
-        prev.click();
+    // Toggle empty panel message
+    const emptyMsg = panel.querySelector('[data-empty]');
+    if (emptyMsg) {
+      if (visibleCount === 0 && items.length > 0) {
+        emptyMsg.removeAttribute('hidden');
+      } else {
+        emptyMsg.setAttribute('hidden', '');
+      }
+    }
+  });
+}
+
+/**
+ * Initialize Sorrel Dietary/Field Filter Chips
+ */
+function initSorrelFilters() {
+  const chips = document.querySelectorAll('.chip[data-diet]');
+  if (!chips.length) return;
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const isPressed = chip.getAttribute('aria-pressed') === 'true';
+      chip.setAttribute('aria-pressed', isPressed ? 'false' : 'true');
+      applyActiveFilters();
+    });
+  });
+}
+
+/**
+ * Initialize Expandable Tech Specification Drawers
+ */
+function initItemToggles() {
+  const toggles = document.querySelectorAll('[data-toggle]');
+  if (!toggles.length) return;
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const itemCard = toggle.closest('.item');
+      if (itemCard) {
+        itemCard.classList.toggle('is-expanded');
       }
     });
   });
@@ -178,35 +238,31 @@ function initInquiryForm() {
       return;
     }
 
-    // Display animated feedback
     feedbackMsg.style.display = 'block';
     feedbackMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-    // Reset inputs
     form.reset();
   });
 }
 
 /**
- * Initialize Mobile Navigation Drawer & Header Scroll Behavior
+ * Initialize Mobile Navigation Drawer
  */
 function initMobileNav() {
   const openBtn = document.getElementById('mobile-menu-open-btn');
   const closeBtn = document.getElementById('mobile-menu-close-btn');
   const drawer = document.getElementById('mobile-drawer');
-  const header = document.getElementById('site-header');
   const drawerLinks = document.querySelectorAll('.mobile-drawer-link');
 
   if (openBtn && drawer) {
     openBtn.addEventListener('click', () => {
-      drawer.classList.add('open');
+      drawer.classList.add('is-open');
       openBtn.setAttribute('aria-expanded', 'true');
     });
   }
 
   if (closeBtn && drawer) {
     closeBtn.addEventListener('click', () => {
-      drawer.classList.remove('open');
+      drawer.classList.remove('is-open');
       if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
     });
   }
@@ -214,22 +270,11 @@ function initMobileNav() {
   drawerLinks.forEach(link => {
     link.addEventListener('click', () => {
       if (drawer) {
-        drawer.classList.remove('open');
+        drawer.classList.remove('is-open');
         if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
       }
     });
   });
-
-  // Header scroll shadow toggle
-  if (header) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-  }
 }
 
 /**
@@ -265,7 +310,9 @@ function initScrollSpy() {
 // Global DOM Initialization
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
-    initTechTabs();
+    initSorrelTabs();
+    initSorrelFilters();
+    initItemToggles();
     initLifecycle();
     initImpactSlider();
     initFormSwitcher();
