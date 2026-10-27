@@ -190,8 +190,10 @@ button {
 }
 
 .nav-link {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
   color: var(--ink-soft);
   padding: 0.4rem 0.6rem;
   border-radius: 0.4rem;
@@ -1072,8 +1074,10 @@ button {
 }
 
 .mobile-drawer-link {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--ink);
 }
 
