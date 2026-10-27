@@ -41,7 +41,9 @@ const requiredStrings = [
   'assets/rover.png',
   'assets/active-spraying-trial.jpg',
   'assets/rover-in-orchard.jpg',
-  'assets/field-trial-setup.jpg'
+  'assets/field-trial-setup.jpg',
+  'wa.me/917006613634',
+  'floating-whatsapp-btn'
 ];
 
 let failed = false;

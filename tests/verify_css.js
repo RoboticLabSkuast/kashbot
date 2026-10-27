@@ -31,7 +31,8 @@ const requiredClasses = [
   '.item__desc',
   '.diet__tag',
   '.trial-card',
-  '.rover-hero-img'
+  '.rover-hero-img',
+  '.floating-whatsapp-btn'
 ];
 
 let failed = false;

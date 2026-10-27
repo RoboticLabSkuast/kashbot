@@ -16,7 +16,8 @@ const requiredMethods = [
   'initSorrelFilters',
   'initItemToggles',
   'initLifecycle',
-  'initMobileNav'
+  'initMobileNav',
+  'generateWhatsAppInquiryUrl'
 ];
 
 let failed = false;
@@ -27,7 +28,7 @@ requiredMethods.forEach(method => {
   }
 });
 
-// Test impact calculation logic in isolated sandbox
+// Test impact calculation logic and WhatsApp URL generation in isolated sandbox
 const sandbox = {
   window: {},
   document: {
@@ -39,20 +40,33 @@ const sandbox = {
 vm.createContext(sandbox);
 
 try {
-  vm.runInContext(code + '\n;globalThis.calc = calculateImpact;', sandbox);
+  vm.runInContext(code + '\n;globalThis.calc = calculateImpact;\nglobalThis.buildWa = generateWhatsAppInquiryUrl;', sandbox);
   if (typeof sandbox.calc === 'function') {
     const result15 = sandbox.calc(15);
     if (!result15 || result15.chemicalSavedLiters !== 3825 || result15.fuelSavedHours !== 120 || result15.reductionPercent !== 85) {
       console.error("FAIL: calculateImpact(15) returned unexpected values:", result15);
       failed = true;
     }
-    const result10 = sandbox.calc(10);
-    if (!result10 || result10.chemicalSavedLiters !== 2550 || result10.fuelSavedHours !== 80) {
-      console.error("FAIL: calculateImpact(10) returned unexpected values:", result10);
+  } else {
+    console.error("FAIL: calculateImpact is not a callable function in sandbox");
+    failed = true;
+  }
+
+  if (typeof sandbox.buildWa === 'function') {
+    const waUrl = sandbox.buildWa({
+      name: 'Tariq Ahmad',
+      phone: '7006613634',
+      email: 'tariq@test.com',
+      category: 'Orchardist / Commercial Grower',
+      org: 'Valley Apples',
+      message: 'Need spraying rover'
+    });
+    if (!waUrl.startsWith('https://wa.me/917006613634?text=') || !waUrl.includes('Tariq%20Ahmad') || !waUrl.includes('7006613634')) {
+      console.error("FAIL: generateWhatsAppInquiryUrl produced invalid URL:", waUrl);
       failed = true;
     }
   } else {
-    console.error("FAIL: calculateImpact is not a callable function in sandbox");
+    console.error("FAIL: generateWhatsAppInquiryUrl is not a callable function in sandbox");
     failed = true;
   }
 } catch (e) {

@@ -724,14 +724,28 @@
               <li class="contact-info-item">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 <div>
-                  <strong>Phone:</strong><br>
-                  <a href="tel:7006613634" style="color: var(--ink);">7006613634</a>
+                  <strong>WhatsApp &amp; Phone:</strong><br>
+                  <a href="https://wa.me/917006613634?text=Hello%20Kashbot%20Agri%20Systems%2C%20I%20would%20like%20to%20inquire%20about%20your%20agricultural%20robotics%20and%20precision%20spraying%20systems." target="_blank" rel="noopener noreferrer" style="color: var(--herb); font-weight: 600;" aria-label="Chat with Kashbot on WhatsApp">7006613634 (Tap to Chat)</a>
                 </div>
               </li>
             </ul>
           </div>
 
           <div class="contact-right">
+            <!-- One-Tap WhatsApp Direct Strip -->
+            <div class="whatsapp-quick-banner">
+              <div class="whatsapp-quick-text">
+                <span class="pulse-dot"></span>
+                <span>Fastest response: Connect directly with engineering</span>
+              </div>
+              <a href="https://wa.me/917006613634?text=Hello%20Kashbot%20Agri%20Systems%2C%20I%20would%20like%20to%20inquire%20about%20your%20agricultural%20robotics%20and%20precision%20spraying%20systems." target="_blank" rel="noopener noreferrer" class="whatsapp-pill-btn" aria-label="One-tap WhatsApp direct chat">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.074-1.928-.46-1.528-.63-2.522-2.18-2.598-2.28-.077-.101-.624-.832-.624-1.587 0-.756.398-1.127.539-1.28.14-.153.308-.192.41-.192.103 0 .205.002.296.006.096.004.225-.036.35.267.129.313.438 1.07.476 1.149.038.079.064.172.013.275-.051.103-.077.167-.154.256-.077.09-.161.2-.23.269-.077.077-.157.161-.067.315.09.154.4 1.002 1.488 1.701.353.227.65.372.873.443.355.113.565.097.778-.015.244-.128.846-.492 1.077-.795.231-.303.231-.564.161-.667-.07-.102-.256-.164-.541-.308z"/>
+                </svg>
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
+
             <div style="display: flex; gap: 0.6rem; margin-bottom: 1.5rem;">
               <button type="button" class="chip is-on" id="mode-grower-btn" aria-pressed="true">Orchardist / Grower</button>
               <button type="button" class="chip" id="mode-partner-btn" aria-pressed="false">Institution / Research</button>
@@ -745,17 +759,17 @@
 
               <div class="form-row-2">
                 <div class="form-group">
-                  <label for="form-email">Email Address *</label>
-                  <input type="email" id="form-email" placeholder="name@domain.com" required>
+                  <label for="form-email">Email Address</label>
+                  <input type="email" id="form-email" placeholder="name@domain.com">
                 </div>
                 <div class="form-group">
-                  <label for="form-phone">Phone Number *</label>
+                  <label for="form-phone">Phone / WhatsApp Number *</label>
                   <input type="tel" id="form-phone" placeholder="7006613634" required>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="form-org" id="label-org">Orchard / Farm Name *</label>
+                <label for="form-org" id="label-org">Orchard / Farm Name</label>
                 <input type="text" id="form-org" placeholder="e.g. Valley Apple Orchards">
               </div>
 
@@ -764,12 +778,14 @@
                 <textarea id="form-message" rows="4" placeholder="Describe your orchard/farm size, crop types (e.g. apple, pear), or specific operational challenges..."></textarea>
               </div>
 
-              <button type="submit" class="btn-primary" style="width: 100%; padding: 0.9rem; font-size: 1rem;">
-                Submit Inquiry to Engineering Team
+              <button type="submit" class="btn-primary btn-whatsapp-submit" id="submit-inquiry-btn" style="width: 100%; padding: 0.95rem; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.074-1.928-.46-1.528-.63-2.522-2.18-2.598-2.28-.077-.101-.624-.832-.624-1.587 0-.756.398-1.127.539-1.28.14-.153.308-.192.41-.192.103 0 .205.002.296.006.096.004.225-.036.35.267.129.313.438 1.07.476 1.149.038.079.064.172.013.275-.051.103-.077.167-.154.256-.077.09-.161.2-.23.269-.077.077-.157.161-.067.315.09.154.4 1.002 1.488 1.701.353.227.65.372.873.443.355.113.565.097.778-.015.244-.128.846-.492 1.077-.795.231-.303.231-.564.161-.667-.07-.102-.256-.164-.541-.308z"/>
+                </svg>
+                <span>Send One-Tap Inquiry via WhatsApp</span>
               </button>
 
-              <div id="form-feedback-msg" style="display: none; padding: 1rem; background: rgba(var(--herb-rgb), 0.12); border-radius: 0.6rem; color: var(--herb); font-weight: 600; text-align: center; margin-top: 0.5rem;">
-                Thank you! Your request has been transmitted directly to our Srinagar engineering facility.
+              <div id="form-feedback-msg" style="display: none; padding: 1.1rem; background: rgba(var(--herb-rgb), 0.12); border: 1px solid var(--herb); border-radius: 0.8rem; color: var(--ink); text-align: center; margin-top: 0.5rem; line-height: 1.5;">
               </div>
             </form>
           </div>
@@ -798,6 +814,14 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating WhatsApp Quick Action Button -->
+  <a href="https://wa.me/917006613634?text=Hello%20Kashbot%20Agri%20Systems%2C%20I%20would%20like%20to%20inquire%20about%20your%20agricultural%20robotics%20and%20precision%20spraying%20systems." class="floating-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="One-tap WhatsApp inquiry with Kashbot engineering">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.074-1.928-.46-1.528-.63-2.522-2.18-2.598-2.28-.077-.101-.624-.832-.624-1.587 0-.756.398-1.127.539-1.28.14-.153.308-.192.41-.192.103 0 .205.002.296.006.096.004.225-.036.35.267.129.313.438 1.07.476 1.149.038.079.064.172.013.275-.051.103-.077.167-.154.256-.077.09-.161.2-.23.269-.077.077-.157.161-.067.315.09.154.4 1.002 1.488 1.701.353.227.65.372.873.443.355.113.565.097.778-.015.244-.128.846-.492 1.077-.795.231-.303.231-.564.161-.667-.07-.102-.256-.164-.541-.308z"/>
+    </svg>
+    <span class="floating-whatsapp-text">WhatsApp Inquiry</span>
+  </a>
 
   <!-- Application Logic -->
   <script src="js/app.js"></script>

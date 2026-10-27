@@ -218,6 +218,26 @@ function initFormSwitcher() {
 }
 
 /**
+ * Generate formatted WhatsApp URL for one-tap inquiry
+ */
+function generateWhatsAppInquiryUrl(params) {
+  const { name, phone, email, category, org, message } = params;
+  const lines = [
+    '🌾 *New Inquiry for Kashbot Agri Systems*',
+    '----------------------------------------',
+    `• *Name:* ${name}`,
+    `• *Phone / WhatsApp:* ${phone}`,
+    email ? `• *Email:* ${email}` : null,
+    `• *Category:* ${category}`,
+    org ? `• *Orchard / Farm:* ${org}` : null,
+    message ? `• *Requirements / Acreage:*\n${message}` : '• *Requirement:* Inquiring about autonomous field robotics & precision canopy spraying.'
+  ].filter(Boolean);
+
+  const fullText = lines.join('\n');
+  return `https://wa.me/917006613634?text=${encodeURIComponent(fullText)}`;
+}
+
+/**
  * Initialize Form Submission Handler
  */
 function initInquiryForm() {
@@ -232,12 +252,41 @@ function initInquiryForm() {
     const nameInput = document.getElementById('form-name');
     const emailInput = document.getElementById('form-email');
     const phoneInput = document.getElementById('form-phone');
+    const orgInput = document.getElementById('form-org');
+    const messageInput = document.getElementById('form-message');
 
-    if (!nameInput.value.trim() || !emailInput.value.trim() || !phoneInput.value.trim()) {
-      alert('Please fill in your name, email, and phone number so our Srinagar engineering team can contact you.');
+    if (!nameInput || !phoneInput || !nameInput.value.trim() || !phoneInput.value.trim()) {
+      alert('Please fill in your name and phone/WhatsApp number so our Srinagar engineering team can connect with you.');
       return;
     }
 
+    const name = nameInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const email = emailInput ? emailInput.value.trim() : '';
+    const org = orgInput ? orgInput.value.trim() : '';
+    const message = messageInput ? messageInput.value.trim() : '';
+
+    const isGrower = document.getElementById('mode-grower-btn')?.classList.contains('is-on') ||
+                     document.getElementById('mode-grower-btn')?.getAttribute('aria-pressed') === 'true';
+    const category = isGrower ? 'Orchardist / Commercial Grower' : 'Research Institution / Agricultural University';
+
+    const waUrl = generateWhatsAppInquiryUrl({ name, phone, email, category, org, message });
+
+    // Open WhatsApp in a new tab/window
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+    // Display clear, reassuring feedback with fallback link
+    feedbackMsg.innerHTML = `
+      <div style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem; color: var(--herb);">
+        ✓ One-Tap WhatsApp Inquiry Dispatched!
+      </div>
+      <div style="color: var(--ink); margin-bottom: 0.4rem;">
+        WhatsApp is opening with your formatted details to chat directly with our Srinagar engineering team.
+      </div>
+      <div style="margin-top: 0.6rem; font-size: 0.9rem;">
+        If WhatsApp did not open automatically, <a href="${waUrl}" target="_blank" rel="noopener noreferrer" style="color: var(--herb); text-decoration: underline; font-weight: 700;">tap here to send your inquiry (+91 7006613634)</a>.
+      </div>
+    `;
     feedbackMsg.style.display = 'block';
     feedbackMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     form.reset();
