@@ -17,7 +17,9 @@ const requiredMethods = [
   'initItemToggles',
   'initLifecycle',
   'initMobileNav',
-  'generateWhatsAppInquiryUrl'
+  'generateWhatsAppInquiryUrl',
+  'initFormSwitcher',
+  'initInquiryForm'
 ];
 
 let failed = false;
