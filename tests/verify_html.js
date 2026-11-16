@@ -43,7 +43,16 @@ const requiredStrings = [
   'assets/rover-in-orchard.jpg',
   'assets/field-trial-setup.jpg',
   'wa.me/917006613634',
-  'floating-whatsapp-btn'
+  'floating-whatsapp-btn',
+  'action="https://api.web3forms.com/submit"',
+  '072bfda0-e3e8-45f7-a15c-c100ad09bd56',
+  'name="access_key"',
+  'name="name"',
+  'name="email"',
+  'name="phone"',
+  'name="organization"',
+  'name="message"',
+  'name="botcheck"'
 ];
 
 let failed = false;
