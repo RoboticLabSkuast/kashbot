@@ -302,28 +302,43 @@ function initMobileNav() {
   const drawer = document.getElementById('mobile-drawer');
   const drawerLinks = document.querySelectorAll('.mobile-drawer-link');
 
-  if (openBtn && drawer) {
-    openBtn.addEventListener('click', () => {
-      drawer.classList.add('is-open');
-      openBtn.setAttribute('aria-expanded', 'true');
-    });
+  function openDrawer() {
+    if (!drawer) return;
+    drawer.classList.add('is-open');
+    if (openBtn) openBtn.setAttribute('aria-expanded', 'true');
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.classList.add('drawer-open');
+    }
   }
 
-  if (closeBtn && drawer) {
-    closeBtn.addEventListener('click', () => {
-      drawer.classList.remove('is-open');
-      if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
-    });
+  function closeDrawer() {
+    if (!drawer) return;
+    drawer.classList.remove('is-open');
+    if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.classList.remove('drawer-open');
+    }
+  }
+
+  if (openBtn) {
+    openBtn.addEventListener('click', openDrawer);
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeDrawer);
   }
 
   drawerLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (drawer) {
-        drawer.classList.remove('is-open');
-        if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+    link.addEventListener('click', closeDrawer);
+  });
+
+  if (typeof document !== 'undefined') {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) {
+        closeDrawer();
       }
     });
-  });
+  }
 }
 
 /**
