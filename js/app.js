@@ -334,6 +334,10 @@ function initInquiryForm() {
 
       if (response.ok && data.success) {
         form.reset();
+        const growerBtn = document.getElementById('mode-grower-btn');
+        if (growerBtn && typeof growerBtn.click === 'function') {
+          growerBtn.click();
+        }
         feedbackMsg.className = 'feedback-msg feedback-msg--success';
         feedbackMsg.style.display = 'block';
         feedbackMsg.style.background = 'rgba(var(--herb-rgb), 0.12)';

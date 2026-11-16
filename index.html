@@ -752,7 +752,7 @@
               <input type="hidden" name="subject" id="form-subject" value="New Engineering & Trial Inquiry — Kashbot Agri Systems">
               <input type="hidden" name="from_name" value="Kashbot Agri Systems Website">
               <input type="hidden" name="inquiry_type" id="form-inquiry-type" value="Orchardist / Commercial Grower">
-              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off">
 
               <div class="form-group">
                 <label for="form-name">Your Full Name *</label>
@@ -788,7 +788,7 @@
                 <span>Send Inquiry to Engineering</span>
               </button>
 
-              <div id="form-feedback-msg" style="display: none; padding: 1.1rem; border-radius: 0.8rem; text-align: center; margin-top: 0.5rem; line-height: 1.5;">
+              <div id="form-feedback-msg" role="status" aria-live="polite" style="display: none; padding: 1.1rem; border-radius: 0.8rem; text-align: center; margin-top: 0.5rem; line-height: 1.5;">
               </div>
             </form>
           </div>

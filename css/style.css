@@ -1146,6 +1146,12 @@ button {
   to { transform: rotate(360deg); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .spin-icon {
+    animation: none;
+  }
+}
+
 /* Floating WhatsApp Quick Action Button */
 .floating-whatsapp-btn {
   position: fixed;
