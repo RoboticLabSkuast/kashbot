@@ -34,7 +34,7 @@ requiredMethods.forEach(method => {
 const sandbox = {
   window: {},
   document: {
-    addEventListener: () => { },
+    addEventListener: () => {},
     getElementById: () => null,
     querySelectorAll: () => []
   }
