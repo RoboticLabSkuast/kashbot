@@ -248,6 +248,19 @@ function generateWhatsAppInquiryUrl(params) {
 }
 
 /**
+ * Escape HTML characters to prevent XSS in dynamic DOM insertions
+ */
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/**
  * Initialize Form Submission Handler
  */
 function initInquiryForm() {
@@ -331,7 +344,7 @@ function initInquiryForm() {
             ✓ Inquiry Sent Successfully!
           </div>
           <div style="margin-bottom: 0.5rem; line-height: 1.5;">
-            Thank you, <strong>${name}</strong>. Your details have been delivered to our engineering desk at Buchpora, Srinagar. We will review your field specifications and connect with you shortly.
+            Thank you, <strong>${escapeHtml(name)}</strong>. Your details have been delivered to our engineering desk at Buchpora, Srinagar. We will review your field specifications and connect with you shortly.
           </div>
           <div style="font-size: 0.9rem; margin-top: 0.6rem; color: var(--ink-soft);">
             Need an immediate response? <a href="https://wa.me/917006613634?text=Hello%20Kashbot%2C%20I%20just%20submitted%20a%20trial%20inquiry%20via%20your%20website%20(Name%3A%20${encodeURIComponent(name)})" target="_blank" rel="noopener noreferrer" style="color: var(--herb); font-weight: 700; text-decoration: underline;">Tap here to chat on WhatsApp (+91 7006613634)</a>.

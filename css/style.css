@@ -1137,6 +1137,15 @@ button {
   box-shadow: 0 4px 14px rgba(var(--herb-rgb), 0.3);
 }
 
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* Floating WhatsApp Quick Action Button */
 .floating-whatsapp-btn {
   position: fixed;
