@@ -37,7 +37,13 @@ const requiredClasses = [
   '.blueprint-stage',
   '.hotspot-btn',
   '.schematic-section',
-  '.viewfinder-scanline'
+  '.viewfinder-scanline',
+  '.vision-btn',
+  '.telemetry-ticker',
+  '.contour-line',
+  '.target-cursor',
+  '.impact-gauge',
+  '.boot-screen'
 ];
 
 let failed = false;

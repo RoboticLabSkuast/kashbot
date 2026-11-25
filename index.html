@@ -15,10 +15,37 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Prevent first-visit boot flash when motion is enabled -->
+  <script>
+    (function () {
+      try {
+        var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduced && !sessionStorage.getItem('kb-booted')) {
+          document.documentElement.classList.add('is-booting');
+          setTimeout(function () {
+            document.documentElement.classList.remove('is-booting', 'boot-exit');
+          }, 2600);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- AIROS First-Visit Boot Sequence -->
+  <div class="boot-screen" id="boot-screen" aria-hidden="true" hidden>
+    <div class="boot-inner">
+      <div class="brand__logo-plate boot-logo-plate">
+        <img src="assets/logo-mark.svg" alt="" width="44" height="35">
+      </div>
+      <pre class="boot-log" id="boot-log"></pre>
+      <div class="boot-progress"><span></span></div>
+      <div class="boot-hint">Press any key to skip</div>
+    </div>
+  </div>
+
   <!-- Scroll Progress Indicator -->
   <div class="scroll-progress" aria-hidden="true"></div>
 
@@ -75,16 +102,16 @@
       <button type="button" class="drawer-close-btn" id="mobile-menu-close-btn" aria-label="Close Mobile Menu">&times;</button>
     </div>
     <nav class="mobile-drawer-nav" aria-label="Mobile Links">
-      <a href="#overview" class="mobile-drawer-link"><span class="nav-idx">01</span> Overview &amp; AIROS</a>
-      <a href="#technologies" class="mobile-drawer-link"><span class="nav-idx">02</span> Technologies</a>
-      <a href="#trials" class="mobile-drawer-link"><span class="nav-idx">03</span> Field Trials</a>
-      <a href="#lifecycle" class="mobile-drawer-link"><span class="nav-idx">04</span> R&amp;D Pipeline</a>
-      <a href="#impact" class="mobile-drawer-link"><span class="nav-idx">05</span> Impact Console</a>
-      <a href="#about" class="mobile-drawer-link"><span class="nav-idx">06</span> Purpose &amp; Vision</a>
-      <a href="#contact" class="mobile-drawer-link"><span class="nav-idx">07</span> Engineering Desk</a>
+      <a href="#overview" class="mobile-drawer-link" style="--i: 0;"><span class="nav-idx">01</span> Overview &amp; AIROS</a>
+      <a href="#technologies" class="mobile-drawer-link" style="--i: 1;"><span class="nav-idx">02</span> Technologies</a>
+      <a href="#trials" class="mobile-drawer-link" style="--i: 2;"><span class="nav-idx">03</span> Field Trials</a>
+      <a href="#lifecycle" class="mobile-drawer-link" style="--i: 3;"><span class="nav-idx">04</span> R&amp;D Pipeline</a>
+      <a href="#impact" class="mobile-drawer-link" style="--i: 4;"><span class="nav-idx">05</span> Impact Console</a>
+      <a href="#about" class="mobile-drawer-link" style="--i: 5;"><span class="nav-idx">06</span> Purpose &amp; Vision</a>
+      <a href="#contact" class="mobile-drawer-link" style="--i: 6;"><span class="nav-idx">07</span> Engineering Desk</a>
     </nav>
     <div class="mobile-drawer-footer">
-      <a href="#contact" class="btn-primary mobile-drawer-link" style="width: 100%;">Request Pilot Trial</a>
+      <a href="#contact" class="btn-primary mobile-drawer-link" style="width: 100%; --i: 7;">Request Pilot Trial</a>
     </div>
   </div>
 
@@ -110,7 +137,7 @@
               <button type="button" class="motion-toggle-btn" id="motion-toggle-btn" aria-label="Pause ambient motion graphics">Pause Motion</button>
             </div>
 
-            <h1 class="hero-title hero-stagger" style="--delay: 90ms;">
+            <h1 class="hero-title hero-stagger" style="--delay: 90ms;" aria-label="Autonomous Robotics for High-Altitude Agriculture.">
               Autonomous Robotics for <span class="highlight">High-Altitude</span> Agriculture.
             </h1>
 
@@ -181,6 +208,15 @@
         </div>
       </div>
     </section>
+
+    <!-- Contour Divider A -->
+    <div class="contour-divider contour-divider--on-dark" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path class="contour-line" pathLength="1" d="M0,44 C210,12 420,70 640,36 S1020,10 1230,46 S1360,64 1440,32" />
+        <path class="contour-line contour-line--2" pathLength="1" d="M0,56 C240,24 440,76 680,46 S1060,20 1260,54 S1380,70 1440,42" />
+        <path class="contour-line contour-line--3" pathLength="1" d="M0,30 C190,6 400,58 610,26 S990,4 1200,36 S1350,54 1440,22" />
+      </svg>
+    </div>
 
     <!-- ============ COMPANY OVERVIEW & INTERACTIVE AIROS BLUEPRINT ============ -->
     <section class="overview-section" id="overview">
@@ -383,6 +419,15 @@
         </div>
       </div>
     </section>
+
+    <!-- Contour Divider B -->
+    <div class="contour-divider contour-divider--on-dark" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path class="contour-line" pathLength="1" d="M0,40 C180,10 360,70 540,38 S900,12 1080,44 S1320,66 1440,30" />
+        <path class="contour-line contour-line--2" pathLength="1" d="M0,52 C200,22 390,74 580,46 S940,22 1120,52 S1340,72 1440,42" />
+        <path class="contour-line contour-line--3" pathLength="1" d="M0,28 C160,6 340,56 510,26 S870,6 1050,34 S1300,54 1440,20" />
+      </svg>
+    </div>
 
     <!-- ============ TECHNOLOGIES CATALOG (ARCHITECTURE MATRIX) ============ -->
     <section class="technologies-catalog" id="technologies">
@@ -758,7 +803,7 @@
     </section>
 
     <!-- ============ FIELD TRIALS & VALIDATION (DARK ASYMMETRIC BENTO) ============ -->
-    <section class="trials-section" id="trials">
+    <section class="trials-section" id="trials" data-vision="rgb">
       <div class="container">
         <div class="trials-header reveal-on-scroll">
           <div class="section-tag section-tag--light">03 // Field Validation &amp; Trials</div>
@@ -766,6 +811,13 @@
           <p class="trials-lead">
             Our robotic platforms and intelligent canopy spraying technologies undergo rigorous field evaluations in collaboration with the Division of Agricultural Engineering, COAE&amp;T SKUAST-K Shalimar, sponsored by the Department of Science &amp; Technology (DST).
           </p>
+        </div>
+
+        <div class="vision-modes" id="vision-modes" role="group" aria-label="Field camera vision mode">
+          <button type="button" class="vision-btn is-active" data-vision="rgb" aria-pressed="true">RGB</button>
+          <button type="button" class="vision-btn" data-vision="ndvi" aria-pressed="false">NDVI</button>
+          <button type="button" class="vision-btn" data-vision="thermal" aria-pressed="false">Thermal</button>
+          <span class="vision-readout" id="vision-readout" aria-live="polite">SENSOR: RGB OPTICAL</span>
         </div>
 
         <div class="trials-grid">
@@ -833,6 +885,32 @@
         </div>
       </div>
     </section>
+
+    <!-- Live Telemetry Ticker Band -->
+    <div class="telemetry-ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <div class="ticker-group">
+          <span>ROW 14 · CANOPY DENSITY 72%</span><span class="ticker-sep">&#9670;</span>
+          <span>SPRAY DRIFT &minus;85%</span><span class="ticker-sep">&#9670;</span>
+          <span>RTK FIX &plusmn;1.5 CM</span><span class="ticker-sep">&#9670;</span>
+          <span>NOZZLE PWM 50 HZ</span><span class="ticker-sep">&#9670;</span>
+          <span>SOIL VWC 31%</span><span class="ticker-sep">&#9670;</span>
+          <span>LASER TARGETS 1,284</span><span class="ticker-sep">&#9670;</span>
+          <span>BATTERY 78% · 6.2 H</span><span class="ticker-sep">&#9670;</span>
+          <span>ELEV 1,585 M · SRINAGAR</span><span class="ticker-sep">&#9670;</span>
+        </div>
+        <div class="ticker-group">
+          <span>ROW 14 · CANOPY DENSITY 72%</span><span class="ticker-sep">&#9670;</span>
+          <span>SPRAY DRIFT &minus;85%</span><span class="ticker-sep">&#9670;</span>
+          <span>RTK FIX &plusmn;1.5 CM</span><span class="ticker-sep">&#9670;</span>
+          <span>NOZZLE PWM 50 HZ</span><span class="ticker-sep">&#9670;</span>
+          <span>SOIL VWC 31%</span><span class="ticker-sep">&#9670;</span>
+          <span>LASER TARGETS 1,284</span><span class="ticker-sep">&#9670;</span>
+          <span>BATTERY 78% · 6.2 H</span><span class="ticker-sep">&#9670;</span>
+          <span>ELEV 1,585 M · SRINAGAR</span><span class="ticker-sep">&#9670;</span>
+        </div>
+      </div>
+    </div>
 
     <!-- ============ 5-STAGE R&D PIPELINE SECTION ============ -->
     <section class="lifecycle-section" id="lifecycle">
@@ -938,6 +1016,10 @@
               </div>
               <div class="impact-card spotlight-card">
                 <div class="impact-card__code">METRIC // 03</div>
+                <svg class="impact-gauge" viewBox="0 0 120 120" aria-hidden="true">
+                  <circle class="gauge-track" cx="60" cy="60" r="50" pathLength="100"/>
+                  <circle class="gauge-fill" cx="60" cy="60" r="50" pathLength="100"/>
+                </svg>
                 <div class="impact-val">85%</div>
                 <div class="impact-lbl">Peak Chemical Drift Reduction</div>
               </div>
@@ -951,6 +1033,15 @@
         </div>
       </div>
     </section>
+
+    <!-- Contour Divider C -->
+    <div class="contour-divider contour-divider--on-light" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path class="contour-line" pathLength="1" d="M0,42 C220,14 410,68 650,36 S1040,12 1240,46 S1370,64 1440,32" />
+        <path class="contour-line contour-line--2" pathLength="1" d="M0,54 C240,26 440,74 680,46 S1080,22 1270,54 S1390,70 1440,42" />
+        <path class="contour-line contour-line--3" pathLength="1" d="M0,28 C190,6 390,56 610,24 S990,6 1190,34 S1340,52 1440,20" />
+      </svg>
+    </div>
 
     <!-- ============ PURPOSE & VISION ARCHITECTURAL DIPTYCH ============ -->
     <section class="purpose-section" id="about">
@@ -1090,6 +1181,7 @@
 
   <!-- ============ EDITORIAL FOOTER ============ -->
   <footer class="site-footer">
+    <div class="footer-wordmark" aria-hidden="true">KASHBOT</div>
     <div class="container site-footer__inner">
       <div class="brand">
         <div class="brand__logo-plate">

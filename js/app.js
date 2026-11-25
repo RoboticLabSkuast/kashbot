@@ -70,6 +70,7 @@ const AIROS_SUBSYSTEMS = {
 
 let isMotionPaused = false;
 let lidarAnimationControl = null;
+let cursorAnimationControl = null;
 
 function prefersReducedMotion() {
   return typeof window !== 'undefined' &&
@@ -84,10 +85,10 @@ function runWithViewTransition(updateFn) {
     !isMotionPaused &&
     !prefersReducedMotion()
   ) {
-    document.startViewTransition(updateFn);
-  } else {
-    updateFn();
+    return document.startViewTransition(updateFn);
   }
+  updateFn();
+  return null;
 }
 
 /**
@@ -144,6 +145,181 @@ function initMotionToggle() {
       if (isMotionPaused) lidarAnimationControl.stop();
       else lidarAnimationControl.start();
     }
+    if (cursorAnimationControl) {
+      if (isMotionPaused) cursorAnimationControl.stop();
+      else cursorAnimationControl.start();
+    }
+  });
+}
+
+/**
+ * AIROS First-Visit Boot Sequence Intro
+ */
+function initBootSequence() {
+  if (typeof document === 'undefined' || !document.documentElement) return;
+  const root = document.documentElement;
+  if (!root.classList || !root.classList.contains('is-booting')) return;
+
+  const screen = document.getElementById('boot-screen');
+  const logEl = document.getElementById('boot-log');
+  if (!screen) {
+    root.classList.remove('is-booting', 'boot-exit');
+    return;
+  }
+
+  screen.removeAttribute('hidden');
+
+  const lines = [
+    '> AIROS MK-II // FIRMWARE 5.2',
+    '> RTK-GNSS ........ LOCK 14 SAT',
+    '> CANOPY SONAR .... ONLINE',
+    '> GALVO OPTICS .... CALIBRATED'
+  ];
+
+  const timers = [];
+  let exited = false;
+
+  function finishExit() {
+    if (exited) return;
+    exited = true;
+    timers.forEach(t => clearTimeout(t));
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('keydown', finishExit);
+      window.removeEventListener('pointerdown', finishExit);
+      window.removeEventListener('wheel', finishExit);
+    }
+    root.classList.add('boot-exit');
+    setTimeout(() => {
+      root.classList.remove('is-booting', 'boot-exit');
+      screen.setAttribute('hidden', '');
+      try {
+        if (typeof sessionStorage !== 'undefined') {
+          sessionStorage.setItem('kb-booted', '1');
+        }
+      } catch (_) {}
+    }, 500);
+  }
+
+  lines.forEach((line, idx) => {
+    timers.push(setTimeout(() => {
+      if (logEl && !exited) {
+        logEl.textContent += (idx > 0 ? '\n' : '') + line;
+      }
+    }, idx * 220));
+  });
+
+  timers.push(setTimeout(finishExit, 1150));
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('keydown', finishExit, { once: true });
+    window.addEventListener('pointerdown', finishExit, { once: true });
+    window.addEventListener('wheel', finishExit, { once: true, passive: true });
+  }
+}
+
+/**
+ * Hero Headline Telemetry Decode Effect
+ */
+function initHeadlineDecode() {
+  if (typeof document === 'undefined' || typeof requestAnimationFrame !== 'function') return;
+  const span = document.querySelector('.hero-title .highlight');
+  if (!span) return;
+
+  const targetText = span.textContent || 'High-Altitude';
+  if (isMotionPaused || prefersReducedMotion()) return;
+
+  const upperGlyphs = 'ABCDEFGHJKLMNPRSTUVWXYZ0123456789';
+  const lowerGlyphs = 'abcdefghjklmnprstuvwxyz0123456789';
+  const startDelay = document.documentElement && document.documentElement.classList.contains('is-booting') ? 1350 : 250;
+
+  setTimeout(() => {
+    if (isMotionPaused || prefersReducedMotion()) {
+      span.textContent = targetText;
+      span.removeAttribute('aria-hidden');
+      return;
+    }
+
+    span.setAttribute('aria-hidden', 'true');
+    const duration = 550;
+    const t0 = performance.now();
+
+    function tick(now) {
+      if (isMotionPaused || prefersReducedMotion()) {
+        span.textContent = targetText;
+        span.removeAttribute('aria-hidden');
+        return;
+      }
+
+      const progress = Math.min((now - t0) / duration, 1);
+      const lockedCount = Math.floor(progress * targetText.length);
+      let out = '';
+
+      for (let i = 0; i < targetText.length; i++) {
+        const ch = targetText[i];
+        if (ch === '-' || i < lockedCount) {
+          out += ch;
+        } else {
+          const pool = (ch >= 'A' && ch <= 'Z') ? upperGlyphs : lowerGlyphs;
+          out += pool[Math.floor(Math.random() * pool.length)];
+        }
+      }
+
+      span.textContent = out;
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        span.textContent = targetText;
+        span.removeAttribute('aria-hidden');
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }, startDelay);
+}
+
+/**
+ * Field Trial Camera Vision Modes (RGB / NDVI / Thermal with View Transition Sweep)
+ */
+function initVisionModes() {
+  const trialsSection = document.getElementById('trials');
+  const trialsGrid = document.querySelector('.trials-grid');
+  const buttons = document.querySelectorAll('.vision-btn[data-vision]');
+  const readout = document.getElementById('vision-readout');
+
+  if (!trialsSection || !buttons.length) return;
+
+  const readouts = {
+    rgb: 'SENSOR: RGB OPTICAL',
+    ndvi: 'SENSOR: NDVI MULTISPECTRAL',
+    thermal: 'SENSOR: LWIR THERMAL'
+  };
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const mode = btn.getAttribute('data-vision') || 'rgb';
+      if (trialsGrid) trialsGrid.classList.add('vt-vision');
+
+      const transition = runWithViewTransition(() => {
+        trialsSection.setAttribute('data-vision', mode);
+        buttons.forEach(b => {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        if (readout) {
+          readout.textContent = readouts[mode] || readouts.rgb;
+        }
+      });
+
+      if (transition && transition.finished && typeof transition.finished.finally === 'function') {
+        transition.finished.finally(() => {
+          if (trialsGrid) trialsGrid.classList.remove('vt-vision');
+        });
+      } else if (trialsGrid) {
+        trialsGrid.classList.remove('vt-vision');
+      }
+    });
   });
 }
 
@@ -958,7 +1134,7 @@ function initMobileNav() {
 }
 
 /**
- * Cursor Spotlight Sheen & Tactile Magnetic Buttons (Fine Pointer Only)
+ * Cursor Spotlight Sheen, 3D Tactile Tilt & Magnetic Buttons (Fine Pointer Only)
  */
 function initInteractiveEffects() {
   if (
@@ -973,9 +1149,22 @@ function initInteractiveEffects() {
     card.addEventListener('pointermove', (e) => {
       if (isMotionPaused) return;
       const rect = card.getBoundingClientRect();
+      const relX = rect.width ? (e.clientX - rect.left) / rect.width : 0.5;
+      const relY = rect.height ? (e.clientY - rect.top) / rect.height : 0.5;
       card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
       card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+      if (!prefersReducedMotion()) {
+        const rx = ((relY - 0.5) * -8).toFixed(2);
+        const ry = ((relX - 0.5) * 8).toFixed(2);
+        card.style.setProperty('--rx', `${rx}deg`);
+        card.style.setProperty('--ry', `${ry}deg`);
+      }
     }, { passive: true });
+
+    card.addEventListener('pointerleave', () => {
+      card.style.setProperty('--rx', '0deg');
+      card.style.setProperty('--ry', '0deg');
+    });
   });
 
   document.querySelectorAll('.btn-primary, .floating-whatsapp-btn').forEach(btn => {
@@ -991,6 +1180,113 @@ function initInteractiveEffects() {
       btn.style.translate = '';
     });
   });
+}
+
+/**
+ * Precision Targeting Reticle Cursor (Fine Pointer Only, Non-Invasive)
+ */
+function initTargetingCursor() {
+  if (
+    typeof window === 'undefined' ||
+    typeof document === 'undefined' ||
+    !document.body ||
+    typeof window.matchMedia !== 'function' ||
+    typeof requestAnimationFrame !== 'function' ||
+    prefersReducedMotion() ||
+    !window.matchMedia('(hover: hover) and (pointer: fine)').matches
+  ) {
+    return;
+  }
+
+  const cursor = document.createElement('div');
+  cursor.className = 'target-cursor';
+  cursor.setAttribute('aria-hidden', 'true');
+  cursor.innerHTML = '<span class="target-cursor__ring"></span><span class="target-cursor__dot"></span>';
+  document.body.appendChild(cursor);
+
+  const ring = cursor.querySelector('.target-cursor__ring');
+  const dot = cursor.querySelector('.target-cursor__dot');
+
+  let targetX = -100;
+  let targetY = -100;
+  let ringX = -100;
+  let ringY = -100;
+  let visible = false;
+  let rafId = null;
+
+  function render() {
+    if (isMotionPaused || !visible) {
+      rafId = null;
+      return;
+    }
+
+    ringX += (targetX - ringX) * 0.18;
+    ringY += (targetY - ringY) * 0.18;
+
+    if (ring) {
+      ring.style.transform = `translate3d(${ringX.toFixed(1)}px, ${ringY.toFixed(1)}px, 0)`;
+    }
+
+    if (Math.abs(targetX - ringX) > 0.2 || Math.abs(targetY - ringY) > 0.2) {
+      rafId = requestAnimationFrame(render);
+    } else {
+      rafId = null;
+    }
+  }
+
+  function start() {
+    if (!rafId && visible && !isMotionPaused) {
+      rafId = requestAnimationFrame(render);
+    }
+  }
+
+  function stop() {
+    if (rafId && typeof cancelAnimationFrame === 'function') {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+    cursor.classList.remove('is-visible');
+  }
+
+  cursorAnimationControl = { start, stop };
+
+  window.addEventListener('pointermove', (e) => {
+    if (isMotionPaused || prefersReducedMotion()) return;
+    const overInput = e.target && typeof e.target.closest === 'function' &&
+      e.target.closest('input, textarea, select, label');
+
+    if (overInput) {
+      visible = false;
+      cursor.classList.remove('is-visible');
+      return;
+    }
+
+    targetX = e.clientX;
+    targetY = e.clientY;
+    if (!visible) {
+      ringX = targetX;
+      ringY = targetY;
+      visible = true;
+      cursor.classList.add('is-visible');
+    }
+
+    if (dot) {
+      dot.style.transform = `translate3d(${targetX}px, ${targetY}px, 0)`;
+    }
+
+    const interactive = e.target && typeof e.target.closest === 'function' &&
+      e.target.closest('a, button, [role="button"], .hotspot-btn, .tab, .chip');
+    cursor.classList.toggle('is-hovering', Boolean(interactive));
+
+    start();
+  }, { passive: true });
+
+  if (document.documentElement) {
+    document.documentElement.addEventListener('pointerleave', () => {
+      visible = false;
+      stop();
+    });
+  }
 }
 
 /**
@@ -1072,19 +1368,23 @@ function initScrollSpy() {
 // Global DOM Initialization
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
+    initBootSequence();
     initMotionToggle();
     initHeroLidarCanvas();
+    initHeadlineDecode();
     initHeroTelemetry();
     initAirosBlueprint();
     initSorrelTabs();
     initSorrelFilters();
     initItemToggles();
+    initVisionModes();
     initLifecycle();
     initImpactSlider();
     initFormSwitcher();
     initInquiryForm();
     initMobileNav();
     initInteractiveEffects();
+    initTargetingCursor();
     initScrollRevealFallback();
     initHeaderScroll();
     initScrollSpy();
