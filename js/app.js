@@ -1,8 +1,67 @@
 /**
- * KASHBOT AGRI SYSTEMS — SORREL EDITORIAL APPLICATION LOGIC
- * High-performance, accessible, vanilla ES6 logic
- * Supports Sorrel Category Tabs, Filter Chips, Accordion Drawers & Impact Calculator
+ * KASHBOT AGRI SYSTEMS — ALPINE FIELD-ENGINEERING APPLICATION LOGIC
+ * Accessible, zero-dependency ES6 interactivity
+ * Supports Interactive AIROS Blueprint, Category Tabs, Filter Chips,
+ * Expandable Spec Drawers, Pipeline Stages, Impact Telemetry Console & Web3Forms
  */
+
+const AIROS_SUBSYSTEMS = {
+  masts: {
+    code: 'SUB-01 // SPRAY ASSEMBLY',
+    title: 'Vertical Air-Assist Spray Masts',
+    badge: '85% Drift Cut',
+    desc: 'Twin vertical aluminum spray masts fitted with individually modulated nozzles that match droplet velocity to trellised apple canopy height under anti-hail nets.',
+    specs: [
+      ['Droplet VMD', '180 – 240 μm'],
+      ['Zone Control', 'Independent multi-tier shutoff'],
+      ['Coverage', '3.2m vertical canopy reach']
+    ]
+  },
+  sensors: {
+    code: 'SUB-02 // PERCEPTION SUITE',
+    title: 'RTK-GNSS & Canopy Sensor Array',
+    badge: '±1.5 cm RTK',
+    desc: 'Mast-mounted dual-antenna RTK GNSS receiver paired with ultrasonic and depth vision sensors to profile tree foliage gaps and follow narrow rows autonomously.',
+    specs: [
+      ['Localization', 'Dual-Antenna RTK-GNSS'],
+      ['Canopy Scan', 'Triple ultrasonic + depth vision'],
+      ['Obstacle Guard', '360° LiDAR safety envelope']
+    ]
+  },
+  manifold: {
+    code: 'SUB-03 // FLUID MANIFOLD',
+    title: 'PWM Micro-Solenoid Fluid Manifold',
+    badge: '50 Hz PWM',
+    desc: 'Stainless steel pressurized reservoir and 50 Hz pulse-width modulated valve manifold regulating application volume proportionally to rover ground speed.',
+    specs: [
+      ['Actuation', '< 15 ms solenoid response'],
+      ['Operating Bar', 'Adjustable 2.0 – 6.5 Bar'],
+      ['Tank Material', 'SS-304 corrosion-resistant bay']
+    ]
+  },
+  compute: {
+    code: 'SUB-04 // CONTROL CORE',
+    title: 'IP67 CAN / ROS2 Compute Bay',
+    badge: 'PREEMPT_RT',
+    desc: 'Ruggedized industrial compute enclosure bridging real-time CAN 2.0B actuator nodes, ROS2 navigation stacks, and telemetry diagnostics.',
+    specs: [
+      ['Ingress Rating', 'IP67 dust & moisture sealed'],
+      ['Bus Network', 'Triple CAN 2.0B + Ethernet'],
+      ['Thermal Envelope', '-20°C to +60°C field duty']
+    ]
+  },
+  drivetrain: {
+    code: 'SUB-05 // MOBILITY PLATFORM',
+    title: '4WD Electric Hub-Motor Drivetrain',
+    badge: '8 Hr Duty',
+    desc: 'High-torque independent 4WD agricultural tire drivetrain engineered for damp valley orchard soils, steep gradients, and low soil compaction.',
+    specs: [
+      ['Drive Train', '4WD independent electric hubs'],
+      ['Payload Hitch', 'Up to 180 kg modular bay'],
+      ['Endurance', '8 Hours continuous field run']
+    ]
+  }
+};
 
 /**
  * Calculates environmental and operational savings based on farm acreage
@@ -28,11 +87,54 @@ function calculateImpact(acres) {
  * Formats a number with comma separators (e.g. 3,825)
  */
 function formatNumber(num) {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 /**
- * Initialize Sorrel Category Tabs
+ * Initialize Interactive AIROS Hardware Blueprint Hotspots
+ */
+function initAirosBlueprint() {
+  const hotspotBtns = document.querySelectorAll('[data-hotspot]');
+  const codeEl = document.getElementById('hotspot-code');
+  const titleEl = document.getElementById('hotspot-title');
+  const badgeEl = document.getElementById('hotspot-badge');
+  const descEl = document.getElementById('hotspot-desc');
+  const specsEl = document.getElementById('hotspot-specs');
+
+  if (!hotspotBtns.length || !titleEl) return;
+
+  function selectSubsystem(key) {
+    const data = AIROS_SUBSYSTEMS[key];
+    if (!data) return;
+
+    hotspotBtns.forEach(btn => {
+      const isMatch = btn.getAttribute('data-hotspot') === key;
+      btn.classList.toggle('is-active', isMatch);
+      btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+    });
+
+    if (codeEl) codeEl.textContent = data.code;
+    if (titleEl) titleEl.textContent = data.title;
+    if (badgeEl) badgeEl.textContent = data.badge;
+    if (descEl) descEl.textContent = data.desc;
+
+    if (specsEl && typeof document !== 'undefined') {
+      specsEl.innerHTML = data.specs
+        .map(([label, val]) => `<div class="spec-item"><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(val)}</dd></div>`)
+        .join('');
+    }
+  }
+
+  hotspotBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-hotspot');
+      selectSubsystem(key);
+    });
+  });
+}
+
+/**
+ * Initialize Category Tabs
  * Supports switching between panels (All, Robotics, Machinery, Spraying, Laser, R&D)
  */
 function initSorrelTabs() {
@@ -47,11 +149,20 @@ function initSorrelTabs() {
       e.preventDefault();
       const targetCategory = tab.getAttribute('data-tab');
 
-      // Update active tab
-      tabs.forEach(t => t.classList.remove('is-active'));
-      tab.classList.add('is-active');
+      tabs.forEach(t => {
+        const active = t === tab;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
 
-      // Show/hide panels
+      if (typeof tab.scrollIntoView === 'function') {
+        try {
+          tab.scrollIntoView({ block: 'nearest', inline: 'nearest', container: 'nearest' });
+        } catch (_) {
+          tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        }
+      }
+
       panels.forEach(panel => {
         const panelCat = panel.getAttribute('data-panel');
         if (targetCategory === 'all' || panelCat === targetCategory) {
@@ -61,7 +172,6 @@ function initSorrelTabs() {
         }
       });
 
-      // Re-apply filters for the newly active panel(s)
       applyActiveFilters();
     });
   });
@@ -72,9 +182,12 @@ function initSorrelTabs() {
  */
 function applyActiveFilters() {
   const activeChips = Array.from(document.querySelectorAll('.chip[aria-pressed="true"]'))
-    .map(chip => chip.getAttribute('data-diet').toLowerCase());
+    .map(chip => (chip.getAttribute('data-diet') || '').toLowerCase())
+    .filter(Boolean);
 
   const activePanels = document.querySelectorAll('.panel.is-active');
+  const totalItems = document.querySelectorAll('.panel [data-item]').length;
+  let totalVisible = 0;
 
   activePanels.forEach(panel => {
     const items = panel.querySelectorAll('[data-item]');
@@ -87,12 +200,12 @@ function applyActiveFilters() {
       if (matchesAll) {
         item.classList.remove('is-hidden');
         visibleCount++;
+        totalVisible++;
       } else {
         item.classList.add('is-hidden');
       }
     });
 
-    // Toggle empty panel message
     const emptyMsg = panel.querySelector('[data-empty]');
     if (emptyMsg) {
       if (visibleCount === 0 && items.length > 0) {
@@ -102,10 +215,15 @@ function applyActiveFilters() {
       }
     }
   });
+
+  const countEl = document.getElementById('catalog-count');
+  if (countEl && totalItems > 0) {
+    countEl.textContent = `${totalVisible} / ${totalItems} SYSTEMS`;
+  }
 }
 
 /**
- * Initialize Sorrel Dietary/Field Filter Chips
+ * Initialize Field Filter Chips
  */
 function initSorrelFilters() {
   const chips = document.querySelectorAll('.chip[data-diet]');
@@ -131,7 +249,8 @@ function initItemToggles() {
     toggle.addEventListener('click', () => {
       const itemCard = toggle.closest('.item');
       if (itemCard) {
-        itemCard.classList.toggle('is-expanded');
+        const expanded = itemCard.classList.toggle('is-expanded');
+        toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
       }
     });
   });
@@ -144,35 +263,71 @@ function initLifecycle() {
   const stepNodes = document.querySelectorAll('.step-node');
   if (!stepNodes.length) return;
 
+  function activateNode(targetNode) {
+    stepNodes.forEach(n => {
+      const isActive = n === targetNode;
+      n.classList.toggle('active', isActive);
+      n.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+  }
+
   stepNodes.forEach(node => {
-    node.addEventListener('click', () => {
-      stepNodes.forEach(n => n.classList.remove('active'));
-      node.classList.add('active');
+    node.addEventListener('click', () => activateNode(node));
+    node.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activateNode(node);
+      }
     });
   });
 }
 
 /**
- * Initialize Precision Impact Slider
+ * Initialize Precision Impact Slider & Presets
  */
 function initImpactSlider() {
   const slider = document.getElementById('acreage-slider');
   const acreageDisplay = document.getElementById('acreage-display');
   const chemDisplay = document.getElementById('chemical-saved-val');
   const fuelDisplay = document.getElementById('fuel-saved-val');
+  const convDisplay = document.getElementById('conventional-liters-val');
+  const kashDisplay = document.getElementById('kashbot-liters-val');
+  const presetBtns = document.querySelectorAll('.preset-btn[data-acres]');
 
   if (!slider || !acreageDisplay || !chemDisplay || !fuelDisplay) return;
 
   function update() {
-    const acres = parseInt(slider.value, 10);
+    const acres = parseInt(slider.value, 10) || 1;
     acreageDisplay.textContent = acres;
+
     const impact = calculateImpact(acres);
     chemDisplay.textContent = `${formatNumber(impact.chemicalSavedLiters)} L`;
     fuelDisplay.textContent = `${formatNumber(impact.fuelSavedHours)} Hrs`;
+
+    // Conventional broadcast ~300 L/acre vs Kashbot targeted ~45 L/acre (85% saved = 255 L/acre)
+    const conventionalLiters = Math.round(acres * 300);
+    const kashbotLiters = Math.round(acres * 45);
+    if (convDisplay) convDisplay.textContent = `${formatNumber(conventionalLiters)} L/season`;
+    if (kashDisplay) kashDisplay.textContent = `${formatNumber(kashbotLiters)} L/season`;
+
+    presetBtns.forEach(btn => {
+      const presetAcres = parseInt(btn.getAttribute('data-acres'), 10);
+      btn.classList.toggle('is-active', presetAcres === acres);
+    });
   }
 
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetAcres = btn.getAttribute('data-acres');
+      if (targetAcres) {
+        slider.value = targetAcres;
+        update();
+      }
+    });
+  });
+
   slider.addEventListener('input', update);
-  update(); // Initial calculation
+  update();
 }
 
 /**
@@ -270,13 +425,22 @@ function initInquiryForm() {
 
   if (!form || !feedbackMsg || !submitBtn) return;
 
+  const nameInput = document.getElementById('form-name');
+  const emailInput = document.getElementById('form-email');
+  const phoneInput = document.getElementById('form-phone');
+  const messageInput = document.getElementById('form-message');
+
+  // Clear aria-invalid non-intrusively as the user corrects input
+  [nameInput, emailInput, phoneInput, messageInput].forEach(field => {
+    if (field && typeof field.addEventListener === 'function') {
+      field.addEventListener('input', () => {
+        field.removeAttribute('aria-invalid');
+      });
+    }
+  });
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const nameInput = document.getElementById('form-name');
-    const emailInput = document.getElementById('form-email');
-    const phoneInput = document.getElementById('form-phone');
-    const messageInput = document.getElementById('form-message');
 
     const name = nameInput ? nameInput.value.trim() : '';
     const email = emailInput ? emailInput.value.trim() : '';
@@ -284,6 +448,19 @@ function initInquiryForm() {
     const message = messageInput ? messageInput.value.trim() : '';
 
     if (!name || !email || !phone || !message) {
+      let firstInvalid = null;
+      [
+        [nameInput, name],
+        [emailInput, email],
+        [phoneInput, phone],
+        [messageInput, message]
+      ].forEach(([el, val]) => {
+        if (el && !val) {
+          el.setAttribute('aria-invalid', 'true');
+          if (!firstInvalid) firstInvalid = el;
+        }
+      });
+
       feedbackMsg.className = 'feedback-msg feedback-msg--alert';
       feedbackMsg.style.display = 'block';
       feedbackMsg.style.background = 'rgba(var(--tomato-rgb), 0.1)';
@@ -291,11 +468,15 @@ function initInquiryForm() {
       feedbackMsg.style.color = 'var(--ink)';
       feedbackMsg.innerHTML = '<strong>Please complete all required fields (*)</strong> so our engineering team can review your request.';
       feedbackMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (firstInvalid && typeof firstInvalid.focus === 'function') firstInvalid.focus();
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
+      if (emailInput) {
+        emailInput.setAttribute('aria-invalid', 'true');
+      }
       feedbackMsg.className = 'feedback-msg feedback-msg--alert';
       feedbackMsg.style.display = 'block';
       feedbackMsg.style.background = 'rgba(var(--tomato-rgb), 0.1)';
@@ -303,10 +484,10 @@ function initInquiryForm() {
       feedbackMsg.style.color = 'var(--ink)';
       feedbackMsg.innerHTML = '<strong>Please provide a valid email address</strong> (e.g. name@domain.com).';
       feedbackMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (emailInput && typeof emailInput.focus === 'function') emailInput.focus();
       return;
     }
 
-    // Enter loading state
     const originalBtnContent = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.style.opacity = '0.75';
@@ -334,6 +515,9 @@ function initInquiryForm() {
 
       if (response.ok && data.success) {
         form.reset();
+        [nameInput, emailInput, phoneInput, messageInput].forEach(el => {
+          if (el) el.removeAttribute('aria-invalid');
+        });
         const growerBtn = document.getElementById('mode-grower-btn');
         if (growerBtn && typeof growerBtn.click === 'function') {
           growerBtn.click();
@@ -397,17 +581,25 @@ function initMobileNav() {
 
   function openDrawer() {
     if (!drawer) return;
+    drawer.removeAttribute('hidden');
     drawer.classList.add('is-open');
     if (openBtn) openBtn.setAttribute('aria-expanded', 'true');
     if (typeof document !== 'undefined' && document.body) {
       document.body.classList.add('drawer-open');
+    }
+    if (closeBtn && typeof closeBtn.focus === 'function') {
+      closeBtn.focus();
     }
   }
 
   function closeDrawer() {
     if (!drawer) return;
     drawer.classList.remove('is-open');
-    if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('hidden', '');
+    if (openBtn) {
+      openBtn.setAttribute('aria-expanded', 'false');
+      if (typeof openBtn.focus === 'function') openBtn.focus();
+    }
     if (typeof document !== 'undefined' && document.body) {
       document.body.classList.remove('drawer-open');
     }
@@ -435,8 +627,17 @@ function initMobileNav() {
 }
 
 /**
- * Initialize ScrollSpy for Header Navigation Links
+ * Initialize Header Scroll State & ScrollSpy
  */
+function initHeaderScroll() {
+  const header = document.getElementById('site-header');
+  if (!header) return;
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 24);
+  }, { passive: true });
+}
+
 function initScrollSpy() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.site-header .nav-link');
@@ -445,7 +646,7 @@ function initScrollSpy() {
 
   window.addEventListener('scroll', () => {
     let currentId = '';
-    const scrollPos = window.scrollY + 120;
+    const scrollPos = window.scrollY + 140;
 
     sections.forEach(section => {
       const top = section.offsetTop;
@@ -461,12 +662,13 @@ function initScrollSpy() {
         link.classList.add('active');
       }
     });
-  });
+  }, { passive: true });
 }
 
 // Global DOM Initialization
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
+    initAirosBlueprint();
     initSorrelTabs();
     initSorrelFilters();
     initItemToggles();
@@ -475,6 +677,7 @@ if (typeof document !== 'undefined') {
     initFormSwitcher();
     initInquiryForm();
     initMobileNav();
+    initHeaderScroll();
     initScrollSpy();
   });
 }

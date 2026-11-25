@@ -10,6 +10,7 @@ if (!fs.existsSync(cssPath)) {
 
 const css = fs.readFileSync(cssPath, 'utf8');
 const requiredTokens = [
+  '--void:',
   '--ground:',
   '--paper:',
   '--ink:',
@@ -32,20 +33,22 @@ const requiredClasses = [
   '.diet__tag',
   '.trial-card',
   '.rover-hero-img',
-  '.floating-whatsapp-btn'
+  '.floating-whatsapp-btn',
+  '.blueprint-stage',
+  '.hotspot-btn'
 ];
 
 let failed = false;
 requiredTokens.forEach(token => {
   if (!css.includes(token)) {
-    console.error(`FAIL: Missing Sorrel design token: ${token}`);
+    console.error(`FAIL: Missing Alpine design token: ${token}`);
     failed = true;
   }
 });
 
 requiredClasses.forEach(cls => {
   if (!css.includes(cls)) {
-    console.error(`FAIL: Missing Sorrel CSS class: ${cls}`);
+    console.error(`FAIL: Missing Alpine CSS class: ${cls}`);
     failed = true;
   }
 });
@@ -53,5 +56,5 @@ requiredClasses.forEach(cls => {
 if (failed) {
   process.exit(1);
 } else {
-  console.log("PASS: css/style.css has all required Sorrel design tokens and components.");
+  console.log("PASS: css/style.css has all required Alpine Field-Engineering design tokens and components.");
 }

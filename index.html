@@ -3,183 +3,287 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Kashbot Agri Systems — Precision Agricultural Robotics &amp; Intelligent Automation</title>
-  <meta name="description" content="Kashbot Agri Systems Private Limited develops agricultural robotics, precision machinery, intelligent spraying systems, and laser weed management prototypes in Srinagar, Jammu &amp; Kashmir.">
-  <meta name="theme-color" content="#E7ECE1">
-  
+  <title>Kashbot Agri Systems — Alpine Precision Agricultural Robotics</title>
+  <meta name="description" content="Kashbot Agri Systems Private Limited develops autonomous agricultural robotics, precision machinery, intelligent canopy spraying systems, and laser weed management prototypes in Srinagar, Jammu &amp; Kashmir.">
+  <meta name="theme-color" content="#0B100D">
+
   <!-- Standalone Botanical Emblem Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
-  
-  <!-- Google Fonts: Yeseva One (Display Serif) + Mukta (Humanist Sans) + JetBrains Mono -->
+
+  <!-- Google Fonts: Space Grotesk (Display) + Plus Jakarta Sans (Body) + JetBrains Mono (Telemetry) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Mukta:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Accessible Skip Navigation -->
-  <a href="#technologies" class="skip-link">Skip to technologies</a>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress" aria-hidden="true"></div>
 
-  <!-- ============ STICKY EDITORIAL HEADER ============ -->
+  <!-- Accessible Skip Navigation -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============ STICKY ALPINE COMMAND HEADER ============ -->
   <header class="site-header" id="site-header" role="banner">
     <div class="container site-header__inner">
-      <a href="#" class="brand" aria-label="Kashbot Agri Systems Home">
-        <img src="assets/logo-mark.svg" alt="Kashbot Emblem" class="brand__mark" width="46" height="46">
+      <a href="#hero" class="brand" aria-label="Kashbot Agri Systems Home">
+        <span class="brand__mark-wrap">
+          <img src="assets/logo-mark.svg" alt="Kashbot Emblem" class="brand__mark" width="38" height="30">
+        </span>
         <div class="brand__text">
           <span class="brand__name">KASHBOT</span>
-          <span class="brand__tag">Agri Systems · Srinagar</span>
+          <span class="brand__tag">AGRI SYSTEMS · SRINAGAR</span>
         </div>
       </a>
 
-      <!-- Desktop Navigation Links (Streamlined) -->
-      <nav class="main-nav" role="navigation" aria-label="Main Navigation">
-        <a href="#overview" class="nav-link">Overview</a>
-        <a href="#technologies" class="nav-link">Technologies</a>
-        <a href="#trials" class="nav-link">Field Trials</a>
-        <a href="#impact" class="nav-link">Impact</a>
-        <a href="#contact" class="nav-link">Contact</a>
+      <!-- Desktop Navigation Links -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <a href="#overview" class="nav-link"><span class="nav-idx">01</span> AIROS</a>
+        <a href="#technologies" class="nav-link"><span class="nav-idx">02</span> Technologies</a>
+        <a href="#trials" class="nav-link"><span class="nav-idx">03</span> Field Trials</a>
+        <a href="#impact" class="nav-link"><span class="nav-idx">04</span> Impact</a>
+        <a href="#contact" class="nav-link"><span class="nav-idx">05</span> Contact</a>
       </nav>
 
       <!-- Operations Status Pill & CTA -->
       <div class="header-right">
         <div class="operations-meta" aria-label="Field Lab Status">
           <span class="pulse-dot"></span>
-          <span class="meta-status">TRL-5 Active</span>
+          <span class="meta-status">TRL-5 // FIELD ACTIVE</span>
         </div>
         <a href="#contact" class="btn-primary" id="header-cta-btn">Request Trial</a>
-        
-        <button class="mobile-menu-btn" id="mobile-menu-open-btn" aria-label="Open Navigation Menu" aria-expanded="false">
+
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-open-btn" aria-label="Open Navigation Menu" aria-expanded="false">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="7" x2="21" y2="7"></line>
             <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="17" x2="21" y2="17"></line>
           </svg>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation" hidden>
     <div class="mobile-drawer-header">
-      <div class="brand">
-        <img src="assets/logo.svg" alt="Kashbot Logo" width="130" height="42">
+      <div class="brand__logo-plate">
+        <img src="assets/logo.svg" alt="Kashbot Agri Systems Logo" width="124" height="44">
       </div>
-      <button class="drawer-close-btn" id="mobile-menu-close-btn" aria-label="Close Mobile Menu">&times;</button>
+      <button type="button" class="drawer-close-btn" id="mobile-menu-close-btn" aria-label="Close Mobile Menu">&times;</button>
     </div>
-    <nav class="mobile-drawer-nav">
-      <a href="#overview" class="mobile-drawer-link">Overview</a>
-      <a href="#technologies" class="mobile-drawer-link">Technologies</a>
-      <a href="#trials" class="mobile-drawer-link">Field Trials</a>
-      <a href="#lifecycle" class="mobile-drawer-link">R&amp;D Pipeline</a>
-      <a href="#impact" class="mobile-drawer-link">Impact Calculator</a>
-      <a href="#about" class="mobile-drawer-link">Purpose &amp; Vision</a>
-      <a href="#contact" class="mobile-drawer-link">Contact</a>
+    <nav class="mobile-drawer-nav" aria-label="Mobile Links">
+      <a href="#overview" class="mobile-drawer-link"><span class="nav-idx">01</span> Overview &amp; AIROS</a>
+      <a href="#technologies" class="mobile-drawer-link"><span class="nav-idx">02</span> Technologies</a>
+      <a href="#trials" class="mobile-drawer-link"><span class="nav-idx">03</span> Field Trials</a>
+      <a href="#lifecycle" class="mobile-drawer-link"><span class="nav-idx">04</span> R&amp;D Pipeline</a>
+      <a href="#impact" class="mobile-drawer-link"><span class="nav-idx">05</span> Impact Console</a>
+      <a href="#about" class="mobile-drawer-link"><span class="nav-idx">06</span> Purpose &amp; Vision</a>
+      <a href="#contact" class="mobile-drawer-link"><span class="nav-idx">07</span> Engineering Desk</a>
     </nav>
-    <div style="margin-top: auto; padding-top: 2rem;">
-      <a href="#contact" class="btn-primary" style="width: 100%;">Request Pilot Trial</a>
+    <div class="mobile-drawer-footer">
+      <a href="#contact" class="btn-primary mobile-drawer-link" style="width: 100%;">Request Pilot Trial</a>
     </div>
   </div>
 
   <main id="main-content">
-    <!-- ============ HERO SECTION ============ -->
+    <!-- ============ HERO SECTION (DARK ALPINE FIELD-ENGINEERING) ============ -->
     <section class="hero-section" id="hero">
-      <div class="container">
+      <!-- Full-bleed orchard photography backdrop (LCP prioritized) -->
+      <div class="hero-backdrop" aria-hidden="true">
+        <img src="assets/rover-in-orchard.jpg" alt="" class="hero-bg-img" fetchpriority="high" width="1000" height="750" decoding="async">
+        <div class="hero-scrim"></div>
+        <div class="hero-grid-overlay"></div>
+      </div>
+
+      <div class="container hero-container">
         <div class="hero-grid">
           <div class="hero-content">
             <div class="badge-telemetry">
               <span class="pulse-dot pulse-dot--tomato"></span>
-              <span>Buchpora, Srinagar, Jammu &amp; Kashmir – 190020</span>
+              <span>BUCHPORA, SRINAGAR · 34.14°N 74.81°E · JAMMU &amp; KASHMIR</span>
             </div>
+
             <h1 class="hero-title">
-              Engineering <span class="highlight">Intelligent Robotics</span> for Modern Agriculture
+              Autonomous Robotics for <span class="highlight">High-Altitude</span> Agriculture.
             </h1>
+
             <p class="hero-desc">
-              Kashbot Agri Systems develops autonomous field robotics, precision agricultural machinery, intelligent orchard canopy spraying systems, and targeted laser weed management prototypes engineered for practical, resource-conscious farming.
+              Kashbot Agri Systems engineers autonomous field rovers, precision agricultural machinery, canopy-targeted spraying systems, and laser weed management prototypes designed for measurable, resource-conscious farming.
             </p>
+
             <div class="hero-actions">
               <a href="#technologies" class="btn-primary">
                 <span>Explore Technologies</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </a>
-              <a href="#contact" class="btn-secondary">
-                <span>Partner with Us</span>
+              <a href="#airos-blueprint" class="btn-secondary btn-secondary--dark">
+                <span>Inspect AIROS Rover</span>
               </a>
+              <a href="#contact" class="hero-text-link">Partner with Us &rarr;</a>
             </div>
           </div>
 
-          <!-- Hero Physical Rover Visual -->
-          <div class="hero-visual-card">
-            <div class="hero-visual-content">
-              <img src="assets/rover.png" alt="Kashbot AIROS Autonomous Agricultural Robotics Rover with Precision Spray Masts" class="rover-hero-img" width="424" height="673">
+          <!-- Engineered Field Viewfinder Card -->
+          <div class="hero-viewfinder cad-frame">
+            <div class="viewfinder-hud">
+              <span class="viewfinder-tag">FIELD TRIAL // SKUAST-K SHALIMAR</span>
+              <span class="viewfinder-rec"><span class="pulse-dot pulse-dot--tomato"></span> LIVE TELEMETRY</span>
             </div>
-            <div class="telemetry-chip">
-              <span class="pulse-dot"></span>
-              <span>KASHBOT AIROS // 4WD ORCHARD SPRAY ROVER</span>
+
+            <div class="viewfinder-media">
+              <img src="assets/active-spraying-trial.jpg" alt="Kashbot AIROS spraying rover performing live canopy mist trial in a Kashmir apple orchard" class="viewfinder-img" width="1000" height="1500">
+              <div class="viewfinder-crosshair" aria-hidden="true"></div>
+            </div>
+
+            <div class="viewfinder-footer">
+              <div class="viewfinder-title">KASHBOT AIROS // 4WD ORCHARD ROVER</div>
+              <div class="viewfinder-metrics">
+                <span>-85% DRIFT</span>
+                <span>&plusmn;1.5 CM RTK</span>
+                <span>TRL-5</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Symmetrical Full-Width Telemetry Stats Bar -->
+        <!-- Symmetrical Telemetry Stats Bar -->
         <div class="hero-stats-bar">
           <div class="stat-pill">
             <div class="stat-number">05</div>
-            <div class="stat-label">Core R&amp;D Vectors</div>
+            <div class="stat-label">Core R&amp;D Engineering Vectors</div>
           </div>
           <div class="stat-pill">
             <div class="stat-number">85<span>%</span></div>
-            <div class="stat-label">Max Input Reduction</div>
+            <div class="stat-label">Peak Chemical Drift Reduction</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-number">&plusmn;1.5<span>cm</span></div>
+            <div class="stat-label">Dual-Antenna RTK Navigation</div>
           </div>
           <div class="stat-pill">
             <div class="stat-number">Sub<span>-mm</span></div>
-            <div class="stat-label">Laser Weed Targeting</div>
-          </div>
-          <div class="stat-pill">
-            <div class="stat-number">100<span>%</span></div>
-            <div class="stat-label">Field Validation Rigor</div>
+            <div class="stat-label">Galvo Laser Weed Targeting</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ COMPANY OVERVIEW SECTION ============ -->
+    <!-- ============ COMPANY OVERVIEW & INTERACTIVE AIROS BLUEPRINT ============ -->
     <section class="overview-section" id="overview">
       <div class="container">
-        <div class="overview-grid">
+        <div class="overview-grid reveal-on-scroll">
           <div class="overview-left">
-            <div class="section-tag">Company Overview</div>
-            <h2 class="section-title">Pioneering Deep-Tech Agricultural Engineering in Kashmir</h2>
+            <div class="section-tag">01 // Company Overview</div>
+            <h2 class="section-title">Deep-Tech Agricultural Engineering in Kashmir</h2>
+            <div class="institutional-pill">
+              <span class="pulse-dot"></span>
+              <span>Field-validated with COAE&amp;T SKUAST-K Shalimar · DST Sponsored</span>
+            </div>
           </div>
+
           <div class="overview-right">
             <p class="overview-lead">
               Kashbot Agri Systems Private Limited is an agricultural technology company focused on developing agricultural robotics, precision agricultural machinery, and intelligent automation solutions for modern farming.
             </p>
             <p class="overview-body">
-              We aim to help make agricultural operations more precise, efficient, and practical through the integration of engineering, robotics, sensing technologies, and intelligent control systems. Based in Buchpora, Srinagar, our engineering addresses high-value horticultural challenges—from high-density apple orchards to terraced terrain—replacing blanket input wastage with measurable, targeted precision.
+              We aim to help make agricultural operations more precise, efficient, and practical through the integration of engineering, robotics, sensing technologies, and intelligent control systems. Based in Buchpora, Srinagar, our work addresses high-value horticultural challenges—from high-density apple orchards to terraced terrain—replacing blanket input wastage with measurable, targeted performance.
             </p>
+          </div>
+        </div>
+
+        <!-- Interactive Hardware Blueprint Stage -->
+        <div class="blueprint-wrap reveal-on-scroll" id="airos-blueprint">
+          <div class="blueprint-header">
+            <div>
+              <div class="section-tag">Hardware Architecture // Interactive Inspection</div>
+              <h3 class="blueprint-heading">AIROS Autonomous Orchard Platform</h3>
+            </div>
+            <p class="blueprint-sub">Select any numbered subsystem marker on the chassis to inspect its field specifications.</p>
+          </div>
+
+          <div class="blueprint-shell">
+            <div class="blueprint-stage cad-frame">
+              <div class="stage-meta">
+                <span>ELEVATION // AIROS MK-II</span>
+                <span>CHASSIS SCALE 1:12</span>
+              </div>
+
+              <div class="rover-blueprint-canvas">
+                <img src="assets/rover.png" alt="Kashbot AIROS Autonomous Agricultural Robotics Rover with Precision Spray Masts" class="rover-hero-img" loading="lazy" width="424" height="673">
+
+                <!-- 5 Interactive Subsystem Hotspots -->
+                <button type="button" class="hotspot-btn is-active" data-hotspot="masts" aria-pressed="true" aria-label="Inspect Vertical Air-Assist Spray Masts" style="left: 38%; top: 16%;">
+                  <span>01</span>
+                </button>
+                <button type="button" class="hotspot-btn" data-hotspot="sensors" aria-pressed="false" aria-label="Inspect RTK-GNSS &amp; Canopy Sensor Array" style="left: 25%; top: 55%;">
+                  <span>02</span>
+                </button>
+                <button type="button" class="hotspot-btn" data-hotspot="manifold" aria-pressed="false" aria-label="Inspect PWM Micro-Solenoid Fluid Manifold" style="left: 55%; top: 59%;">
+                  <span>03</span>
+                </button>
+                <button type="button" class="hotspot-btn" data-hotspot="compute" aria-pressed="false" aria-label="Inspect IP67 CAN / ROS2 Compute Bay" style="left: 33%; top: 73%;">
+                  <span>04</span>
+                </button>
+                <button type="button" class="hotspot-btn" data-hotspot="drivetrain" aria-pressed="false" aria-label="Inspect 4WD Electric Hub-Motor Drivetrain" style="left: 48%; top: 88%;">
+                  <span>05</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="blueprint-panel" aria-live="polite">
+              <div class="hotspot-selectors" role="group" aria-label="AIROS Subsystems">
+                <button type="button" class="hotspot-selector-btn is-active" data-hotspot="masts" aria-pressed="true">01 Masts</button>
+                <button type="button" class="hotspot-selector-btn" data-hotspot="sensors" aria-pressed="false">02 Sensors</button>
+                <button type="button" class="hotspot-selector-btn" data-hotspot="manifold" aria-pressed="false">03 Manifold</button>
+                <button type="button" class="hotspot-selector-btn" data-hotspot="compute" aria-pressed="false">04 Compute</button>
+                <button type="button" class="hotspot-selector-btn" data-hotspot="drivetrain" aria-pressed="false">05 Drive</button>
+              </div>
+
+              <div class="blueprint-readout">
+                <div class="readout-top">
+                  <span class="readout-code" id="hotspot-code">SUB-01 // SPRAY ASSEMBLY</span>
+                  <span class="readout-badge" id="hotspot-badge">85% Drift Cut</span>
+                </div>
+                <h4 class="readout-title" id="hotspot-title">Vertical Air-Assist Spray Masts</h4>
+                <p class="readout-desc" id="hotspot-desc">
+                  Twin vertical aluminum spray masts fitted with individually modulated nozzles that match droplet velocity to trellised apple canopy height under anti-hail nets.
+                </p>
+                <dl class="spec-grid spec-grid--readout" id="hotspot-specs">
+                  <div class="spec-item"><dt>Droplet VMD</dt><dd>180 – 240 &mu;m</dd></div>
+                  <div class="spec-item"><dt>Zone Control</dt><dd>Independent multi-tier shutoff</dd></div>
+                  <div class="spec-item"><dt>Coverage</dt><dd>3.2m vertical canopy reach</dd></div>
+                </dl>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ TECHNOLOGIES CATALOG (EDITORIAL PANELS) ============ -->
+    <!-- ============ TECHNOLOGIES CATALOG (ARCHITECTURE MATRIX) ============ -->
     <section class="technologies-catalog" id="technologies">
-      <!-- SORREL CONTROLS: CATEGORY TABS & FILTER CHIPS -->
+      <div class="container catalog-intro">
+        <div class="section-tag">02 // Core Engineering Vectors</div>
+        <h2 class="section-title">Systems &amp; Research Portfolio</h2>
+      </div>
+
+      <!-- Sticky Category Tabs & Filter Chips -->
       <div class="controls-sticky-wrap">
         <div class="controls" id="controls">
           <div class="container controls__inner">
-            <nav class="tabs" aria-label="Technology categories" data-tabs>
-              <a class="tab is-active" data-tab="all" href="#technologies">All Technologies</a>
-              <a class="tab" data-tab="robotics" href="#technologies">Agricultural Robotics</a>
-              <a class="tab" data-tab="machinery" href="#technologies">Precision Machinery</a>
-              <a class="tab" data-tab="spraying" href="#technologies">Intelligent Spraying</a>
-              <a class="tab" data-tab="laser" href="#technologies">Laser Weed Management</a>
-              <a class="tab" data-tab="rd" href="#technologies">Research &amp; Prototyping</a>
-            </nav>
+            <div class="tabs" role="tablist" aria-label="Technology categories" data-tabs>
+              <button type="button" role="tab" class="tab is-active" data-tab="all" aria-selected="true">All Technologies</button>
+              <button type="button" role="tab" class="tab" data-tab="robotics" aria-selected="false">Agricultural Robotics</button>
+              <button type="button" role="tab" class="tab" data-tab="machinery" aria-selected="false">Precision Machinery</button>
+              <button type="button" role="tab" class="tab" data-tab="spraying" aria-selected="false">Intelligent Spraying</button>
+              <button type="button" role="tab" class="tab" data-tab="laser" aria-selected="false">Laser Weed Management</button>
+              <button type="button" role="tab" class="tab" data-tab="rd" aria-selected="false">Research &amp; Prototyping</button>
+            </div>
 
             <div class="filters" data-filters>
               <span class="filters__label" id="filters-label">Field Spec</span>
@@ -189,28 +293,32 @@
                 <button type="button" class="chip" data-diet="laser" aria-pressed="false">Zero Chemical</button>
                 <button type="button" class="chip" data-diet="patent" aria-pressed="false">Patent Pending</button>
               </div>
+              <span class="catalog-count" id="catalog-count" aria-live="polite">10 / 10 SYSTEMS</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="container catalog-container">
-        
+
         <!-- PANEL 1: AGRICULTURAL ROBOTICS -->
         <section class="panel is-active" id="panel-robotics" data-panel="robotics">
           <div class="panel__header">
+            <div class="panel__kicker">VECTOR 01</div>
             <h2 class="panel__title">Agricultural Robotics</h2>
             <p class="panel__note">Autonomous robotic platforms engineered for rugged terrain, row-crop navigation, and precision field operations.</p>
           </div>
           <ul class="dishes">
             <li class="item" data-item data-diet="tested ai">
+              <div class="item__code">SYS-01 // ROVER</div>
               <div class="item__head">
                 <h3 class="item__name">
-                  <button class="item__toggle" type="button" data-toggle>
-                    Autonomous Field Rover Mk-II
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  <button class="item__toggle" type="button" data-toggle aria-expanded="false">
+                    <span>Autonomous Field Rover Mk-II</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                   </button>
                 </h3>
+                <span class="item__leader" aria-hidden="true"></span>
                 <span class="item__badge">TRL-5 Validated</span>
               </div>
               <p class="item__desc">All-terrain electric drivetrain with centimetre-accurate RTK-GNSS navigation, LiDAR obstacle avoidance, and universal modular tool hitching.</p>
@@ -221,7 +329,7 @@
               </ul>
               <div class="item__more" data-more>
                 <dl class="spec-grid">
-                  <div class="spec-item"><dt>Navigation</dt><dd>Dual-Antenna RTK-GNSS (±1.5 cm)</dd></div>
+                  <div class="spec-item"><dt>Navigation</dt><dd>Dual-Antenna RTK-GNSS (&plusmn;1.5 cm)</dd></div>
                   <div class="spec-item"><dt>Runtime</dt><dd>8 Hours continuous duty</dd></div>
                   <div class="spec-item"><dt>Traction</dt><dd>Independent 4WD electric hub motors</dd></div>
                   <div class="spec-item"><dt>Payload</dt><dd>Up to 180 kg equipment hitch</dd></div>
@@ -230,13 +338,15 @@
             </li>
 
             <li class="item" data-item data-diet="tested ai">
+              <div class="item__code">SYS-02 // TELEMETRY</div>
               <div class="item__head">
                 <h3 class="item__name">
-                  <button class="item__toggle" type="button" data-toggle>
-                    Multi-Spectral Crop Scout Drone &amp; Rover Link
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  <button class="item__toggle" type="button" data-toggle aria-expanded="false">
+                    <span>Multi-Spectral Crop Scout Drone &amp; Rover Link</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                   </button>
                 </h3>
+                <span class="item__leader" aria-hidden="true"></span>
                 <span class="item__badge">Autonomous</span>
               </div>
               <p class="item__desc">Coordinated aerial-ground telemetry mapping canopy density, localized moisture deficiency, and chlorophyll levels across high-density orchards.</p>
@@ -260,18 +370,21 @@
         <!-- PANEL 2: PRECISION AGRICULTURAL MACHINERY -->
         <section class="panel is-active" id="panel-machinery" data-panel="machinery">
           <div class="panel__header">
+            <div class="panel__kicker">VECTOR 02</div>
             <h2 class="panel__title">Precision Agricultural Machinery</h2>
             <p class="panel__note">Development of machinery and control systems intended to make agricultural operations more targeted, measurable, and efficient.</p>
           </div>
           <ul class="dishes">
             <li class="item" data-item data-diet="tested ai">
+              <div class="item__code">SYS-03 // ACTUATION</div>
               <div class="item__head">
                 <h3 class="item__name">
-                  <button class="item__toggle" type="button" data-toggle>
-                    Adaptive PWM Flow Control Assembly
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  <button class="item__toggle" type="button" data-toggle aria-expanded="false">
+                    <span>Adaptive PWM Flow Control Assembly</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                   </button>
                 </h3>
+                <span class="item__leader" aria-hidden="true"></span>
                 <span class="item__badge">&plusmn;2% Flow Precision</span>
               </div>
               <p class="item__desc">Micro-solenoid pulse-width modulation regulating fluid flow rates dynamically proportional to forward rover speed and localized tree canopy volumes.</p>
@@ -290,13 +403,15 @@
             </li>
 
             <li class="item" data-item data-diet="tested ai">
+              <div class="item__code">SYS-04 // DOSING</div>
               <div class="item__head">
                 <h3 class="item__name">
-                  <button class="item__toggle" type="button" data-toggle>
-                    Smart Micro-Dosing Fertilizer Injector
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  <button class="item__toggle" type="button" data-toggle aria-expanded="false">
+                    <span>Smart Micro-Dosing Fertilizer Injector</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                   </button>
                 </h3>
+                <span class="item__leader" aria-hidden="true"></span>
                 <span class="item__badge">Targeted Delivery</span>
               </div>
               <p class="item__desc">Direct root-zone nutrient micro-injection driven by real-time soil optical sensor feedback to minimize run-off and nitrate leaching.</p>
@@ -320,18 +435,21 @@
         <!-- PANEL 3: INTELLIGENT SPRAYING SYSTEMS -->
         <section class="panel is-active" id="panel-spraying" data-panel="spraying">
           <div class="panel__header">
+            <div class="panel__kicker">VECTOR 03</div>
             <h2 class="panel__title">Intelligent Spraying Systems</h2>
             <p class="panel__note">Smart spraying technologies for orchards and horticultural settings, using canopy sensing and adaptive control to curb chemical drift.</p>
           </div>
           <ul class="dishes">
             <li class="item" data-item data-diet="tested ai patent">
+              <div class="item__code">SYS-05 // CANOPY AI</div>
               <div class="item__head">
                 <h3 class="item__name">
-                  <button class="item__toggle" type="button" data-toggle>
-                    Orchard Canopy Targeted Air-Assist Sprayer
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  <button class="item__toggle" type="button" data-toggle aria-expanded="false">
+                    <span>Orchard Canopy Targeted Air-Assist Sprayer</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                   </button>
                 </h3>
+                <span class="item__leader" aria-hidden="true"></span>
                 <span class="item__badge">85% Reduction</span>
               </div>
               <p class="item__desc">Ultrasonic and stereoscopic vision sensors continuously profile tree geometry in real-time, shutting off nozzles in gaps to eliminate blanket overspray.</p>
@@ -342,7 +460,7 @@
               </ul>
               <div class="item__more" data-more>
                 <div class="item__visual-preview">
-                  <img src="assets/active-spraying-trial.jpg" alt="Active spraying field trial in SKUAST-K Shalimar apple orchard" class="item__preview-img" loading="lazy">
+                  <img src="assets/active-spraying-trial.jpg" alt="Active spraying field trial in SKUAST-K Shalimar apple orchard" class="item__preview-img" loading="lazy" width="1000" height="1500">
                   <div class="item__preview-caption">
                     <strong>SKUAST-K Shalimar Field Validation:</strong> Real-time air-assist canopy mist deposition during orchard trial run.
                   </div>
@@ -357,13 +475,15 @@
             </li>
 
             <li class="item" data-item data-diet="tested ai">
+              <div class="item__code">SYS-06 // DEPOSITION</div>
               <div class="item__head">
                 <h3 class="item__name">
-                  <button class="item__toggle" type="button" data-toggle>
-                    Electrostatic Low-Drift Nozzle Array
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  <button class="item__toggle" type="button" data-toggle aria-expanded="false">
+                    <span>Electrostatic Low-Drift Nozzle Array</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                   </button>
                 </h3>
+                <span class="item__leader" aria-hidden="true"></span>
                 <span class="item__badge">95% Underside Wrap</span>
               </div>
               <p class="item__desc">Applies an electrostatic charge to atomized micro-droplets, forcing them to wrap around and adhere to leaf undersides for superior disease control.</p>
@@ -387,18 +507,21 @@
         <!-- PANEL 4: LASER WEED MANAGEMENT -->
         <section class="panel is-active" id="panel-laser" data-panel="laser">
           <div class="panel__header">
+            <div class="panel__kicker">VECTOR 04</div>
             <h2 class="panel__title">Laser-Based Weed Management</h2>
             <p class="panel__note">Laser lawn-weeding prototype exploring targeted weed treatment as an eco-conscious alternative to blanket synthetic herbicide application.</p>
           </div>
           <ul class="dishes">
             <li class="item" data-item data-diet="ai laser patent">
+              <div class="item__code">SYS-07 // PHOTONICS</div>
               <div class="item__head">
                 <h3 class="item__name">
-                  <button class="item__toggle" type="button" data-toggle>
-                    Galvo-Steered Thermal Laser Weeder
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  <button class="item__toggle" type="button" data-toggle aria-expanded="false">
+                    <span>Galvo-Steered Thermal Laser Weeder</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                   </button>
                 </h3>
+                <span class="item__leader" aria-hidden="true"></span>
                 <span class="item__badge">Sub-mm Accuracy</span>
               </div>
               <p class="item__desc">High-speed dual-axis galvano mirror deflecting targeted thermal laser pulses directly onto weed apical meristems, rupturing cells in milliseconds.</p>
@@ -418,13 +541,15 @@
             </li>
 
             <li class="item" data-item data-diet="ai laser">
+              <div class="item__code">SYS-08 // EDGE VISION</div>
               <div class="item__head">
                 <h3 class="item__name">
-                  <button class="item__toggle" type="button" data-toggle>
-                    Real-Time Weed Classification Edge Vision Unit
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  <button class="item__toggle" type="button" data-toggle aria-expanded="false">
+                    <span>Real-Time Weed Classification Edge Vision Unit</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                   </button>
                 </h3>
+                <span class="item__leader" aria-hidden="true"></span>
                 <span class="item__badge">60 FPS Inference</span>
               </div>
               <p class="item__desc">Custom deep learning vision engine trained on diverse high-altitude Kashmiri weeds to instantly differentiate crop seedlings from invasive species.</p>
@@ -448,18 +573,21 @@
         <!-- PANEL 5: RESEARCH, PROTOTYPING & AUTOMATION -->
         <section class="panel is-active" id="panel-rd" data-panel="rd">
           <div class="panel__header">
+            <div class="panel__kicker">VECTOR 05</div>
             <h2 class="panel__title">Research, Prototyping and Automation</h2>
             <p class="panel__note">Engineering-led development bringing together mechanical systems, electronics, sensors, embedded computing, and software.</p>
           </div>
           <ul class="dishes">
             <li class="item" data-item data-diet="tested ai">
+              <div class="item__code">SYS-09 // COMPUTE</div>
               <div class="item__head">
                 <h3 class="item__name">
-                  <button class="item__toggle" type="button" data-toggle>
-                    Embedded Agricultural CAN/ROS2 Compute Stack
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  <button class="item__toggle" type="button" data-toggle aria-expanded="false">
+                    <span>Embedded Agricultural CAN/ROS2 Compute Stack</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                   </button>
                 </h3>
+                <span class="item__leader" aria-hidden="true"></span>
                 <span class="item__badge">Ruggedized</span>
               </div>
               <p class="item__desc">Shock-resistant, IP67 industrial embedded compute module bridging automotive CAN buses, ROS2 robotics nodes, and real-time sensor feedback.</p>
@@ -478,13 +606,15 @@
             </li>
 
             <li class="item" data-item data-diet="tested ai">
+              <div class="item__code">SYS-10 // LORAWAN</div>
               <div class="item__head">
                 <h3 class="item__name">
-                  <button class="item__toggle" type="button" data-toggle>
-                    LoRaWAN Soil Health &amp; Micro-Climate Telemetry Station
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  <button class="item__toggle" type="button" data-toggle aria-expanded="false">
+                    <span>LoRaWAN Soil Health &amp; Micro-Climate Telemetry Station</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                   </button>
                 </h3>
+                <span class="item__leader" aria-hidden="true"></span>
                 <span class="item__badge">15 km Range</span>
               </div>
               <p class="item__desc">Solar-harvesting sensor node transmitting real-time root volumetric water content, soil EC, and canopy leaf wetness to the central farm dashboard.</p>
@@ -508,26 +638,26 @@
       </div>
     </section>
 
-    <!-- ============ FIELD TRIALS & VALIDATION SHOWCASE ============ -->
+    <!-- ============ FIELD TRIALS & VALIDATION (DARK ASYMMETRIC BENTO) ============ -->
     <section class="trials-section" id="trials">
       <div class="container">
-        <div class="trials-header">
-          <div class="section-tag">Field Validation &amp; Trials</div>
-          <h2 class="section-title">Empirical Field Testing in High-Density Kashmir Orchards</h2>
+        <div class="trials-header reveal-on-scroll">
+          <div class="section-tag section-tag--light">03 // Field Validation &amp; Trials</div>
+          <h2 class="section-title section-title--light">Empirical Field Testing in High-Density Kashmir Orchards</h2>
           <p class="trials-lead">
             Our robotic platforms and intelligent canopy spraying technologies undergo rigorous field evaluations in collaboration with the Division of Agricultural Engineering, COAE&amp;T SKUAST-K Shalimar, sponsored by the Department of Science &amp; Technology (DST).
           </p>
         </div>
 
         <div class="trials-grid">
-          <!-- Trial Card 1: Active Spraying -->
-          <article class="trial-card">
+          <!-- Featured Card 1: Active Spraying -->
+          <article class="trial-card trial-card--featured reveal-on-scroll">
             <div class="trial-card__media">
-              <img src="assets/active-spraying-trial.jpg" alt="Active spraying field trial at SKUAST-K Shalimar high-density apple orchard" class="trial-card__img" loading="lazy">
+              <img src="assets/active-spraying-trial.jpg" alt="Active spraying field trial at SKUAST-K Shalimar high-density apple orchard" class="trial-card__img" loading="lazy" width="1000" height="1500">
               <span class="trial-card__badge">Live Action Trial</span>
             </div>
             <div class="trial-card__body">
-              <div class="trial-card__meta">COAE&amp;T SKUAST-K Shalimar // DST Sponsored</div>
+              <div class="trial-card__meta">COAE&amp;T SKUAST-K SHALIMAR // DST SPONSORED</div>
               <h3 class="trial-card__title">Active Canopy Mist Deposition</h3>
               <p class="trial-card__desc">
                 High-pressure vertical spray masts deploying dynamic air-assisted micro-mist directly into apple canopy under protective hail netting, achieving up to 85% reduction in pesticide runoff and zero operator exposure.
@@ -540,80 +670,86 @@
             </div>
           </article>
 
-          <!-- Trial Card 2: Row Navigation -->
-          <article class="trial-card">
-            <div class="trial-card__media">
-              <img src="assets/rover-in-orchard.jpg" alt="AIROS autonomous rover navigating high-density apple orchard row" class="trial-card__img" loading="lazy">
-              <span class="trial-card__badge">Row Navigation</span>
-            </div>
-            <div class="trial-card__body">
-              <div class="trial-card__meta">Orchard Field Trials // Srinagar</div>
-              <h3 class="trial-card__title">Centimetre-Accurate Row Following</h3>
-              <p class="trial-card__desc">
-                Autonomous travel through narrow trellised orchard corridors utilizing dual-antenna RTK-GNSS and obstacle avoidance, handling damp valley soil and tree-support infrastructure with steady traction.
-              </p>
-              <div class="trial-card__tags">
-                <span class="diet__tag">±1.5 cm RTK Precision</span>
-                <span class="diet__tag">4WD Electric Hub</span>
-                <span class="diet__tag diet__tag--neutral">Zero Soil Compaction</span>
+          <div class="trials-stack">
+            <!-- Card 2: Row Navigation -->
+            <article class="trial-card trial-card--wide reveal-on-scroll">
+              <div class="trial-card__media">
+                <img src="assets/rover-in-orchard.jpg" alt="AIROS autonomous rover navigating high-density apple orchard row" class="trial-card__img" loading="lazy" width="1000" height="750">
+                <span class="trial-card__badge">Row Navigation</span>
               </div>
-            </div>
-          </article>
+              <div class="trial-card__body">
+                <div class="trial-card__meta">ORCHARD FIELD TRIALS // SRINAGAR</div>
+                <h3 class="trial-card__title">Centimetre-Accurate Row Following</h3>
+                <p class="trial-card__desc">
+                  Autonomous travel through narrow trellised orchard corridors utilizing dual-antenna RTK-GNSS and obstacle avoidance, handling damp valley soil and tree-support infrastructure with steady traction.
+                </p>
+                <div class="trial-card__tags">
+                  <span class="diet__tag">&plusmn;1.5 cm RTK Precision</span>
+                  <span class="diet__tag">4WD Electric Hub</span>
+                  <span class="diet__tag diet__tag--neutral">Zero Soil Compaction</span>
+                </div>
+              </div>
+            </article>
 
-          <!-- Trial Card 3: Calibration & Setup -->
-          <article class="trial-card">
-            <div class="trial-card__media">
-              <img src="assets/field-trial-setup.jpg" alt="AIROS rover setup and calibration on orchard track" class="trial-card__img" loading="lazy">
-              <span class="trial-card__badge">Platform Calibration</span>
-            </div>
-            <div class="trial-card__body">
-              <div class="trial-card__meta">DST Device Development Program</div>
-              <h3 class="trial-card__title">AIROS Platform Architecture</h3>
-              <p class="trial-card__desc">
-                Engineered for harsh valley orchards with automotive CAN bus networking, ruggedized fluid manifolds, intelligent PWM solenoid valves, and interchangeable agricultural implement bays.
-              </p>
-              <div class="trial-card__tags">
-                <span class="diet__tag">TRL-5 Validated</span>
-                <span class="diet__tag">DST Sponsored</span>
-                <span class="diet__tag diet__tag--neutral">Modular Tool Bay</span>
+            <!-- Card 3: Calibration & Setup -->
+            <article class="trial-card trial-card--split reveal-on-scroll">
+              <div class="trial-card__media">
+                <img src="assets/field-trial-setup.jpg" alt="AIROS rover setup and calibration on orchard track" class="trial-card__img" loading="lazy" width="1000" height="1500">
+                <span class="trial-card__badge">Platform Calibration</span>
               </div>
-            </div>
-          </article>
+              <div class="trial-card__body">
+                <div class="trial-card__meta">DST DEVICE DEVELOPMENT PROGRAM</div>
+                <h3 class="trial-card__title">AIROS Platform Architecture</h3>
+                <p class="trial-card__desc">
+                  Engineered for harsh valley orchards with automotive CAN bus networking, ruggedized fluid manifolds, intelligent PWM solenoid valves, and interchangeable agricultural implement bays.
+                </p>
+                <div class="trial-card__tags">
+                  <span class="diet__tag">TRL-5 Validated</span>
+                  <span class="diet__tag">DST Sponsored</span>
+                  <span class="diet__tag diet__tag--neutral">Modular Tool Bay</span>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ R&D PIPELINE SECTION ============ -->
+    <!-- ============ 5-STAGE R&D PIPELINE SECTION ============ -->
     <section class="lifecycle-section" id="lifecycle">
       <div class="container">
-        <div class="section-tag">Our Approach</div>
-        <h2 class="section-title">5-Stage Practical Engineering Lifecycle</h2>
-        <p style="max-width: 44rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 2rem;">
-          We follow a rigorous, practical, engineering-driven approach from initial field observation to controlled prototype validation.
-        </p>
+        <div class="lifecycle-header reveal-on-scroll">
+          <div>
+            <div class="section-tag">04 // Our Approach</div>
+            <h2 class="section-title">5-Stage Practical Engineering Lifecycle</h2>
+          </div>
+          <p class="lifecycle-lead">
+            We follow a rigorous, practical, engineering-driven approach from initial field observation to controlled prototype validation.
+          </p>
+        </div>
 
-        <div class="pipeline-grid">
-          <div class="step-node active">
+        <div class="pipeline-grid" role="list">
+          <div class="step-node active" role="button" tabindex="0" aria-pressed="true">
             <div class="step-number">01</div>
             <h3 class="step-title">Problem Identification</h3>
             <p class="step-desc">Identify a specific agricultural problem through direct grower engagement in valley orchards and farming communities.</p>
           </div>
-          <div class="step-node">
+          <div class="step-node" role="button" tabindex="0" aria-pressed="false">
             <div class="step-number">02</div>
             <h3 class="step-title">Concept Engineering</h3>
             <p class="step-desc">Develop a suitable mechanical and automation concept using CAD kinematics and finite element analysis.</p>
           </div>
-          <div class="step-node">
+          <div class="step-node" role="button" tabindex="0" aria-pressed="false">
             <div class="step-number">03</div>
             <h3 class="step-title">Hardware Integration</h3>
             <p class="step-desc">Integrate relevant sensors, control systems, and computing hardware onto ruggedized electrical buses.</p>
           </div>
-          <div class="step-node">
+          <div class="step-node" role="button" tabindex="0" aria-pressed="false">
             <div class="step-number">04</div>
             <h3 class="step-title">Prototype Validation</h3>
             <p class="step-desc">Build and test prototypes under defined conditions in Srinagar trial plots to evaluate real-world reliability.</p>
           </div>
-          <div class="step-node">
+          <div class="step-node" role="button" tabindex="0" aria-pressed="false">
             <div class="step-number">05</div>
             <h3 class="step-title">Refinement &amp; Deployment</h3>
             <p class="step-desc">Evaluate performance and refine the design iteratively before considering broader field deployment.</p>
@@ -622,68 +758,98 @@
       </div>
     </section>
 
-    <!-- ============ PRECISION IMPACT SECTION ============ -->
+    <!-- ============ PRECISION IMPACT TELEMETRY CONSOLE ============ -->
     <section class="impact-section" id="impact">
       <div class="container">
-        <div class="impact-grid">
-          <div class="impact-left">
-            <div class="section-tag">Resource Conservation</div>
-            <h2 class="section-title" style="font-size: 2.2rem;">Calculate Your Input Savings</h2>
-            <p style="color: var(--ink-soft); line-height: 1.65; margin-bottom: 1.5rem;">
-              Evaluate the quantifiable chemical reduction, fuel savings, and operational payback achieved by replacing conventional broadcast machinery with targeted canopy automation.
-            </p>
+        <div class="impact-console cad-frame reveal-on-scroll">
+          <div class="impact-grid">
+            <div class="impact-left">
+              <div class="section-tag section-tag--light">05 // Resource Conservation</div>
+              <h2 class="section-title section-title--light">Precision Impact Telemetry</h2>
+              <p class="impact-lead">
+                Evaluate the quantifiable chemical reduction, operating hours saved, and drift prevention achieved by replacing conventional broadcast machinery with targeted canopy automation.
+              </p>
 
-            <div class="impact-slider-wrap">
-              <div class="impact-slider-header">
-                <span>Orchard / Farm Acreage</span>
-                <span style="color: var(--herb); font-family: var(--font-mono); font-size: 1.15rem; font-weight: 700;"><span id="acreage-display">15</span> Acres</span>
+              <div class="impact-slider-wrap">
+                <div class="impact-slider-header">
+                  <label for="acreage-slider">Orchard / Farm Acreage</label>
+                  <span class="acreage-readout"><span id="acreage-display">15</span> Acres</span>
+                </div>
+                <input type="range" id="acreage-slider" class="impact-slider" min="1" max="100" value="15" aria-label="Acreage slider">
+
+                <div class="preset-group" role="group" aria-label="Quick acreage presets">
+                  <button type="button" class="preset-btn" data-acres="5">5 Ac</button>
+                  <button type="button" class="preset-btn is-active" data-acres="15">15 Ac</button>
+                  <button type="button" class="preset-btn" data-acres="40">40 Ac</button>
+                  <button type="button" class="preset-btn" data-acres="100">100 Ac</button>
+                </div>
               </div>
-              <input type="range" id="acreage-slider" class="impact-slider" min="1" max="100" value="15" aria-label="Acreage slider">
+
+              <!-- Visual Conventional vs Targeted Efficiency Bar -->
+              <div class="efficiency-compare" aria-label="Spray usage comparison">
+                <div class="efficiency-row">
+                  <span>Conventional Air-Blast (100%)</span>
+                  <span class="mono-val" id="conventional-liters-val">4,500 L/season</span>
+                </div>
+                <div class="efficiency-bar efficiency-bar--baseline"><span></span></div>
+
+                <div class="efficiency-row">
+                  <span>Kashbot AIROS Targeted (15%)</span>
+                  <span class="mono-val mono-val--signal" id="kashbot-liters-val">675 L/season</span>
+                </div>
+                <div class="efficiency-bar efficiency-bar--targeted"><span></span></div>
+              </div>
+
+              <p class="impact-footnote">
+                Empirical reference: 255 Liters of chemical wastage avoided per acre/season; ~8 machine operating hours saved per acre.
+              </p>
             </div>
 
-            <div style="font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">
-              Empirical reference: 255 Liters of chemical wastage avoided per acre/season; ~8 machine operating hours saved per acre.
-            </div>
-          </div>
-
-          <div class="impact-results-grid">
-            <div class="impact-card">
-              <div class="impact-val" id="chemical-saved-val">3,825 L</div>
-              <div class="impact-lbl">Chemical Wastage Prevented</div>
-            </div>
-            <div class="impact-card">
-              <div class="impact-val" id="fuel-saved-val">120 Hrs</div>
-              <div class="impact-lbl">Operating Hours Saved</div>
-            </div>
-            <div class="impact-card">
-              <div class="impact-val">85%</div>
-              <div class="impact-lbl">Peak Chemical Drift Reduction</div>
-            </div>
-            <div class="impact-card">
-              <div class="impact-val">0.0 kg</div>
-              <div class="impact-lbl">Herbicide with Laser Weeding</div>
+            <div class="impact-results-grid">
+              <div class="impact-card">
+                <div class="impact-card__code">METRIC // 01</div>
+                <div class="impact-val" id="chemical-saved-val">3,825 L</div>
+                <div class="impact-lbl">Chemical Wastage Prevented</div>
+              </div>
+              <div class="impact-card">
+                <div class="impact-card__code">METRIC // 02</div>
+                <div class="impact-val" id="fuel-saved-val">120 Hrs</div>
+                <div class="impact-lbl">Operating Hours Saved</div>
+              </div>
+              <div class="impact-card">
+                <div class="impact-card__code">METRIC // 03</div>
+                <div class="impact-val">85%</div>
+                <div class="impact-lbl">Peak Chemical Drift Reduction</div>
+              </div>
+              <div class="impact-card">
+                <div class="impact-card__code">METRIC // 04</div>
+                <div class="impact-val">0.0 kg</div>
+                <div class="impact-lbl">Herbicide with Laser Weeding</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ PURPOSE & VISION SECTION ============ -->
-    <section class="overview-section" id="about">
+    <!-- ============ PURPOSE & VISION ARCHITECTURAL DIPTYCH ============ -->
+    <section class="purpose-section" id="about">
       <div class="container">
-        <div class="purpose-vision-grid">
+        <div class="purpose-vision-grid reveal-on-scroll">
           <div class="overview-card">
+            <span class="diptych-num" aria-hidden="true">01</span>
             <div class="section-tag">Our Purpose</div>
-            <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 1rem; color: var(--ink);">Engineering Practical Agricultural Solutions</h3>
-            <p style="color: var(--ink-soft); line-height: 1.7;">
+            <h3 class="diptych-title">Engineering Practical Agricultural Solutions</h3>
+            <p class="diptych-body">
               Our purpose is to contribute to more efficient and technology-enabled agriculture by developing solutions that address real operational needs. We aim to bridge agricultural engineering and emerging automation technologies through practical design, testing, and continuous improvement.
             </p>
           </div>
 
           <div class="overview-card">
+            <span class="diptych-num" aria-hidden="true">02</span>
             <div class="section-tag">Our Vision</div>
-            <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 1rem; color: var(--ink);">Advancing Resource-Conscious Robotics</h3>
-            <p style="color: var(--ink-soft); line-height: 1.7;">
+            <h3 class="diptych-title">Advancing Resource-Conscious Robotics</h3>
+            <p class="diptych-body">
               To contribute to the advancement of agricultural robotics and precision machinery, helping farmers and the agricultural sector access practical, intelligent, and resource-conscious technologies.
             </p>
           </div>
@@ -691,40 +857,46 @@
       </div>
     </section>
 
-    <!-- ============ CONTACT & INQUIRY SECTION ============ -->
+    <!-- ============ CONTACT & WEB3FORMS ENGINEERING DESK ============ -->
     <section class="contact-section" id="contact">
       <div class="container">
-        <div class="contact-card">
+        <div class="contact-card reveal-on-scroll">
           <div class="contact-left">
-            <div class="section-tag">Get in Touch</div>
-            <h2 class="section-title" style="font-size: 2.2rem;">Partner with Kashbot Agri Systems</h2>
-            <p style="color: var(--ink-soft); line-height: 1.65; margin-bottom: 1.75rem;">
+            <div class="section-tag section-tag--light">06 // Engineering Desk</div>
+            <h2 class="section-title section-title--light">Partner with Kashbot Agri Systems</h2>
+            <p class="contact-intro">
               Whether you are an orchardist seeking field trials, an agricultural institution exploring research partnerships, or a commercial distributor, our Srinagar engineering team is ready to collaborate.
             </p>
 
             <ul class="contact-info-list">
               <li class="contact-info-item">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 <div>
                   <strong>Location:</strong><br>
-                  Buchpora, Srinagar, Jammu & Kashmir – 190020, India
+                  Buchpora, Srinagar, Jammu &amp; Kashmir – 190020, India
                 </div>
               </li>
               <li class="contact-info-item">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 <div>
                   <strong>Email:</strong><br>
-                  <a href="mailto:info@kashbot.in" style="color: var(--herb); text-decoration: underline;">info@kashbot.in</a>
+                  <a href="mailto:info@kashbot.in" class="contact-link">info@kashbot.in</a>
                 </div>
               </li>
               <li class="contact-info-item">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 <div>
                   <strong>WhatsApp &amp; Phone:</strong><br>
-                  <a href="https://wa.me/917006613634?text=Hello%20Kashbot%20Agri%20Systems%2C%20I%20would%20like%20to%20inquire%20about%20your%20agricultural%20robotics%20and%20precision%20spraying%20systems." target="_blank" rel="noopener noreferrer" style="color: var(--herb); font-weight: 600;" aria-label="Chat with Kashbot on WhatsApp">7006613634 (Tap to Chat)</a>
+                  <a href="https://wa.me/917006613634?text=Hello%20Kashbot%20Agri%20Systems%2C%20I%20would%20like%20to%20inquire%20about%20your%20agricultural%20robotics%20and%20precision%20spraying%20systems." target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Chat with Kashbot on WhatsApp">7006613634 (Tap to Chat)</a>
                 </div>
               </li>
             </ul>
+
+            <div class="contact-coords">
+              <span>LAT 34.1442° N</span>
+              <span>LON 74.8124° E</span>
+              <span>ALT 1,585 M</span>
+            </div>
           </div>
 
           <div class="contact-right">
@@ -735,44 +907,44 @@
                 <span>Fastest response: Connect directly with engineering</span>
               </div>
               <a href="https://wa.me/917006613634?text=Hello%20Kashbot%20Agri%20Systems%2C%20I%20would%20like%20to%20inquire%20about%20your%20agricultural%20robotics%20and%20precision%20spraying%20systems." target="_blank" rel="noopener noreferrer" class="whatsapp-pill-btn" aria-label="One-tap WhatsApp direct chat">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.074-1.928-.46-1.528-.63-2.522-2.18-2.598-2.28-.077-.101-.624-.832-.624-1.587 0-.756.398-1.127.539-1.28.14-.153.308-.192.41-.192.103 0 .205.002.296.006.096.004.225-.036.35.267.129.313.438 1.07.476 1.149.038.079.064.172.013.275-.051.103-.077.167-.154.256-.077.09-.161.2-.23.269-.077.077-.157.161-.067.315.09.154.4 1.002 1.488 1.701.353.227.65.372.873.443.355.113.565.097.778-.015.244-.128.846-.492 1.077-.795.231-.303.231-.564.161-.667-.07-.102-.256-.164-.541-.308z"/>
                 </svg>
                 <span>Chat on WhatsApp</span>
               </a>
             </div>
 
-            <div class="contact-mode-chips">
+            <div class="contact-mode-chips" role="group" aria-label="Inquiry mode">
               <button type="button" class="chip is-on" id="mode-grower-btn" aria-pressed="true">Orchardist / Grower</button>
               <button type="button" class="chip" id="mode-partner-btn" aria-pressed="false">Institution / Research</button>
             </div>
 
-            <form class="contact-form" id="kashbot-inquiry-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <form class="contact-form" id="kashbot-inquiry-form" action="https://api.web3forms.com/submit" method="POST" aria-label="Engineering and trial inquiry form" novalidate>
               <input type="hidden" name="access_key" value="072bfda0-e3e8-45f7-a15c-c100ad09bd56">
               <input type="hidden" name="subject" id="form-subject" value="New Engineering & Trial Inquiry — Kashbot Agri Systems">
               <input type="hidden" name="from_name" value="Kashbot Agri Systems Website">
               <input type="hidden" name="inquiry_type" id="form-inquiry-type" value="Orchardist / Commercial Grower">
-              <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off">
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" aria-hidden="true" autocomplete="off">
 
               <div class="form-group">
-                <label for="form-name">Your Full Name *</label>
-                <input type="text" id="form-name" name="name" placeholder="e.g. Er. Tariq Ahmad" required>
+                <label for="form-name">Your Full Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="form-name" name="name" placeholder="e.g. Er. Tariq Ahmad" autocomplete="name" enterkeyhint="next" required>
               </div>
 
               <div class="form-row-2">
                 <div class="form-group">
-                  <label for="form-email">Email Address *</label>
-                  <input type="email" id="form-email" name="email" placeholder="name@domain.com" required>
+                  <label for="form-email">Email Address <span aria-hidden="true">*</span></label>
+                  <input type="email" id="form-email" name="email" placeholder="name@domain.com" autocomplete="email" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="next" required>
                 </div>
                 <div class="form-group">
-                  <label for="form-phone">Phone / WhatsApp Number *</label>
-                  <input type="tel" id="form-phone" name="phone" placeholder="7006613634" required>
+                  <label for="form-phone">Phone / WhatsApp Number <span aria-hidden="true">*</span></label>
+                  <input type="tel" id="form-phone" name="phone" placeholder="7006613634" autocomplete="tel" inputmode="tel" enterkeyhint="next" required>
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="form-org" id="label-org">Orchard / Farm Name</label>
-                <input type="text" id="form-org" name="organization" placeholder="e.g. Valley Apple Orchards">
+                <input type="text" id="form-org" name="organization" placeholder="e.g. Valley Apple Orchards" autocomplete="organization" enterkeyhint="next">
               </div>
 
               <div class="form-group">
@@ -780,16 +952,15 @@
                 <textarea id="form-message" name="message" rows="4" placeholder="Describe your orchard/farm size, crop types (e.g. apple, pear), or specific operational challenges..." required></textarea>
               </div>
 
-              <button type="submit" class="btn-primary btn-submit-inquiry" id="submit-inquiry-btn" style="width: 100%; padding: 0.95rem; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <button type="submit" class="btn-primary btn-submit-inquiry" id="submit-inquiry-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <line x1="22" y1="2" x2="11" y2="13"></line>
                   <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
                 <span>Send Inquiry to Engineering</span>
               </button>
 
-              <div id="form-feedback-msg" role="status" aria-live="polite" style="display: none; padding: 1.1rem; border-radius: 0.8rem; text-align: center; margin-top: 0.5rem; line-height: 1.5;">
-              </div>
+              <div id="form-feedback-msg" role="status" aria-live="polite" style="display: none;"></div>
             </form>
           </div>
         </div>
@@ -801,7 +972,9 @@
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="brand">
-        <img src="assets/logo.svg" alt="Kashbot Agri Systems" width="140" height="46">
+        <div class="brand__logo-plate">
+          <img src="assets/logo.svg" alt="Kashbot Agri Systems" width="130" height="48">
+        </div>
       </div>
 
       <div class="site-footer__notes">
@@ -811,7 +984,7 @@
       </div>
 
       <div>
-        <a href="#hero" class="btn-secondary" style="padding: 0.45rem 1.1rem; font-size: 0.88rem;">
+        <a href="#hero" class="btn-secondary btn-secondary--dark">
           Back to Top &uarr;
         </a>
       </div>
@@ -820,7 +993,7 @@
 
   <!-- Floating WhatsApp Quick Action Button -->
   <a href="https://wa.me/917006613634?text=Hello%20Kashbot%20Agri%20Systems%2C%20I%20would%20like%20to%20inquire%20about%20your%20agricultural%20robotics%20and%20precision%20spraying%20systems." class="floating-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="One-tap WhatsApp inquiry with Kashbot engineering">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.074-1.928-.46-1.528-.63-2.522-2.18-2.598-2.28-.077-.101-.624-.832-.624-1.587 0-.756.398-1.127.539-1.28.14-.153.308-.192.41-.192.103 0 .205.002.296.006.096.004.225-.036.35.267.129.313.438 1.07.476 1.149.038.079.064.172.013.275-.051.103-.077.167-.154.256-.077.09-.161.2-.23.269-.077.077-.157.161-.067.315.09.154.4 1.002 1.488 1.701.353.227.65.372.873.443.355.113.565.097.778-.015.244-.128.846-.492 1.077-.795.231-.303.231-.564.161-.667-.07-.102-.256-.164-.541-.308z"/>
     </svg>
     <span class="floating-whatsapp-text">WhatsApp Inquiry</span>

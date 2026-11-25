@@ -12,12 +12,13 @@ const html = fs.readFileSync(htmlPath, 'utf8');
 
 const requiredStrings = [
   'Kashbot Agri Systems Private Limited',
-  'Buchpora, Srinagar, Jammu & Kashmir',
+  'Buchpora, Srinagar, Jammu &amp; Kashmir',
   '190020',
   'info@kashbot.in',
   '7006613634',
-  'Yeseva+One',
-  'Mukta:wght@300;400;500;600;700',
+  'Space+Grotesk',
+  'Plus+Jakarta+Sans',
+  'JetBrains+Mono',
   'assets/logo.svg',
   'assets/logo-mark.svg',
   'data-tabs',
@@ -33,11 +34,13 @@ const requiredStrings = [
   'Build and test prototypes',
   'Evaluate performance and refine',
   'meta name="viewport"',
+  'id="airos-blueprint"',
   'id="technologies"',
   'id="trials"',
   'id="lifecycle"',
   'id="impact"',
   'id="contact"',
+  'fetchpriority="high"',
   'assets/rover.png',
   'assets/active-spraying-trial.jpg',
   'assets/rover-in-orchard.jpg',
@@ -69,5 +72,5 @@ requiredStrings.forEach(str => {
 if (failed) {
   process.exit(1);
 } else {
-  console.log("PASS: index.html contains all required company data, Sorrel typography, and official logos.");
+  console.log("PASS: index.html contains all required company data, Alpine Field-Engineering typography, interactive blueprint, and official logos.");
 }
