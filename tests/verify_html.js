@@ -35,6 +35,8 @@ const requiredStrings = [
   'Evaluate performance and refine',
   'meta name="viewport"',
   'id="airos-blueprint"',
+  'id="hero-lidar-canvas"',
+  'id="motion-schematic"',
   'id="technologies"',
   'id="trials"',
   'id="lifecycle"',

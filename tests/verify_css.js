@@ -35,7 +35,9 @@ const requiredClasses = [
   '.rover-hero-img',
   '.floating-whatsapp-btn',
   '.blueprint-stage',
-  '.hotspot-btn'
+  '.hotspot-btn',
+  '.schematic-section',
+  '.viewfinder-scanline'
 ];
 
 let failed = false;

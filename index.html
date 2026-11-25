@@ -96,25 +96,29 @@
         <img src="assets/rover-in-orchard.jpg" alt="" class="hero-bg-img" fetchpriority="high" width="1000" height="750" decoding="async">
         <div class="hero-scrim"></div>
         <div class="hero-grid-overlay"></div>
+        <canvas id="hero-lidar-canvas" class="hero-lidar-canvas" aria-hidden="true"></canvas>
       </div>
 
       <div class="container hero-container">
         <div class="hero-grid">
           <div class="hero-content">
-            <div class="badge-telemetry">
-              <span class="pulse-dot pulse-dot--tomato"></span>
-              <span>BUCHPORA, SRINAGAR · 34.14°N 74.81°E · JAMMU &amp; KASHMIR</span>
+            <div class="hero-eyebrow-row hero-stagger" style="--delay: 0ms;">
+              <div class="badge-telemetry">
+                <span class="pulse-dot pulse-dot--tomato"></span>
+                <span>BUCHPORA, SRINAGAR · 34.14°N 74.81°E · JAMMU &amp; KASHMIR</span>
+              </div>
+              <button type="button" class="motion-toggle-btn" id="motion-toggle-btn" aria-label="Pause ambient motion graphics">Pause Motion</button>
             </div>
 
-            <h1 class="hero-title">
+            <h1 class="hero-title hero-stagger" style="--delay: 90ms;">
               Autonomous Robotics for <span class="highlight">High-Altitude</span> Agriculture.
             </h1>
 
-            <p class="hero-desc">
+            <p class="hero-desc hero-stagger" style="--delay: 170ms;">
               Kashbot Agri Systems engineers autonomous field rovers, precision agricultural machinery, canopy-targeted spraying systems, and laser weed management prototypes designed for measurable, resource-conscious farming.
             </p>
 
-            <div class="hero-actions">
+            <div class="hero-actions hero-stagger" style="--delay: 250ms;">
               <a href="#technologies" class="btn-primary">
                 <span>Explore Technologies</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -129,7 +133,7 @@
           </div>
 
           <!-- Engineered Field Viewfinder Card -->
-          <div class="hero-viewfinder cad-frame">
+          <div class="hero-viewfinder cad-frame hero-stagger" style="--delay: 140ms;">
             <div class="viewfinder-hud">
               <span class="viewfinder-tag">FIELD TRIAL // SKUAST-K SHALIMAR</span>
               <span class="viewfinder-rec"><span class="pulse-dot pulse-dot--tomato"></span> LIVE TELEMETRY</span>
@@ -138,6 +142,11 @@
             <div class="viewfinder-media">
               <img src="assets/active-spraying-trial.jpg" alt="Kashbot AIROS spraying rover performing live canopy mist trial in a Kashmir apple orchard" class="viewfinder-img" width="1000" height="1500">
               <div class="viewfinder-crosshair" aria-hidden="true"></div>
+              <div class="viewfinder-scanline" aria-hidden="true"></div>
+              <div class="viewfinder-telemetry-bar" aria-hidden="true">
+                <span id="live-sat-readout">RTK LOCK: 14 SAT</span>
+                <span>PWM: 50Hz</span>
+              </div>
             </div>
 
             <div class="viewfinder-footer">
@@ -154,15 +163,15 @@
         <!-- Symmetrical Telemetry Stats Bar -->
         <div class="hero-stats-bar">
           <div class="stat-pill">
-            <div class="stat-number">05</div>
+            <div class="stat-number" data-count-to="5" data-pad="2">05</div>
             <div class="stat-label">Core R&amp;D Engineering Vectors</div>
           </div>
           <div class="stat-pill">
-            <div class="stat-number">85<span>%</span></div>
+            <div class="stat-number"><span class="stat-count" data-count-to="85">85</span><span>%</span></div>
             <div class="stat-label">Peak Chemical Drift Reduction</div>
           </div>
           <div class="stat-pill">
-            <div class="stat-number">&plusmn;1.5<span>cm</span></div>
+            <div class="stat-number">&plusmn;<span class="stat-count" data-count-to="1.5" data-decimals="1">1.5</span><span>cm</span></div>
             <div class="stat-label">Dual-Antenna RTK Navigation</div>
           </div>
           <div class="stat-pill">
@@ -215,6 +224,10 @@
 
               <div class="rover-blueprint-canvas">
                 <img src="assets/rover.png" alt="Kashbot AIROS Autonomous Agricultural Robotics Rover with Precision Spray Masts" class="rover-hero-img" loading="lazy" width="424" height="673">
+                <svg class="blueprint-laser-svg" id="blueprint-laser-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                  <line class="laser-leader" id="blueprint-leader-line" x1="38" y1="16" x2="98" y2="16" />
+                  <circle class="laser-reticle" id="blueprint-reticle" cx="38" cy="16" r="6" />
+                </svg>
 
                 <!-- 5 Interactive Subsystem Hotspots -->
                 <button type="button" class="hotspot-btn is-active" data-hotspot="masts" aria-pressed="true" aria-label="Inspect Vertical Air-Assist Spray Masts" style="left: 38%; top: 16%;">
@@ -265,6 +278,112 @@
       </div>
     </section>
 
+    <!-- ============ LIVE PHYSICS SCHEMATICS (BESPOKE MOTION GRAPHICS) ============ -->
+    <section class="schematic-section" id="motion-schematic" aria-label="Live Robotics Physics Schematics">
+      <div class="container">
+        <div class="schematic-header reveal-on-scroll">
+          <div>
+            <div class="section-tag section-tag--light">Kinematic &amp; Optical Telemetry</div>
+            <h2 class="schematic-title">Live Robotics Physics Schematics</h2>
+          </div>
+          <p class="schematic-lead">Real-time control loops bridging RTK localization, ultrasonic canopy profiling, and sub-millimetre laser optics.</p>
+        </div>
+
+        <div class="schematic-grid">
+          <!-- Schematic 1: RTK-GNSS Row Tracking -->
+          <article class="schematic-card spotlight-card reveal-on-scroll" style="--stagger: 0;">
+            <div class="schematic-canvas">
+              <svg viewBox="0 0 320 150" class="schematic-svg" aria-hidden="true">
+                <!-- Trellis Orchard Rows -->
+                <line x1="20" y1="36" x2="300" y2="36" class="svg-row-line" />
+                <line x1="20" y1="114" x2="300" y2="114" class="svg-row-line" />
+                <!-- Tree Canopy Nodes along Rows -->
+                <circle cx="65" cy="36" r="10" class="svg-tree-node" />
+                <circle cx="135" cy="36" r="10" class="svg-tree-node" />
+                <circle cx="205" cy="36" r="10" class="svg-tree-node" />
+                <circle cx="275" cy="36" r="10" class="svg-tree-node" />
+                <circle cx="65" cy="114" r="10" class="svg-tree-node" />
+                <circle cx="135" cy="114" r="10" class="svg-tree-node" />
+                <circle cx="205" cy="114" r="10" class="svg-tree-node" />
+                <circle cx="275" cy="114" r="10" class="svg-tree-node" />
+                <!-- RTK Corridor Guide -->
+                <line x1="20" y1="75" x2="300" y2="75" class="svg-rtk-path" />
+                <!-- Satellite Pulse Waves -->
+                <circle cx="265" cy="22" r="6" class="svg-sat-wave" />
+                <circle cx="265" cy="22" r="13" class="svg-sat-wave svg-sat-wave--2" />
+                <circle cx="265" cy="22" r="3" class="svg-sat-core" />
+                <!-- Animated Autonomous Rover -->
+                <g class="svg-rover-group">
+                  <rect x="28" y="62" width="32" height="26" rx="4" class="svg-rover-body" />
+                  <circle cx="44" cy="75" r="4" class="svg-rover-beacon" />
+                  <line x1="60" y1="75" x2="88" y2="75" class="svg-rover-vector" />
+                </g>
+              </svg>
+            </div>
+            <div class="schematic-meta">01 // RTK-GNSS ROW TRACKING</div>
+            <h3 class="schematic-card-title">&plusmn;1.5 cm Corridor Lock</h3>
+            <p class="schematic-card-desc">Dual-antenna kinematics hold narrow trellised rows steady across damp orchard terrain.</p>
+          </article>
+
+          <!-- Schematic 2: Adaptive Ultrasonic Mist -->
+          <article class="schematic-card spotlight-card reveal-on-scroll" style="--stagger: 1;">
+            <div class="schematic-canvas">
+              <svg viewBox="0 0 320 150" class="schematic-svg" aria-hidden="true">
+                <!-- Canopy Silhouettes with Gap -->
+                <path d="M55,112 C40,95 45,52 80,44 C112,38 128,68 118,112 Z" class="svg-canopy" />
+                <path d="M202,112 C188,88 198,42 234,40 C268,38 278,84 265,112 Z" class="svg-canopy" />
+                <!-- Nozzle / Sensor Mast -->
+                <rect x="148" y="28" width="24" height="94" rx="4" class="svg-mast" />
+                <circle cx="160" cy="64" r="4" class="svg-sensor-eye" />
+                <!-- Ultrasonic Sonar Cones -->
+                <path d="M148,64 Q126,52 118,40 M148,64 Q124,64 114,64 M148,64 Q126,76 118,88" class="svg-sonar-arc" />
+                <path d="M172,64 Q194,52 202,40 M172,64 Q196,64 206,64 M172,64 Q194,76 202,88" class="svg-sonar-arc svg-sonar-arc--r" />
+                <!-- Pulsing Micro-Mist Droplets -->
+                <g class="svg-mist-cloud">
+                  <circle cx="122" cy="54" r="2.2" class="svg-mist-dot" />
+                  <circle cx="110" cy="66" r="2.6" class="svg-mist-dot" />
+                  <circle cx="125" cy="78" r="2" class="svg-mist-dot" />
+                  <circle cx="198" cy="56" r="2.2" class="svg-mist-dot" />
+                  <circle cx="210" cy="68" r="2.6" class="svg-mist-dot" />
+                  <circle cx="195" cy="80" r="2" class="svg-mist-dot" />
+                </g>
+                <line x1="20" y1="122" x2="300" y2="122" class="svg-ground-line" />
+              </svg>
+            </div>
+            <div class="schematic-meta">02 // ADAPTIVE CANOPY MISTING</div>
+            <h3 class="schematic-card-title">50 Hz PWM Gap Shutoff</h3>
+            <p class="schematic-card-desc">Ultrasonic profiling fires micro-solenoids exclusively into foliage, eliminating inter-tree drift.</p>
+          </article>
+
+          <!-- Schematic 3: Galvo-Steered Laser Weeder -->
+          <article class="schematic-card spotlight-card reveal-on-scroll" style="--stagger: 2;">
+            <div class="schematic-canvas">
+              <svg viewBox="0 0 320 150" class="schematic-svg" aria-hidden="true">
+                <!-- Galvo Optical Head -->
+                <rect x="132" y="16" width="56" height="22" rx="4" class="svg-mast" />
+                <circle cx="160" cy="38" r="5" class="svg-laser-emitter" />
+                <!-- Soil Baseline & Crop/Weed Targets -->
+                <line x1="20" y1="124" x2="300" y2="124" class="svg-ground-line" />
+                <!-- Protected Crop Seedling (Center) -->
+                <path d="M160,124 L160,88 M160,104 Q146,90 140,98 M160,100 Q174,86 180,94" class="svg-crop-stem" />
+                <!-- Target Weed A & B -->
+                <circle cx="88" cy="116" r="6" class="svg-weed-target" />
+                <circle cx="232" cy="116" r="6" class="svg-weed-target" />
+                <circle cx="88" cy="116" r="14" class="svg-lock-ring svg-lock-ring--a" />
+                <circle cx="232" cy="116" r="14" class="svg-lock-ring svg-lock-ring--b" />
+                <!-- Dual-Axis Laser Beam -->
+                <line x1="160" y1="38" x2="88" y2="116" class="svg-laser-beam svg-laser-beam--a" />
+                <line x1="160" y1="38" x2="232" y2="116" class="svg-laser-beam svg-laser-beam--b" />
+              </svg>
+            </div>
+            <div class="schematic-meta">03 // SUB-MM GALVO LASER</div>
+            <h3 class="schematic-card-title">&lt; 20 ms Thermal Targeting</h3>
+            <p class="schematic-card-desc">Edge neural vision distinguishes crop seedlings and steers mirror pulses onto weed meristems.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ TECHNOLOGIES CATALOG (ARCHITECTURE MATRIX) ============ -->
     <section class="technologies-catalog" id="technologies">
       <div class="container catalog-intro">
@@ -309,7 +428,7 @@
             <p class="panel__note">Autonomous robotic platforms engineered for rugged terrain, row-crop navigation, and precision field operations.</p>
           </div>
           <ul class="dishes">
-            <li class="item" data-item data-diet="tested ai">
+            <li class="item spotlight-card" data-item data-diet="tested ai">
               <div class="item__code">SYS-01 // ROVER</div>
               <div class="item__head">
                 <h3 class="item__name">
@@ -337,7 +456,7 @@
               </div>
             </li>
 
-            <li class="item" data-item data-diet="tested ai">
+            <li class="item spotlight-card" data-item data-diet="tested ai">
               <div class="item__code">SYS-02 // TELEMETRY</div>
               <div class="item__head">
                 <h3 class="item__name">
@@ -375,7 +494,7 @@
             <p class="panel__note">Development of machinery and control systems intended to make agricultural operations more targeted, measurable, and efficient.</p>
           </div>
           <ul class="dishes">
-            <li class="item" data-item data-diet="tested ai">
+            <li class="item spotlight-card" data-item data-diet="tested ai">
               <div class="item__code">SYS-03 // ACTUATION</div>
               <div class="item__head">
                 <h3 class="item__name">
@@ -402,7 +521,7 @@
               </div>
             </li>
 
-            <li class="item" data-item data-diet="tested ai">
+            <li class="item spotlight-card" data-item data-diet="tested ai">
               <div class="item__code">SYS-04 // DOSING</div>
               <div class="item__head">
                 <h3 class="item__name">
@@ -440,7 +559,7 @@
             <p class="panel__note">Smart spraying technologies for orchards and horticultural settings, using canopy sensing and adaptive control to curb chemical drift.</p>
           </div>
           <ul class="dishes">
-            <li class="item" data-item data-diet="tested ai patent">
+            <li class="item spotlight-card" data-item data-diet="tested ai patent">
               <div class="item__code">SYS-05 // CANOPY AI</div>
               <div class="item__head">
                 <h3 class="item__name">
@@ -474,7 +593,7 @@
               </div>
             </li>
 
-            <li class="item" data-item data-diet="tested ai">
+            <li class="item spotlight-card" data-item data-diet="tested ai">
               <div class="item__code">SYS-06 // DEPOSITION</div>
               <div class="item__head">
                 <h3 class="item__name">
@@ -512,7 +631,7 @@
             <p class="panel__note">Laser lawn-weeding prototype exploring targeted weed treatment as an eco-conscious alternative to blanket synthetic herbicide application.</p>
           </div>
           <ul class="dishes">
-            <li class="item" data-item data-diet="ai laser patent">
+            <li class="item spotlight-card" data-item data-diet="ai laser patent">
               <div class="item__code">SYS-07 // PHOTONICS</div>
               <div class="item__head">
                 <h3 class="item__name">
@@ -540,7 +659,7 @@
               </div>
             </li>
 
-            <li class="item" data-item data-diet="ai laser">
+            <li class="item spotlight-card" data-item data-diet="ai laser">
               <div class="item__code">SYS-08 // EDGE VISION</div>
               <div class="item__head">
                 <h3 class="item__name">
@@ -578,7 +697,7 @@
             <p class="panel__note">Engineering-led development bringing together mechanical systems, electronics, sensors, embedded computing, and software.</p>
           </div>
           <ul class="dishes">
-            <li class="item" data-item data-diet="tested ai">
+            <li class="item spotlight-card" data-item data-diet="tested ai">
               <div class="item__code">SYS-09 // COMPUTE</div>
               <div class="item__head">
                 <h3 class="item__name">
@@ -605,7 +724,7 @@
               </div>
             </li>
 
-            <li class="item" data-item data-diet="tested ai">
+            <li class="item spotlight-card" data-item data-diet="tested ai">
               <div class="item__code">SYS-10 // LORAWAN</div>
               <div class="item__head">
                 <h3 class="item__name">
@@ -651,7 +770,7 @@
 
         <div class="trials-grid">
           <!-- Featured Card 1: Active Spraying -->
-          <article class="trial-card trial-card--featured reveal-on-scroll">
+          <article class="trial-card trial-card--featured reveal-on-scroll" style="--stagger: 0;">
             <div class="trial-card__media">
               <img src="assets/active-spraying-trial.jpg" alt="Active spraying field trial at SKUAST-K Shalimar high-density apple orchard" class="trial-card__img" loading="lazy" width="1000" height="1500">
               <span class="trial-card__badge">Live Action Trial</span>
@@ -672,7 +791,7 @@
 
           <div class="trials-stack">
             <!-- Card 2: Row Navigation -->
-            <article class="trial-card trial-card--wide reveal-on-scroll">
+            <article class="trial-card trial-card--wide reveal-on-scroll" style="--stagger: 1;">
               <div class="trial-card__media">
                 <img src="assets/rover-in-orchard.jpg" alt="AIROS autonomous rover navigating high-density apple orchard row" class="trial-card__img" loading="lazy" width="1000" height="750">
                 <span class="trial-card__badge">Row Navigation</span>
@@ -692,7 +811,7 @@
             </article>
 
             <!-- Card 3: Calibration & Setup -->
-            <article class="trial-card trial-card--split reveal-on-scroll">
+            <article class="trial-card trial-card--split reveal-on-scroll" style="--stagger: 2;">
               <div class="trial-card__media">
                 <img src="assets/field-trial-setup.jpg" alt="AIROS rover setup and calibration on orchard track" class="trial-card__img" loading="lazy" width="1000" height="1500">
                 <span class="trial-card__badge">Platform Calibration</span>
@@ -729,27 +848,28 @@
         </div>
 
         <div class="pipeline-grid" role="list">
-          <div class="step-node active" role="button" tabindex="0" aria-pressed="true">
+          <div class="pipeline-rail" aria-hidden="true"><span class="pipeline-rail__fill" id="pipeline-rail-fill"></span></div>
+          <div class="step-node active" role="button" tabindex="0" aria-pressed="true" style="--stagger: 0;">
             <div class="step-number">01</div>
             <h3 class="step-title">Problem Identification</h3>
             <p class="step-desc">Identify a specific agricultural problem through direct grower engagement in valley orchards and farming communities.</p>
           </div>
-          <div class="step-node" role="button" tabindex="0" aria-pressed="false">
+          <div class="step-node" role="button" tabindex="0" aria-pressed="false" style="--stagger: 1;">
             <div class="step-number">02</div>
             <h3 class="step-title">Concept Engineering</h3>
             <p class="step-desc">Develop a suitable mechanical and automation concept using CAD kinematics and finite element analysis.</p>
           </div>
-          <div class="step-node" role="button" tabindex="0" aria-pressed="false">
+          <div class="step-node" role="button" tabindex="0" aria-pressed="false" style="--stagger: 2;">
             <div class="step-number">03</div>
             <h3 class="step-title">Hardware Integration</h3>
             <p class="step-desc">Integrate relevant sensors, control systems, and computing hardware onto ruggedized electrical buses.</p>
           </div>
-          <div class="step-node" role="button" tabindex="0" aria-pressed="false">
+          <div class="step-node" role="button" tabindex="0" aria-pressed="false" style="--stagger: 3;">
             <div class="step-number">04</div>
             <h3 class="step-title">Prototype Validation</h3>
             <p class="step-desc">Build and test prototypes under defined conditions in Srinagar trial plots to evaluate real-world reliability.</p>
           </div>
-          <div class="step-node" role="button" tabindex="0" aria-pressed="false">
+          <div class="step-node" role="button" tabindex="0" aria-pressed="false" style="--stagger: 4;">
             <div class="step-number">05</div>
             <h3 class="step-title">Refinement &amp; Deployment</h3>
             <p class="step-desc">Evaluate performance and refine the design iteratively before considering broader field deployment.</p>
@@ -806,22 +926,22 @@
             </div>
 
             <div class="impact-results-grid">
-              <div class="impact-card">
+              <div class="impact-card spotlight-card">
                 <div class="impact-card__code">METRIC // 01</div>
                 <div class="impact-val" id="chemical-saved-val">3,825 L</div>
                 <div class="impact-lbl">Chemical Wastage Prevented</div>
               </div>
-              <div class="impact-card">
+              <div class="impact-card spotlight-card">
                 <div class="impact-card__code">METRIC // 02</div>
                 <div class="impact-val" id="fuel-saved-val">120 Hrs</div>
                 <div class="impact-lbl">Operating Hours Saved</div>
               </div>
-              <div class="impact-card">
+              <div class="impact-card spotlight-card">
                 <div class="impact-card__code">METRIC // 03</div>
                 <div class="impact-val">85%</div>
                 <div class="impact-lbl">Peak Chemical Drift Reduction</div>
               </div>
-              <div class="impact-card">
+              <div class="impact-card spotlight-card">
                 <div class="impact-card__code">METRIC // 04</div>
                 <div class="impact-val">0.0 kg</div>
                 <div class="impact-lbl">Herbicide with Laser Weeding</div>

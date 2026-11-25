@@ -1,8 +1,8 @@
 /**
  * KASHBOT AGRI SYSTEMS — ALPINE FIELD-ENGINEERING APPLICATION LOGIC
- * Accessible, zero-dependency ES6 interactivity
- * Supports Interactive AIROS Blueprint, Category Tabs, Filter Chips,
- * Expandable Spec Drawers, Pipeline Stages, Impact Telemetry Console & Web3Forms
+ * Accessible, zero-dependency ES6 interactivity & kinetic telemetry engine
+ * Supports Motion Pause/Play, Hero LiDAR Canvas, AIROS Blueprint Targeting SVG,
+ * Catalog View Transitions, Pipeline Progress Rail, Impact Console & Web3Forms
  */
 
 const AIROS_SUBSYSTEMS = {
@@ -10,6 +10,7 @@ const AIROS_SUBSYSTEMS = {
     code: 'SUB-01 // SPRAY ASSEMBLY',
     title: 'Vertical Air-Assist Spray Masts',
     badge: '85% Drift Cut',
+    coords: [38, 16],
     desc: 'Twin vertical aluminum spray masts fitted with individually modulated nozzles that match droplet velocity to trellised apple canopy height under anti-hail nets.',
     specs: [
       ['Droplet VMD', '180 – 240 μm'],
@@ -21,6 +22,7 @@ const AIROS_SUBSYSTEMS = {
     code: 'SUB-02 // PERCEPTION SUITE',
     title: 'RTK-GNSS & Canopy Sensor Array',
     badge: '±1.5 cm RTK',
+    coords: [25, 55],
     desc: 'Mast-mounted dual-antenna RTK GNSS receiver paired with ultrasonic and depth vision sensors to profile tree foliage gaps and follow narrow rows autonomously.',
     specs: [
       ['Localization', 'Dual-Antenna RTK-GNSS'],
@@ -32,6 +34,7 @@ const AIROS_SUBSYSTEMS = {
     code: 'SUB-03 // FLUID MANIFOLD',
     title: 'PWM Micro-Solenoid Fluid Manifold',
     badge: '50 Hz PWM',
+    coords: [55, 59],
     desc: 'Stainless steel pressurized reservoir and 50 Hz pulse-width modulated valve manifold regulating application volume proportionally to rover ground speed.',
     specs: [
       ['Actuation', '< 15 ms solenoid response'],
@@ -43,6 +46,7 @@ const AIROS_SUBSYSTEMS = {
     code: 'SUB-04 // CONTROL CORE',
     title: 'IP67 CAN / ROS2 Compute Bay',
     badge: 'PREEMPT_RT',
+    coords: [33, 73],
     desc: 'Ruggedized industrial compute enclosure bridging real-time CAN 2.0B actuator nodes, ROS2 navigation stacks, and telemetry diagnostics.',
     specs: [
       ['Ingress Rating', 'IP67 dust & moisture sealed'],
@@ -54,6 +58,7 @@ const AIROS_SUBSYSTEMS = {
     code: 'SUB-05 // MOBILITY PLATFORM',
     title: '4WD Electric Hub-Motor Drivetrain',
     badge: '8 Hr Duty',
+    coords: [48, 88],
     desc: 'High-torque independent 4WD agricultural tire drivetrain engineered for damp valley orchard soils, steep gradients, and low soil compaction.',
     specs: [
       ['Drive Train', '4WD independent electric hubs'],
@@ -62,6 +67,28 @@ const AIROS_SUBSYSTEMS = {
     ]
   }
 };
+
+let isMotionPaused = false;
+let lidarAnimationControl = null;
+
+function prefersReducedMotion() {
+  return typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function runWithViewTransition(updateFn) {
+  if (
+    typeof document !== 'undefined' &&
+    typeof document.startViewTransition === 'function' &&
+    !isMotionPaused &&
+    !prefersReducedMotion()
+  ) {
+    document.startViewTransition(updateFn);
+  } else {
+    updateFn();
+  }
+}
 
 /**
  * Calculates environmental and operational savings based on farm acreage
@@ -91,7 +118,242 @@ function formatNumber(num) {
 }
 
 /**
- * Initialize Interactive AIROS Hardware Blueprint Hotspots
+ * Global Motion Pause/Play Toggle (WCAG 2.2.2)
+ */
+function initMotionToggle() {
+  const toggleBtn = document.getElementById('motion-toggle-btn');
+  if (!toggleBtn) return;
+
+  if (prefersReducedMotion()) {
+    isMotionPaused = true;
+    toggleBtn.textContent = 'Play Motion';
+    toggleBtn.setAttribute('aria-label', 'Play ambient motion graphics');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    isMotionPaused = !isMotionPaused;
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.classList.toggle('motion-paused', isMotionPaused);
+    }
+    toggleBtn.textContent = isMotionPaused ? 'Play Motion' : 'Pause Motion';
+    toggleBtn.setAttribute(
+      'aria-label',
+      isMotionPaused ? 'Play ambient motion graphics' : 'Pause ambient motion graphics'
+    );
+    if (lidarAnimationControl) {
+      if (isMotionPaused) lidarAnimationControl.stop();
+      else lidarAnimationControl.start();
+    }
+  });
+}
+
+/**
+ * Hero LiDAR Point-Cloud & Alpine Topographic Sweep Canvas
+ */
+function initHeroLidarCanvas() {
+  const canvas = document.getElementById('hero-lidar-canvas');
+  if (!canvas || typeof canvas.getContext !== 'function' || typeof window === 'undefined') return;
+  if (typeof requestAnimationFrame !== 'function') return;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  let width = 0;
+  let height = 0;
+  let rafId = null;
+  let isVisible = true;
+  let angle = 0;
+  let pointerX = 0.72;
+  let pointerY = 0.45;
+
+  // Deterministic orchard canopy & terrain points
+  const points = Array.from({ length: 46 }, (_, i) => ({
+    xNorm: ((i * 37) % 100) / 100,
+    yNorm: ((i * 53 + 11) % 100) / 100,
+    radius: 1.3 + (i % 3) * 0.7,
+    isTarget: i % 9 === 0
+  }));
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect ? canvas.getBoundingClientRect() : { width: 1200, height: 700 };
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = Math.max(rect.width || 800, 320);
+    height = Math.max(rect.height || 600, 320);
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function drawFrame() {
+    ctx.clearRect(0, 0, width, height);
+
+    const originX = width * pointerX;
+    const originY = height * pointerY;
+    const maxRadius = Math.hypot(width, height) * 0.55;
+
+    // Subtle Alpine Topographic Wave Contours
+    ctx.lineWidth = 1;
+    for (let ring = 0; ring < 4; ring++) {
+      const yBase = height * (0.28 + ring * 0.16);
+      ctx.beginPath();
+      for (let x = 0; x <= width; x += 28) {
+        const wave = Math.sin(x * 0.0055 + angle * 0.8 + ring * 1.1) * 14 +
+          Math.cos(x * 0.011 - angle * 0.4) * 7;
+        if (x === 0) ctx.moveTo(x, yBase + wave);
+        else ctx.lineTo(x, yBase + wave);
+      }
+      ctx.strokeStyle = `rgba(74, 222, 128, ${0.045 + ring * 0.012})`;
+      ctx.stroke();
+    }
+
+    // LiDAR Sweep Cone
+    const sweepWidth = 0.42;
+    const grad = ctx.createRadialGradient(originX, originY, 0, originX, originY, maxRadius);
+    grad.addColorStop(0, 'rgba(74, 222, 128, 0.12)');
+    grad.addColorStop(0.55, 'rgba(42, 111, 78, 0.06)');
+    grad.addColorStop(1, 'rgba(11, 16, 13, 0)');
+
+    ctx.beginPath();
+    ctx.moveTo(originX, originY);
+    ctx.arc(originX, originY, maxRadius, angle - sweepWidth, angle);
+    ctx.closePath();
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // Leading Scanline
+    ctx.beginPath();
+    ctx.moveTo(originX, originY);
+    ctx.lineTo(originX + Math.cos(angle) * maxRadius, originY + Math.sin(angle) * maxRadius);
+    ctx.strokeStyle = 'rgba(74, 222, 128, 0.22)';
+    ctx.stroke();
+
+    // Orchard Point Cloud Blips illuminated by Sweep
+    points.forEach(pt => {
+      const px = pt.xNorm * width;
+      const py = pt.yNorm * height;
+      const ptAngle = Math.atan2(py - originY, px - originX);
+      let diff = (angle - ptAngle) % (Math.PI * 2);
+      if (diff < 0) diff += Math.PI * 2;
+      const lit = diff < 0.85 ? 1 - diff / 0.85 : 0.14;
+
+      ctx.beginPath();
+      ctx.arc(px, py, pt.radius, 0, Math.PI * 2);
+      ctx.fillStyle = pt.isTarget
+        ? `rgba(217, 78, 40, ${0.22 + lit * 0.65})`
+        : `rgba(74, 222, 128, ${0.12 + lit * 0.55})`;
+      ctx.fill();
+    });
+  }
+
+  function tick() {
+    if (isMotionPaused || !isVisible || (typeof document !== 'undefined' && document.hidden)) {
+      rafId = null;
+      return;
+    }
+    angle = (angle + 0.009) % (Math.PI * 2);
+    drawFrame();
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function start() {
+    if (!rafId && !isMotionPaused && isVisible) {
+      rafId = requestAnimationFrame(tick);
+    }
+  }
+
+  function stop() {
+    if (rafId && typeof cancelAnimationFrame === 'function') {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  }
+
+  lidarAnimationControl = { start, stop };
+
+  resize();
+  drawFrame();
+
+  window.addEventListener('resize', () => {
+    resize();
+    drawFrame();
+  }, { passive: true });
+
+  const heroSection = document.getElementById('hero');
+  if (heroSection) {
+    heroSection.addEventListener('pointermove', (e) => {
+      if (isMotionPaused) return;
+      const r = heroSection.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0) {
+        pointerX = 0.55 + ((e.clientX - r.left) / r.width - 0.5) * 0.25;
+        pointerY = 0.42 + ((e.clientY - r.top) / r.height - 0.5) * 0.2;
+      }
+    }, { passive: true });
+
+    if (typeof IntersectionObserver === 'function') {
+      const obs = new IntersectionObserver((entries) => {
+        isVisible = entries[0]?.isIntersecting ?? true;
+        if (isVisible && !isMotionPaused) start();
+        else stop();
+      }, { threshold: 0.05 });
+      obs.observe(heroSection);
+    }
+  }
+
+  if (typeof document !== 'undefined') {
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+      else if (isVisible && !isMotionPaused) start();
+    });
+  }
+
+  if (!isMotionPaused) {
+    start();
+  }
+}
+
+/**
+ * Hero Stat Count-Up & Live RTK Telemetry Readout
+ */
+function initHeroTelemetry() {
+  const satReadout = document.getElementById('live-sat-readout');
+  if (satReadout && typeof setInterval === 'function') {
+    const satStates = ['RTK LOCK: 14 SAT', 'RTK LOCK: 15 SAT', 'RTK LOCK: 16 SAT', 'RTK LOCK: 15 SAT'];
+    let idx = 0;
+    setInterval(() => {
+      if (isMotionPaused) return;
+      idx = (idx + 1) % satStates.length;
+      satReadout.textContent = satStates[idx];
+    }, 3400);
+  }
+
+  if (isMotionPaused || prefersReducedMotion() || typeof requestAnimationFrame !== 'function') return;
+
+  const counters = document.querySelectorAll('[data-count-to]');
+  counters.forEach(el => {
+    const target = parseFloat(el.getAttribute('data-count-to'));
+    const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    const pad = parseInt(el.getAttribute('data-pad') || '0', 10);
+    if (Number.isNaN(target)) return;
+
+    const duration = 550;
+    const startTime = performance.now();
+
+    function frame(now) {
+      const p = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = target * eased;
+      let text = decimals > 0 ? val.toFixed(decimals) : Math.round(val).toString();
+      if (pad > 0) text = text.padStart(pad, '0');
+      el.textContent = text;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+
+    requestAnimationFrame(frame);
+  });
+}
+
+/**
+ * Initialize Interactive AIROS Hardware Blueprint Hotspots & Targeting SVG
  */
 function initAirosBlueprint() {
   const hotspotBtns = document.querySelectorAll('[data-hotspot]');
@@ -100,6 +362,9 @@ function initAirosBlueprint() {
   const badgeEl = document.getElementById('hotspot-badge');
   const descEl = document.getElementById('hotspot-desc');
   const specsEl = document.getElementById('hotspot-specs');
+  const leaderLine = document.getElementById('blueprint-leader-line');
+  const reticle = document.getElementById('blueprint-reticle');
+  const readoutBox = document.querySelector('.blueprint-readout');
 
   if (!hotspotBtns.length || !titleEl) return;
 
@@ -112,6 +377,24 @@ function initAirosBlueprint() {
       btn.classList.toggle('is-active', isMatch);
       btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
     });
+
+    if (leaderLine && data.coords) {
+      leaderLine.setAttribute('x1', String(data.coords[0]));
+      leaderLine.setAttribute('y1', String(data.coords[1]));
+      leaderLine.setAttribute('x2', '98');
+      leaderLine.setAttribute('y2', String(data.coords[1]));
+    }
+
+    if (reticle && data.coords) {
+      reticle.setAttribute('cx', String(data.coords[0]));
+      reticle.setAttribute('cy', String(data.coords[1]));
+    }
+
+    if (readoutBox && !isMotionPaused) {
+      readoutBox.classList.remove('is-switching');
+      void readoutBox.offsetWidth;
+      readoutBox.classList.add('is-switching');
+    }
 
     if (codeEl) codeEl.textContent = data.code;
     if (titleEl) titleEl.textContent = data.title;
@@ -134,7 +417,7 @@ function initAirosBlueprint() {
 }
 
 /**
- * Initialize Category Tabs
+ * Initialize Category Tabs (with View Transitions)
  * Supports switching between panels (All, Robotics, Machinery, Spraying, Laser, R&D)
  */
 function initSorrelTabs() {
@@ -149,10 +432,23 @@ function initSorrelTabs() {
       e.preventDefault();
       const targetCategory = tab.getAttribute('data-tab');
 
-      tabs.forEach(t => {
-        const active = t === tab;
-        t.classList.toggle('is-active', active);
-        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      runWithViewTransition(() => {
+        tabs.forEach(t => {
+          const active = t === tab;
+          t.classList.toggle('is-active', active);
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+
+        panels.forEach(panel => {
+          const panelCat = panel.getAttribute('data-panel');
+          if (targetCategory === 'all' || panelCat === targetCategory) {
+            panel.classList.add('is-active');
+          } else {
+            panel.classList.remove('is-active');
+          }
+        });
+
+        applyActiveFilters();
       });
 
       if (typeof tab.scrollIntoView === 'function') {
@@ -162,17 +458,6 @@ function initSorrelTabs() {
           tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
         }
       }
-
-      panels.forEach(panel => {
-        const panelCat = panel.getAttribute('data-panel');
-        if (targetCategory === 'all' || panelCat === targetCategory) {
-          panel.classList.add('is-active');
-        } else {
-          panel.classList.remove('is-active');
-        }
-      });
-
-      applyActiveFilters();
     });
   });
 }
@@ -223,7 +508,7 @@ function applyActiveFilters() {
 }
 
 /**
- * Initialize Field Filter Chips
+ * Initialize Field Filter Chips (with View Transitions)
  */
 function initSorrelFilters() {
   const chips = document.querySelectorAll('.chip[data-diet]');
@@ -231,9 +516,11 @@ function initSorrelFilters() {
 
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
-      const isPressed = chip.getAttribute('aria-pressed') === 'true';
-      chip.setAttribute('aria-pressed', isPressed ? 'false' : 'true');
-      applyActiveFilters();
+      runWithViewTransition(() => {
+        const isPressed = chip.getAttribute('aria-pressed') === 'true';
+        chip.setAttribute('aria-pressed', isPressed ? 'false' : 'true');
+        applyActiveFilters();
+      });
     });
   });
 }
@@ -257,18 +544,26 @@ function initItemToggles() {
 }
 
 /**
- * Initialize 5-Stage Engineering Lifecycle Interactive Nodes
+ * Initialize 5-Stage Engineering Lifecycle Interactive Nodes & Progress Rail
  */
 function initLifecycle() {
   const stepNodes = document.querySelectorAll('.step-node');
+  const railFill = document.getElementById('pipeline-rail-fill');
   if (!stepNodes.length) return;
 
   function activateNode(targetNode) {
-    stepNodes.forEach(n => {
+    let activeIdx = 0;
+    stepNodes.forEach((n, idx) => {
       const isActive = n === targetNode;
       n.classList.toggle('active', isActive);
       n.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      if (isActive) activeIdx = idx;
     });
+
+    if (railFill && railFill.style) {
+      const progress = ((activeIdx + 1) / stepNodes.length).toFixed(2);
+      railFill.style.setProperty('--pipeline-progress', progress);
+    }
   }
 
   stepNodes.forEach(node => {
@@ -283,7 +578,7 @@ function initLifecycle() {
 }
 
 /**
- * Initialize Precision Impact Slider & Presets
+ * Initialize Precision Impact Slider & Animated Presets
  */
 function initImpactSlider() {
   const slider = document.getElementById('acreage-slider');
@@ -296,19 +591,24 @@ function initImpactSlider() {
 
   if (!slider || !acreageDisplay || !chemDisplay || !fuelDisplay) return;
 
-  function update() {
-    const acres = parseInt(slider.value, 10) || 1;
+  let tweenRaf = null;
+
+  function renderMetrics(acres) {
     acreageDisplay.textContent = acres;
 
     const impact = calculateImpact(acres);
     chemDisplay.textContent = `${formatNumber(impact.chemicalSavedLiters)} L`;
     fuelDisplay.textContent = `${formatNumber(impact.fuelSavedHours)} Hrs`;
 
-    // Conventional broadcast ~300 L/acre vs Kashbot targeted ~45 L/acre (85% saved = 255 L/acre)
     const conventionalLiters = Math.round(acres * 300);
     const kashbotLiters = Math.round(acres * 45);
     if (convDisplay) convDisplay.textContent = `${formatNumber(conventionalLiters)} L/season`;
     if (kashDisplay) kashDisplay.textContent = `${formatNumber(kashbotLiters)} L/season`;
+  }
+
+  function update(targetAcresOverride) {
+    const acres = parseInt(targetAcresOverride ?? slider.value, 10) || 1;
+    renderMetrics(acres);
 
     presetBtns.forEach(btn => {
       const presetAcres = parseInt(btn.getAttribute('data-acres'), 10);
@@ -316,17 +616,49 @@ function initImpactSlider() {
     });
   }
 
+  function pulseMetrics() {
+    [chemDisplay, fuelDisplay].forEach(el => {
+      if (!el || !el.classList || isMotionPaused) return;
+      el.classList.remove('is-pulsing');
+      void el.offsetWidth;
+      el.classList.add('is-pulsing');
+    });
+  }
+
   presetBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const targetAcres = btn.getAttribute('data-acres');
-      if (targetAcres) {
-        slider.value = targetAcres;
-        update();
+      const targetAcres = parseInt(btn.getAttribute('data-acres') || '15', 10);
+      const startAcres = parseInt(slider.value, 10) || 15;
+      slider.value = String(targetAcres);
+
+      if (isMotionPaused || prefersReducedMotion() || typeof requestAnimationFrame !== 'function' || startAcres === targetAcres) {
+        update(targetAcres);
+        pulseMetrics();
+        return;
       }
+
+      if (tweenRaf && typeof cancelAnimationFrame === 'function') cancelAnimationFrame(tweenRaf);
+      const t0 = performance.now();
+      const dur = 360;
+
+      function step(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const current = Math.round(startAcres + (targetAcres - startAcres) * eased);
+        renderMetrics(current);
+        if (p < 1) {
+          tweenRaf = requestAnimationFrame(step);
+        } else {
+          update(targetAcres);
+          pulseMetrics();
+        }
+      }
+
+      tweenRaf = requestAnimationFrame(step);
     });
   });
 
-  slider.addEventListener('input', update);
+  slider.addEventListener('input', () => update());
   update();
 }
 
@@ -430,7 +762,6 @@ function initInquiryForm() {
   const phoneInput = document.getElementById('form-phone');
   const messageInput = document.getElementById('form-message');
 
-  // Clear aria-invalid non-intrusively as the user corrects input
   [nameInput, emailInput, phoneInput, messageInput].forEach(field => {
     if (field && typeof field.addEventListener === 'function') {
       field.addEventListener('input', () => {
@@ -627,11 +958,84 @@ function initMobileNav() {
 }
 
 /**
+ * Cursor Spotlight Sheen & Tactile Magnetic Buttons (Fine Pointer Only)
+ */
+function initInteractiveEffects() {
+  if (
+    typeof window === 'undefined' ||
+    typeof window.matchMedia !== 'function' ||
+    !window.matchMedia('(hover: hover) and (pointer: fine)').matches
+  ) {
+    return;
+  }
+
+  document.querySelectorAll('.spotlight-card').forEach(card => {
+    card.addEventListener('pointermove', (e) => {
+      if (isMotionPaused) return;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+    }, { passive: true });
+  });
+
+  document.querySelectorAll('.btn-primary, .floating-whatsapp-btn').forEach(btn => {
+    btn.addEventListener('pointermove', (e) => {
+      if (isMotionPaused || prefersReducedMotion()) return;
+      const rect = btn.getBoundingClientRect();
+      const dx = ((e.clientX - rect.left) / rect.width - 0.5) * 7;
+      const dy = ((e.clientY - rect.top) / rect.height - 0.5) * 6;
+      btn.style.translate = `${dx.toFixed(1)}px ${dy.toFixed(1)}px`;
+    }, { passive: true });
+
+    btn.addEventListener('pointerleave', () => {
+      btn.style.translate = '';
+    });
+  });
+}
+
+/**
+ * Progressive Enhancement IntersectionObserver Scroll Reveal Fallback
+ */
+function initScrollRevealFallback() {
+  if (
+    typeof window === 'undefined' ||
+    typeof CSS === 'undefined' ||
+    typeof CSS.supports !== 'function' ||
+    typeof IntersectionObserver !== 'function' ||
+    prefersReducedMotion()
+  ) {
+    return;
+  }
+
+  if (CSS.supports('(animation-timeline: view()) and (animation-range: entry)')) {
+    return;
+  }
+
+  if (document.documentElement) {
+    document.documentElement.classList.add('js-reveal-fallback');
+  }
+
+  const targets = document.querySelectorAll('.reveal-on-scroll');
+  if (!targets.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  targets.forEach(el => observer.observe(el));
+}
+
+/**
  * Initialize Header Scroll State & ScrollSpy
  */
 function initHeaderScroll() {
   const header = document.getElementById('site-header');
-  if (!header) return;
+  if (!header || typeof window === 'undefined') return;
 
   window.addEventListener('scroll', () => {
     header.classList.toggle('is-scrolled', window.scrollY > 24);
@@ -642,7 +1046,7 @@ function initScrollSpy() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.site-header .nav-link');
 
-  if (!sections.length || !navLinks.length) return;
+  if (!sections.length || !navLinks.length || typeof window === 'undefined') return;
 
   window.addEventListener('scroll', () => {
     let currentId = '';
@@ -668,6 +1072,9 @@ function initScrollSpy() {
 // Global DOM Initialization
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
+    initMotionToggle();
+    initHeroLidarCanvas();
+    initHeroTelemetry();
     initAirosBlueprint();
     initSorrelTabs();
     initSorrelFilters();
@@ -677,6 +1084,8 @@ if (typeof document !== 'undefined') {
     initFormSwitcher();
     initInquiryForm();
     initMobileNav();
+    initInteractiveEffects();
+    initScrollRevealFallback();
     initHeaderScroll();
     initScrollSpy();
   });
